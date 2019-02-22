@@ -27,7 +27,7 @@ public class LoadItems {
 		
 	}
 	
-	public void ReloadConfig()
+	public void ReLoadItems()
 	{
 		// 確認檔案是否存在
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
@@ -46,7 +46,7 @@ public class LoadItems {
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    
-		if (data.contains("CustomDrop"))
+		if (data.contains("items"))
 	    {
 			// 掉落的物品名稱
 			String ItemName = "";
@@ -71,18 +71,18 @@ public class LoadItems {
 			// 掉落的機率
 			double Chance = 1000;
 			// 拆解物品附屬ID用
-			String strItemID = "";
+			//String strItemID = "";
 			
 			// 待儲存的掉落物清單
 			List<MobDropItems> dropItems = new ArrayList<MobDropItems>();
 			
 			// 取得生物名稱
-			for (String entity_name : data.getConfigurationSection("CustomDrop").getKeys(false))
+			for (String entity_name : data.getConfigurationSection("items").getKeys(false))
 		    {
 				// 清空暫存區
 				dropItems = new ArrayList<MobDropItems>();
 				// 迴圈讀出掉落物
-				for (String name : data.getConfigurationSection("CustomDrop." + entity_name).getKeys(false))
+				for (String name : data.getConfigurationSection("items." + entity_name).getKeys(false))
 			    {
 					// ###########################################
 					// 清空暫存區
@@ -110,68 +110,65 @@ public class LoadItems {
 					// 掉落的機率
 					Chance = 1000;
 					// 拆解物品附屬ID用
-					strItemID = "";
+					//strItemID = "";
 					// ###########################################
 					// 開始讀取內容
 					// ###########################################
 					// 讀取物品名稱
 					ItemName = name.replaceAll("_", " ");
 					// 是否套用原始名稱
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".UseCustomName"))
+					if (data.contains("items." + entity_name + "." + name + ".UseCustomName"))
 					{
-						UseOriginalName = this.data.getInt("CustomDrop." + entity_name + "." + name + ".UseCustomName");
+						UseOriginalName = this.data.getInt("items." + entity_name + "." + name + ".UseCustomName");
 					}
 					// 物品說明
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".ItemLores"))
+					if (data.contains("items." + entity_name + "." + name + ".ItemLores"))
 					{
-						ItemLores = this.data.getStringList("CustomDrop." + entity_name + "." + name + ".ItemLores");
+						ItemLores = this.data.getStringList("items." + entity_name + "." + name + ".ItemLores");
 						for (int i = 0; i < ItemLores.size(); i++)
 						{
 							ItemLores.set(i, ItemLores.get(i).replace("_", " "));
 						}
 					}
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".ItemRealname"))
+					if (data.contains("items." + entity_name + "." + name + ".ItemRealname"))
 					{
-						ItemRealname = this.data.getString("CustomDrop." + entity_name + "." + name + ".ItemRealname").toUpperCase();
+						ItemRealname = this.data.getString("items." + entity_name + "." + name + ".ItemRealname").toUpperCase();
 					}
-					// 物品ID
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".ItemID"))
-					{
-						strItemID = this.data.getString("CustomDrop." + entity_name + "." + name + ".ItemID");
-						// 判斷有無子ID
-						if (strItemID.indexOf(":") != -1)
-						{
-							ItemID = Integer.parseInt(strItemID.split(":")[0]);
-							// 判斷是否為皮甲(子ID為染色碼)
-							if (ItemID == 298 || ItemID == 299 || ItemID == 300 || ItemID == 301)
-							{
-								Red = Byte.parseByte(strItemID.split(":")[1].split(",")[0]);
-								Green = Byte.parseByte(strItemID.split(":")[1].split(",")[1]);
-								Blue = Byte.parseByte(strItemID.split(":")[1].split(",")[2]);
-							}
-							else
-							{
-								ItemSubID = Byte.parseByte(strItemID.split(":")[1]);
+					
+					// 判斷是否為皮甲(讀取染色碼)
+					if(ItemRealname.indexOf(":") != -1) {
+						if(ItemRealname.split("_")[0].equals("leather")) {
+							if (data.contains("items." + entity_name + "." + name + ".RGB")) {
+								String RGBbuffer = this.data.getString("items." + entity_name + "." + name + ".RGB");
+								Red = Byte.parseByte(RGBbuffer.split(",")[0]);
+								Green = Byte.parseByte(RGBbuffer.split(",")[1]);
+								Blue = Byte.parseByte(RGBbuffer.split(",")[2]);
 							}
 						}
-						else
-						{
-							ItemID = Integer.parseInt(strItemID);
+					}
+					
+					// 判斷有無子ID
+					if (data.contains("items." + entity_name + "." + name + ".ItemSubID"))
+					{
+						ItemSubID = (byte)this.data.getInt("items." + entity_name + "." + name + ".ItemSubID");
+						if(ItemSubID > 0)
 							ItemSubID = 0;
-						}
+					}else {
+						ItemSubID = 0;
 					}
+					
 					// 取得附魔
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".Enchants"))
+					if (data.contains("items." + entity_name + "." + name + ".Enchants"))
 					{
-						Enchants = this.data.getStringList("CustomDrop." + entity_name + "." + name + ".Enchants");
+						Enchants = this.data.getStringList("items." + entity_name + "." + name + ".Enchants");
 					}
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".Quantity"))
+					if (data.contains("items." + entity_name + "." + name + ".Quantity"))
 					{
-						Quantity = this.data.getInt("CustomDrop." + entity_name + "." + name + ".Quantity");
+						Quantity = this.data.getInt("items." + entity_name + "." + name + ".Quantity");
 					}
-					if (data.contains("CustomDrop." + entity_name + "." + name + ".Chance"))
+					if (data.contains("items." + entity_name + "." + name + ".Chance"))
 					{
-						Chance = this.data.getDouble("CustomDrop." + entity_name + "." + name + ".Chance");
+						Chance = this.data.getDouble("items." + entity_name + "." + name + ".Chance");
 					}
 					// 判斷是否有必要資訊
 					if (ItemID > 0)
@@ -214,7 +211,7 @@ public class LoadItems {
 					return;
 				}
 			}
-			FileOutputStream fos = new FileOutputStream(DataBase.pluginMainDir + "config.yml");
+			FileOutputStream fos = new FileOutputStream(DataBase.pluginMainDir + loadfilename);
 		    fos.write(new byte[]{(byte)0xEF, (byte)0xBB, (byte)0xBF});
 		    OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 		    
@@ -292,9 +289,9 @@ public class LoadItems {
 			out.write("#==================================================#\r\n");
 			out.write("#物品的ID 跟 原始名稱                              #\r\n");
 			out.write("#可參考: https://minecraft-ids.grahamedgecombe.com/#\r\n");
-			out.write("#掉落的物品原始ID(例：木劍=268)                    #\r\n");
+			out.write("#掉落的物品子ID(例：木劍=0)                        #\r\n");
 			out.write("#==================================================#\r\n");
-			out.write("      ItemID: 268\r\n");
+			out.write("      ItemSubID: 0\r\n");
 			out.write("#=========================================#\r\n");
 			out.write("#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)#\r\n");
 			out.write("#=========================================#\r\n");
@@ -341,17 +338,17 @@ public class LoadItems {
 			out.write("#若無此設定則表示100%掉落#\r\n");
 			out.write("#========================#\r\n");
 			out.write("      Chance: 100\r\n");
-			out.write("#============================#\r\n");
+			/*out.write("#============================#\r\n");
 			out.write("#指定掉落的世界              #\r\n");
 			out.write("#若無此設定則全部世界都會掉落#\r\n");
 			out.write("#============================#\r\n");
-			out.write("      OnlyWorld: world\r\n");
+			out.write("      OnlyWorld: world\r\n");*/
 			out.write("#========#\r\n");
 			out.write("#其他範例#\r\n");
 			out.write("#========#\r\n");
 			out.write("  PIGZOMBIE:\r\n");
 			out.write("    §f集字卡-「殭」§f:\r\n");
-			out.write("      ItemID: 339\r\n");
+			out.write("      ItemSubID: 0\r\n");
 			out.write("      ItemRealname: PAPER\r\n");
 			out.write("      ItemLores:\r\n");
 			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
@@ -359,7 +356,7 @@ public class LoadItems {
 			out.write("      Quantity: 1\r\n");
 			out.write("      Chance: 25\r\n");
 			out.write("    §f集字卡-「屍」§f:\r\n");
-			out.write("      ItemID: 339\r\n");
+			out.write("      ItemSubID: 0\r\n");
 			out.write("      ItemRealname: PAPER\r\n");
 			out.write("      ItemLores:\r\n");
 			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
@@ -367,7 +364,7 @@ public class LoadItems {
 			out.write("      Quantity: 1\r\n");
 			out.write("      Chance: 25\r\n");
 			out.write("    §f集字卡-「豬」§f:\r\n");
-			out.write("      ItemID: 339\r\n");
+			out.write("      ItemSubID: 0\r\n");
 			out.write("      ItemRealname: PAPER\r\n");
 			out.write("      ItemLores:\r\n");
 			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
@@ -375,7 +372,7 @@ public class LoadItems {
 			out.write("      Quantity: 1\r\n");
 			out.write("      Chance: 25\r\n");
 			out.write("    §f集字卡-「人」§f:\r\n");
-			out.write("      ItemID: 339\r\n");
+			out.write("      ItemSubID: 0\r\n");
 			out.write("      ItemRealname: PAPER\r\n");
 			out.write("      ItemLores:\r\n");
 			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
