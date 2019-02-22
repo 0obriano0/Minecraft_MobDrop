@@ -30,8 +30,8 @@ public class AdminCommands implements CommandExecutor
 			{
 				// 顯示說明
 				sender.sendMessage("§9==========§dMobDrop§9==========");
-				sender.sendMessage("§a/md reload §f- §e重讀設定檔");
-				sender.sendMessage("§a/md list §f- §e列出所有生物的掉落資訊");
+				sender.sendMessage("§a/mobdrop reload §f- §e重讀設定檔");
+				sender.sendMessage("§a/mobdrop list §f- §e列出所有生物的掉落資訊");
 				return true;
 			}
 			else

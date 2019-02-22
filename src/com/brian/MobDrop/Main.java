@@ -11,7 +11,7 @@ public class Main extends JavaPlugin {
 	{
 		// 註冊
 		getServer().getPluginManager().registerEvents(new DeathListener(), this);
-		getCommand("md").setExecutor(new AdminCommands());
+		getCommand("mobdrop").setExecutor(new AdminCommands());
 		// 設定主插件
 		DataBase.main = this;
 		// 設定伺服器

@@ -54,8 +54,6 @@ public class LoadItems {
 			int UseOriginalName = 0;
 			// 掉落的物品說明
 			List<String> ItemLores = new ArrayList<String>();
-			// 掉落的物品ID(原始ID)
-			int ItemID = 0;
 			// 掉落的物品名稱(原始名稱)
 			String ItemRealname = "";
 			// 色彩
@@ -93,8 +91,6 @@ public class LoadItems {
 					UseOriginalName = 0;
 					// 掉落的物品說明
 					ItemLores = new ArrayList<String>();
-					// 掉落的物品ID(原始ID)
-					ItemID = 0;
 					// 掉落的物品名稱(原始名稱)
 					ItemRealname = "";
 					// 色彩
@@ -171,7 +167,7 @@ public class LoadItems {
 						Chance = this.data.getDouble("items." + entity_name + "." + name + ".Chance");
 					}
 					// 判斷是否有必要資訊
-					if (ItemID > 0)
+					if (ItemRealname.length() > 0)
 					{
 						// 加入
 						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, ItemSubID, Enchants, Quantity, Chance));
@@ -346,7 +342,7 @@ public class LoadItems {
 			out.write("#========#\r\n");
 			out.write("#其他範例#\r\n");
 			out.write("#========#\r\n");
-			out.write("  PIGZOMBIE:\r\n");
+			out.write("  ZOMBIE_PIGMAN:\r\n");
 			out.write("    §f集字卡-「殭」§f:\r\n");
 			out.write("      ItemSubID: 0\r\n");
 			out.write("      ItemRealname: PAPER\r\n");

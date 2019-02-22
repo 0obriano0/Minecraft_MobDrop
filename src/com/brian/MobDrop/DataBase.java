@@ -22,10 +22,10 @@ public class DataBase {
 		public static Server server;
 		
 		// 插件標題
-		public static String detailStr = "[MobDropItems]";
+		public static String detailStr = "[MobDrop]";
 		
 		// 插件目錄
-		public static String pluginMainDir = "./plugins/MobDropItems/";
+		public static String pluginMainDir = "./plugins/MobDrop/";
 
 		// 掉落物品清單
 		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
