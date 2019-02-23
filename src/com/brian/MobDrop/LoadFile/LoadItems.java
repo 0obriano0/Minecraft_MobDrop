@@ -10,6 +10,7 @@ import java.util.List;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
+import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.DataBase;
 import com.brian.MobDrop.DropItems.MobDropItems;
 
@@ -170,12 +171,13 @@ public class LoadItems {
 					if (ItemRealname.length() > 0)
 					{
 						// 加入
+						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + name + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, ItemSubID, Enchants, Quantity, Chance));
 					}
 					else
 					{
 						// 警告
-						System.out.println(DataBase.detailStr + "[ReloadConfig]" + entity_name + "的掉落物" + name + "未設定ItemID!");
+						DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " 的掉落物 " + AnsiColor.WHITE + name + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 					}
 			    }
 				DataBase.MobDropItemsMap.put(entity_name, dropItems);
@@ -203,7 +205,7 @@ public class LoadItems {
 	
 				if (!dirCreated)
 				{
-					System.out.println(DataBase.detailStr + "[CreateDefaultConfig]Directory failed to create. No permissions?");
+					DataBase.main.getLogger().info(AnsiColor.RED + "[CreateDefaultFile]Items.yml failed to create. No permissions?" + AnsiColor.RESET);
 					return;
 				}
 			}
