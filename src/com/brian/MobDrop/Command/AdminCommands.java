@@ -9,7 +9,7 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
-import com.brian.MobDrop.DataBase;
+import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.DropItems.MobDropItems;
 
 public class AdminCommands implements CommandExecutor
@@ -58,14 +58,11 @@ public class AdminCommands implements CommandExecutor
 						lstMobDropItems = DataBase.MobDropItemsMap.get(key);
 						for (MobDropItems MobDropItems : lstMobDropItems)
 						{
-							//if (customItem.OnlyWorld.equals(""))
-							//{
-								sender.sendMessage("§a" + MobDropItems.ItemName + "§a(§f" + MobDropItems.Chance + "%§a掉落§f" + MobDropItems.Quantity + "§a個)");
-							//}
-							//else
-							//{
-								//sender.sendMessage("§a" + MobDropItems.ItemName + "§a(§f" + MobDropItems.Chance + "%§a掉落§f" + MobDropItems.Quantity + "§a個) - 限定在§f" + customItem.OnlyWorld);
-							//}
+							if(MobDropItems.Quantity == MobDropItems.Quantity_max) {
+								sender.sendMessage("§a" + MobDropItems.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + " §a個)");
+							}else {
+								sender.sendMessage("§a" + MobDropItems.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + "-" + MobDropItems.Quantity_max + " §a個)");
+							}
 						}
 			        }
 					sender.sendMessage("§9==================================");

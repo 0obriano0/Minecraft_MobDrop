@@ -3,7 +3,9 @@ package com.brian.MobDrop;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.brian.MobDrop.Command.AdminCommands;
+import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Listener.DeathListener;
+import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
 
 public class Main extends JavaPlugin {
@@ -18,7 +20,9 @@ public class Main extends JavaPlugin {
 		DataBase.server = this.getServer();
 		// 讀取設定檔
 		DataBase.LoadItems = new LoadItems();
+		DataBase.LoadConfig = new LoadConfig();
 		DataBase.LoadItems.ReLoadItems();
+		DataBase.LoadConfig.ReLoadConfig();
 		// 訊息
 		DataBase.Print("MobDropItems is enabled!");
 	}

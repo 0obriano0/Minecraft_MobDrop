@@ -1,4 +1,4 @@
-package com.brian.MobDrop;
+package com.brian.MobDrop.Database;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.bukkit.Server;
 
+import com.brian.MobDrop.Main;
 import com.brian.MobDrop.DropItems.MobDropItems;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
@@ -15,7 +16,7 @@ public class DataBase {
 		public static Main main;
 		
 		// 設定檔
-		public static LoadConfig loadConfig;
+		public static LoadConfig LoadConfig;
 		public static LoadItems LoadItems;
 		
 		// 伺服器
@@ -29,7 +30,10 @@ public class DataBase {
 
 		// 掉落物品清單
 		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
-
+		
+		//公開顯示訊息
+		public static showMessage showMessage;
+		
 		// 顯示訊息
 		public static void Print(String msg)
 		{

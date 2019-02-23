@@ -28,6 +28,7 @@ public class MobDropItems {
 	public List<String> Enchants;
 	// 得到的物品數量
 	public int Quantity;
+	public int Quantity_max;
 	// 掉落率
 	public double Chance;
 	
@@ -41,6 +42,7 @@ public class MobDropItems {
 				   byte newItemSubID,
 				   List<String> newEnchants,
 				   int newQuantity,
+				   int newQuantity_max,
 				   double newChance)
 	{	    
 	// 設定資料
@@ -54,6 +56,7 @@ public class MobDropItems {
 	this.ItemSubID = newItemSubID;
 	this.Enchants = newEnchants;
 	this.Quantity = newQuantity;
+	this.Quantity_max = newQuantity_max;
 	this.Chance = newChance;
 	}
 	

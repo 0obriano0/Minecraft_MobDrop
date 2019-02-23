@@ -11,7 +11,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.brian.MobDrop.AnsiColor;
-import com.brian.MobDrop.DataBase;
+import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.DropItems.MobDropItems;
 
 public class LoadItems {
@@ -67,6 +67,7 @@ public class LoadItems {
 			List<String> Enchants = new ArrayList<String>();
 			// 掉落的物品數量
 			int Quantity = 1;
+			int Quantity_max = 1;
 			// 掉落的機率
 			double Chance = 1000;
 			// 拆解物品附屬ID用
@@ -104,6 +105,7 @@ public class LoadItems {
 					Enchants = new ArrayList<String>();
 					// 掉落的物品數量
 					Quantity = 1;
+					Quantity_max = 1;
 					// 掉落的機率
 					Chance = 1000;
 					// 拆解物品附屬ID用
@@ -163,6 +165,13 @@ public class LoadItems {
 					{
 						Quantity = this.data.getInt("items." + entity_name + "." + name + ".Quantity");
 					}
+					if (data.contains("items." + entity_name + "." + name + ".Quantity_max"))
+					{
+						Quantity_max = this.data.getInt("items." + entity_name + "." + name + ".Quantity_max");
+					}else
+					{
+						Quantity_max = Quantity;
+					}
 					if (data.contains("items." + entity_name + "." + name + ".Chance"))
 					{
 						Chance = this.data.getDouble("items." + entity_name + "." + name + ".Chance");
@@ -172,7 +181,7 @@ public class LoadItems {
 					{
 						// 加入
 						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + name + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
-						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, ItemSubID, Enchants, Quantity, Chance));
+						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, ItemSubID, Enchants, Quantity, Quantity_max, Chance));
 					}
 					else
 					{
