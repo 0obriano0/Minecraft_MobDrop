@@ -8,9 +8,8 @@ import org.bukkit.entity.Player;
 
 import com.brian.MobDrop.Database.DataBase;
 
-public class AdminCommands implements CommandExecutor
-{    
-    public AdminCommands()
+public class PlayerCommands implements CommandExecutor{
+	public PlayerCommands()
     {
     	
 	}
@@ -26,8 +25,7 @@ public class AdminCommands implements CommandExecutor
 			{
 				// 顯示說明
 				sender.sendMessage("§9==========§dMobDrop§9==========");
-				sender.sendMessage("§a/mdop reload §f- §e重讀設定檔");
-				sender.sendMessage("§a/mdop list <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
+				sender.sendMessage("§a/mobdrop list <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
 				sender.sendMessage("§9===========================");
 				return true;
 			}

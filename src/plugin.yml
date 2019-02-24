@@ -1,6 +1,6 @@
 name: MobDrop
 main: com.brian.MobDrop.Main
-version: 1.0.2
+version: 1.0.3
 author: 0obrino0
 website: www.youtube.com/user/brian041301
 api-version: 1.13
@@ -8,4 +8,8 @@ commands:
    mobdrop:
       description: MobDrop Commands.
       permission: MobDrop.mobdrop
+      permission-message: you can not use it
+   mdop:
+      description: MobDrop Commands.
+      permission: MobDrop.mobdrop.op
       permission-message: you can not use it

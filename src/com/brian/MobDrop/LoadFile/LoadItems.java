@@ -58,11 +58,9 @@ public class LoadItems {
 			// 掉落的物品名稱(原始名稱)
 			String ItemRealname = "";
 			// 色彩
-			byte Red = 0;
-			byte Green = 0;
-			byte Blue = 0;
-			// 掉落的物品附屬ID(原始ID)
-			byte ItemSubID = 0;
+			int Red = 0;
+			int Green = 0;
+			int Blue = 0;
 			// 掉落的物品附魔
 			List<String> Enchants = new ArrayList<String>();
 			// 掉落的物品數量
@@ -99,8 +97,6 @@ public class LoadItems {
 					Red = 0;
 					Green = 0;
 					Blue = 0;
-					// 掉落的物品附屬ID(原始ID)
-					ItemSubID = 0;
 					// 掉落的物品附魔
 					Enchants = new ArrayList<String>();
 					// 掉落的物品數量
@@ -135,25 +131,13 @@ public class LoadItems {
 					}
 					
 					// 判斷是否為皮甲(讀取染色碼)
-					if(ItemRealname.indexOf(":") != -1) {
-						if(ItemRealname.split("_")[0].equals("leather")) {
-							if (data.contains("items." + entity_name + "." + name + ".RGB")) {
-								String RGBbuffer = this.data.getString("items." + entity_name + "." + name + ".RGB");
-								Red = Byte.parseByte(RGBbuffer.split(",")[0]);
-								Green = Byte.parseByte(RGBbuffer.split(",")[1]);
-								Blue = Byte.parseByte(RGBbuffer.split(",")[2]);
-							}
+					if(ItemRealname.split("_")[0].equals("LEATHER")) {
+						if (data.contains("items." + entity_name + "." + name + ".RGB")) {
+							String RGBbuffer = this.data.getString("items." + entity_name + "." + name + ".RGB");
+							Red = Integer.parseInt(RGBbuffer.split(",")[0]);
+							Green = Integer.parseInt(RGBbuffer.split(",")[1]);
+							Blue = Integer.parseInt(RGBbuffer.split(",")[2]);
 						}
-					}
-					
-					// 判斷有無子ID
-					if (data.contains("items." + entity_name + "." + name + ".ItemSubID"))
-					{
-						ItemSubID = (byte)this.data.getInt("items." + entity_name + "." + name + ".ItemSubID");
-						if(ItemSubID > 0)
-							ItemSubID = 0;
-					}else {
-						ItemSubID = 0;
 					}
 					
 					// 取得附魔
@@ -177,11 +161,11 @@ public class LoadItems {
 						Chance = this.data.getDouble("items." + entity_name + "." + name + ".Chance");
 					}
 					// 判斷是否有必要資訊
-					if (ItemRealname.length() > 0)
+					if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0))
 					{
 						// 加入
 						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + name + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
-						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, ItemSubID, Enchants, Quantity, Quantity_max, Chance));
+						dropItems.add(new MobDropItems(ItemName, UseOriginalName, ItemLores, ItemRealname, Red, Green, Blue, Enchants, Quantity, Quantity_max, Chance));
 					}
 					else
 					{
@@ -294,14 +278,9 @@ public class LoadItems {
 			out.write("#==========================#\r\n");
 			out.write("      UseOriginalName: 1\r\n");
 			out.write("#==================================================#\r\n");
-			out.write("#物品的ID 跟 原始名稱                              #\r\n");
 			out.write("#可參考: https://minecraft-ids.grahamedgecombe.com/#\r\n");
-			out.write("#掉落的物品子ID(例：木劍=0)                        #\r\n");
+			out.write("#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)         #\r\n");
 			out.write("#==================================================#\r\n");
-			out.write("      ItemSubID: 0\r\n");
-			out.write("#=========================================#\r\n");
-			out.write("#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)#\r\n");
-			out.write("#=========================================#\r\n");
 			out.write("      ItemRealname: WOODEN_SWORD\r\n");
 			out.write("#==============#\r\n");
 			out.write("#掉落的物品說明#\r\n");
@@ -345,47 +324,74 @@ public class LoadItems {
 			out.write("#若無此設定則表示100%掉落#\r\n");
 			out.write("#========================#\r\n");
 			out.write("      Chance: 100\r\n");
-			/*out.write("#============================#\r\n");
-			out.write("#指定掉落的世界              #\r\n");
-			out.write("#若無此設定則全部世界都會掉落#\r\n");
-			out.write("#============================#\r\n");
-			out.write("      OnlyWorld: world\r\n");*/
 			out.write("#========#\r\n");
 			out.write("#其他範例#\r\n");
 			out.write("#========#\r\n");
-			out.write("  ZOMBIE_PIGMAN:\r\n");
-			out.write("    §f集字卡-「殭」§f:\r\n");
-			out.write("      ItemSubID: 0\r\n");
-			out.write("      ItemRealname: PAPER\r\n");
+			out.write("    §f史萊姆鋼劍§f:\r\n");
+			out.write("      ItemRealname: IRON_SWORD\r\n");
 			out.write("      ItemLores:\r\n");
-			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
-			out.write("      - §e即可合成殭屍豬人的飲料§f\r\n");
+			out.write("      - §e由史萊姆打造的劍§f\r\n");
+			out.write("      - §e使用他可以得到神力§f\r\n");
+			out.write("      Enchants:\r\n");
+			out.write("      - DAMAGE_ALL:8\r\n");
 			out.write("      Quantity: 1\r\n");
-			out.write("      Chance: 25\r\n");
-			out.write("    §f集字卡-「屍」§f:\r\n");
-			out.write("      ItemSubID: 0\r\n");
-			out.write("      ItemRealname: PAPER\r\n");
+			out.write("      Chance: 0.5\r\n");
+			out.write("    §f鑽石§f:\r\n");
+			out.write("      ItemRealname: Diamond\r\n");
 			out.write("      ItemLores:\r\n");
-			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
-			out.write("      - §e即可合成殭屍豬人的飲料§f\r\n");
+			out.write("      - §e普通的鑽石§f\r\n");
 			out.write("      Quantity: 1\r\n");
-			out.write("      Chance: 25\r\n");
-			out.write("    §f集字卡-「豬」§f:\r\n");
-			out.write("      ItemSubID: 0\r\n");
-			out.write("      ItemRealname: PAPER\r\n");
+			out.write("#========================#\r\n");
+			out.write("#掉落的物品的最大數量    #\r\n");
+			out.write("#========================#\r\n");
+			out.write("      Quantity_max: 4\r\n");
+			out.write("      Chance: 1\r\n");
+			out.write("#========#\r\n");
+			out.write("#其他範例#\r\n");
+			out.write("#========#\r\n");
+			out.write("  SKELETON:\r\n");
+			out.write("    §f白頭盔§f:\r\n");
+			out.write("      ItemRealname: leather_helmet\r\n");
 			out.write("      ItemLores:\r\n");
-			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
-			out.write("      - §e即可合成殭屍豬人的飲料§f\r\n");
+			out.write("      - PROTECTION_ENVIRONMENTAL:1\r\n");
+			out.write("      RGB: 255,255,255\r\n");
 			out.write("      Quantity: 1\r\n");
-			out.write("      Chance: 25\r\n");
-			out.write("    §f集字卡-「人」§f:\r\n");
-			out.write("      ItemSubID: 0\r\n");
-			out.write("      ItemRealname: PAPER\r\n");
+			out.write("      Chance: 50\r\n");
+			out.write("    §f白上衣§f:\r\n");
+			out.write("      ItemRealname: leather_chestplate\r\n");
 			out.write("      ItemLores:\r\n");
-			out.write("      - §e集滿「殭」「屍」「豬」「人」§f\r\n");
-			out.write("      - §e即可合成殭屍豬人的飲料§f\r\n");
+			out.write("      - §e骷髏生前的裝備§f\r\n");
+			out.write("      Enchants:\r\n");
+			out.write("      - PROTECTION_ENVIRONMENTAL:1\r\n");
+			out.write("      RGB: 255,255,255\r\n");
 			out.write("      Quantity: 1\r\n");
-			out.write("      Chance: 25\r\n");
+			out.write("      Chance: 50\r\n");
+			out.write("    §f白褲子§f:\r\n");
+			out.write("      ItemRealname: leather_leggings\r\n");
+			out.write("      ItemLores:\r\n");
+			out.write("      - §e骷髏生前的裝備§f\r\n");
+			out.write("      Enchants:\r\n");
+			out.write("      - PROTECTION_ENVIRONMENTAL:1\r\n");
+			out.write("      RGB: 255,255,255\r\n");
+			out.write("      Quantity: 1\r\n");
+			out.write("      Chance: 50\r\n");
+			out.write("    §f白鞋子§f:\r\n");
+			out.write("      ItemRealname: leather_boots");
+			out.write("      ItemLores:\r\n");
+			out.write("      - §e骷髏生前的裝備§f\r\n");
+			out.write("      Enchants:\r\n");
+			out.write("      - PROTECTION_ENVIRONMENTAL:1\r\n");
+			out.write("      RGB: 255,255,255\r\n");
+			out.write("      Quantity: 1\r\n");
+			out.write("      Chance: 50\r\n");
+			out.write("  PHANTOM:\r\n");
+			out.write("    §c弓箭§f:\r\n");
+			out.write("     ItemRealname: arrow\r\n");
+			out.write("     ItemLores:\r\n");
+			out.write("     - §e普通的弓箭§f\r\n");
+			out.write("     Quantity: 10\r\n");
+			out.write("     Quantity_max: 30\r\n");
+			out.write("     Chance: 70\r\n");
 		    out.close();
 		}
 		catch (Exception e)

@@ -64,7 +64,7 @@ public class DeathListener implements Listener{
     						}else {
     							DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] showMessage: " + DataBase.showMessage.IsOpen + "," + DataBase.showMessage.Chance + AnsiColor.RESET);
     						}
-        					killBy.sendMessage("§b" +DataBase.detailStr + "§f" + DataBase.GetEntityName(sEntitlyName) + "§6掉落了§f" + MobDropItem.ItemName + "§b " + items_num + "§6個!");
+        					killBy.sendMessage("§b" +DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.ItemName + "§b " + items_num + "§6個!");
         				}
     				//}
     			}

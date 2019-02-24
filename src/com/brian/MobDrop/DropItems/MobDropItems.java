@@ -16,14 +16,12 @@ public class MobDropItems {
 	public int UseOriginalName;
 	// 物品說明
 	public List<String> ItemLores;
-	// 物品附屬ID(原始ID)
-	public byte ItemSubID;
 	//物品名稱(系統名稱)
 	public String ItemRealname;
 	// 顏色
-	public byte Red;
-	public byte Green;
-	public byte Blue;
+	public int Red;
+	public int Green;
+	public int Blue;
 	// 物品附魔
 	public List<String> Enchants;
 	// 得到的物品數量
@@ -36,10 +34,9 @@ public class MobDropItems {
 				   int newUseOriginalName,
 				   List<String> newItemLores,
 				   String newItemRealname,
-				   byte newRed,
-				   byte newGreen,
-				   byte newBlue,
-				   byte newItemSubID,
+				   int newRed,
+				   int newGreen,
+				   int newBlue,
 				   List<String> newEnchants,
 				   int newQuantity,
 				   int newQuantity_max,
@@ -53,7 +50,6 @@ public class MobDropItems {
 	this.Red = newRed;
 	this.Green = newGreen;
 	this.Blue = newBlue;
-	this.ItemSubID = newItemSubID;
 	this.Enchants = newEnchants;
 	this.Quantity = newQuantity;
 	this.Quantity_max = newQuantity_max;
@@ -68,19 +64,13 @@ public class MobDropItems {
 	    LeatherArmorMeta LeatherArmorMeta;
 		
 		// 合成後得到的物品設定
-	    
-		if (this.ItemSubID != 0)
-		{ ResultItem = new ItemStack(Material.getMaterial(ItemRealname), 1, this.ItemSubID); }
-		else
-		{ ResultItem = new ItemStack(Material.getMaterial(ItemRealname)); }
+	    ResultItem = new ItemStack(Material.getMaterial(ItemRealname));
 		
 		// 判斷是否要設定顏色
-		if(ItemRealname.indexOf(":") != -1) {
-			if(ItemRealname.split("_")[0].equals("leather")) {
-				LeatherArmorMeta = (LeatherArmorMeta)ResultItem.getItemMeta();
-				LeatherArmorMeta.setColor(Color.fromRGB(this.Red, this.Green, this.Blue));
-				ResultItem.setItemMeta(LeatherArmorMeta);
-			}
+		if(ItemRealname.split("_")[0].equals("LEATHER")) {
+			LeatherArmorMeta = (LeatherArmorMeta)ResultItem.getItemMeta();
+			LeatherArmorMeta.setColor(Color.fromRGB(this.Red, this.Green, this.Blue));
+			ResultItem.setItemMeta(LeatherArmorMeta);
 		}
 		
 		newItemMeta = ResultItem.getItemMeta();
