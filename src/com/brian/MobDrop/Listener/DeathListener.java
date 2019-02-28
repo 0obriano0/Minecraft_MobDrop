@@ -60,11 +60,11 @@ public class DeathListener implements Listener{
         					entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
         					// 顯示掉落訊息
         					if(DataBase.showMessage.IsOpen && DataBase.showMessage.Chance >= MobDropItem.Chance) {
-        						DataBase.server.broadcastMessage("§b" +DataBase.detailStr + "§6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.ItemName + "§b" + items_num + "§6個!" );
+        						DataBase.server.broadcastMessage("§b" + DataBase.detailStr + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.ItemName + "§b " + items_num + "§6個!" );
     						}else {
-    							DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] showMessage: " + DataBase.showMessage.IsOpen + "," + DataBase.showMessage.Chance + AnsiColor.RESET);
+    							DataBase.main.getLogger().info(AnsiColor.GREEN + "[玩家獲取道具] " + killBy.getName() + " 將" + DataBase.GetEntityName(sEntitlyName) + "殺死後掉落 " + MobDropItem.ItemName + " "+ items_num + "個!" + AnsiColor.RESET);
     						}
-        					killBy.sendMessage("§b" +DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.ItemName + "§b " + items_num + "§6個!");
+        					killBy.sendMessage("§b" + DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.ItemName + "§b " + items_num + "§6個!");
         				}
     				//}
     			}
