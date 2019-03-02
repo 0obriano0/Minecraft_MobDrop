@@ -276,7 +276,7 @@ public class LoadItems {
 			out.write("#==========================#\r\n");
 			out.write("#掉落的物品是否套用原始名稱#\r\n");
 			out.write("#==========================#\r\n");
-			out.write("      UseOriginalName: 1\r\n");
+			out.write("      UseCustomName: 0\r\n");
 			out.write("#==================================================#\r\n");
 			out.write("#可參考: https://minecraft-ids.grahamedgecombe.com/#\r\n");
 			out.write("#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)         #\r\n");
@@ -353,6 +353,8 @@ public class LoadItems {
 			out.write("    §f白頭盔§f:\r\n");
 			out.write("      ItemRealname: leather_helmet\r\n");
 			out.write("      ItemLores:\r\n");
+			out.write("      - §e骷髏生前的裝備§f\r\n");
+			out.write("      Enchants:\r\n");
 			out.write("      - PROTECTION_ENVIRONMENTAL:1\r\n");
 			out.write("      RGB: 255,255,255\r\n");
 			out.write("      Quantity: 1\r\n");
@@ -376,7 +378,7 @@ public class LoadItems {
 			out.write("      Quantity: 1\r\n");
 			out.write("      Chance: 50\r\n");
 			out.write("    §f白鞋子§f:\r\n");
-			out.write("      ItemRealname: leather_boots");
+			out.write("      ItemRealname: leather_boots\r\n");
 			out.write("      ItemLores:\r\n");
 			out.write("      - §e骷髏生前的裝備§f\r\n");
 			out.write("      Enchants:\r\n");
@@ -385,13 +387,12 @@ public class LoadItems {
 			out.write("      Quantity: 1\r\n");
 			out.write("      Chance: 50\r\n");
 			out.write("  PHANTOM:\r\n");
-			out.write("    §c弓箭§f:\r\n");
-			out.write("     ItemRealname: arrow\r\n");
-			out.write("     ItemLores:\r\n");
-			out.write("     - §e普通的弓箭§f\r\n");
-			out.write("     Quantity: 10\r\n");
-			out.write("     Quantity_max: 30\r\n");
-			out.write("     Chance: 70\r\n");
+			out.write("    §c箭矢§f:\r\n");
+			out.write("      UseCustomName: 1\r\n");
+			out.write("      ItemRealname: arrow\r\n");
+			out.write("      Quantity: 10\r\n");
+			out.write("      Quantity_max: 30\r\n");
+			out.write("      Chance: 70\r\n");
 		    out.close();
 		}
 		catch (Exception e)
