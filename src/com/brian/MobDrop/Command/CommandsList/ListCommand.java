@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command;
+package com.brian.MobDrop.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.DropItems.MobDropItems;
 
-public class publicCommand {
+public class ListCommand {
 	private static boolean list_base(CommandSender sender,List<MobDropItems> lstMobDropItems,String keyName){
 		try {
 			sender.sendMessage("§a「" + DataBase.GetEntityName(keyName) + "」");
@@ -30,7 +30,8 @@ public class publicCommand {
 		}
 		return true;
 	}
-	public static boolean list(CommandSender sender, Command cmd, String label, String[] args) {
+	
+	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
 		// 迴圈顯示
 		List<MobDropItems> lstMobDropItems = new ArrayList<MobDropItems>();
 		sender.sendMessage("§9============§dMobDrop 怪物掉落資訊§9===========");
@@ -47,5 +48,20 @@ public class publicCommand {
 		}
 		sender.sendMessage("§9========================================");
 		return true;
+	}
+	
+	public static List<String> onTabComplete(String command){
+		List<String> show_commands = new ArrayList<String>();
+		for (String key : DataBase.MobDropItemsMap.keySet())
+		{
+			if(DataBase.showMessage.list_Chinese) {
+				if(DataBase.GetEntityName(key.toUpperCase()).indexOf(command) != -1)
+					show_commands.add(DataBase.GetEntityName(key));
+			}else
+				if(key.indexOf(command.toUpperCase()) != -1)
+					show_commands.add(key);
+					
+		}
+		return show_commands;
 	}
 }

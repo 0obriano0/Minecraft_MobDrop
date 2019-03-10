@@ -2,15 +2,16 @@ package com.brian.MobDrop.Command;
 
 import java.util.List;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 
+import com.brian.MobDrop.Command.CommandsList.GetItemCommand;
+import com.brian.MobDrop.Command.CommandsList.ListCommand;
+import com.brian.MobDrop.Command.CommandsList.ReloadCommand;
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.GetItem.GetItem;
 
 public class PlayerCommands implements CommandExecutor ,TabExecutor{
 	public PlayerCommands()
@@ -40,34 +41,13 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 			else
 			{
 				if (sender.hasPermission("MobDrop.admin")) {
-					if (args[0].equals("reload")){
-						// 清除合成表
-						DataBase.server.resetRecipes();
-						// 清除對照表
-						DataBase.MobDropItemsMap.clear();
-						// 重讀
-						DataBase.LoadItems.ReLoadItems();
-						sender.sendMessage(ChatColor.YELLOW +"設定檔讀取完成");
-						return true;
-					}else if (args[0].equals("getitem"))
-					{
-						if(args.length == 1) {
-							sender.sendMessage("§b" + DataBase.detailStr + " §c/mdop getitem <null> <- 請輸入怪物名稱 ");
-						}else {
-							if(args.length == 2) {
-								sender.sendMessage("§b" + DataBase.detailStr + " §c/mdop getitem " + args[1] + " <null> <- 請輸入道具id ");
-							}else {
-								GetItem.getitem((Player) sender, args);
-							}
-						}
-						return true;
-					}
+					if (args[0].equals("reload"))
+						return ReloadCommand.parseCommands(sender, cmd, label, args);
+					else if (args[0].equals("getitem"))
+						return GetItemCommand.parseCommands(sender, cmd, label, args);
 				}
 				if (args[0].equals("list"))
-				{
-					publicCommand.list(sender, cmd, label, args);
-					return true;
-				}
+					return ListCommand.parseCommands(sender, cmd, label, args);
 			}
 	    }
 		else
@@ -80,7 +60,17 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 	
 	public List<String> onTabComplete(CommandSender sender, Command cmd, String label, String[] args) {
 		if (args.length == 1) 
-			return DataBase.CommandsList.getMainList().secand_arg(args[0],sender);
+			return DataBase.CommandsList.secand_arg(args[0],sender);
+		else if (args.length == 2) {
+			if (sender.hasPermission("MobDrop.admin")) {	
+				if (args[0].equals("getitem")) {
+					
+				}
+			}
+			if (args[0].equals("list")) {
+				return ListCommand.onTabComplete(args[1]);
+			}
+		}
 		return null;
 	}
 }

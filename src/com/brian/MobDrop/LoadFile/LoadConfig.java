@@ -43,14 +43,14 @@ public class LoadConfig {
 	    
 	    if (data.contains("showMessage")){
 	    	if(data.contains("showMessage.IsOpen") && data.contains("showMessage.Chance")) {
-	    		DataBase.showMessage = new showMessage(data.getBoolean("showMessage.IsOpen"),data.getInt("showMessage.Chance"));
+	    		DataBase.showMessage = new showMessage(data.getBoolean("showMessage.IsOpen"),data.getInt("showMessage.Chance"),data.getBoolean("list.Chinese"));
 	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] showMessage 設定成功" + AnsiColor.RESET);
 	    	}else{
 	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 showMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.showMessage = new showMessage(false,0);
+	    	DataBase.showMessage = new showMessage(false,0,false);
 	    }
 	}
 	
@@ -80,6 +80,8 @@ public class LoadConfig {
 			out.write("showMessage:\r\n");
 			out.write("  IsOpen: true\r\n");
 			out.write("  Chance: 20\r\n");
+			out.write("list:\r\n");
+			out.write("  Chinese: true\r\n");
 		    out.close();
 		}
 		catch (Exception e){

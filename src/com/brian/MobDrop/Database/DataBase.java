@@ -7,6 +7,7 @@ import java.util.Map;
 import org.bukkit.Server;
 
 import com.brian.MobDrop.Main;
+import com.brian.MobDrop.Command.CommandsList.MainList;
 import com.brian.MobDrop.DropItems.MobDropItems;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
@@ -29,7 +30,7 @@ public class DataBase {
 		public static String pluginMainDir = "./plugins/MobDrop/";
 		
 		//指令目錄
-		public static com.brian.MobDrop.Command.CommandsList.CommandsList CommandsList = new com.brian.MobDrop.Command.CommandsList.CommandsList();
+		public static MainList CommandsList = new MainList();
 
 		// 掉落物品清單
 		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
