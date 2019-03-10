@@ -2,7 +2,6 @@ package com.brian.MobDrop;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.brian.MobDrop.Command.AdminCommands;
 import com.brian.MobDrop.Command.PlayerCommands;
 import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Listener.DeathListener;
@@ -12,10 +11,6 @@ import com.brian.MobDrop.LoadFile.LoadItems;
 public class Main extends JavaPlugin {
 	public void onEnable()
 	{
-		// 註冊
-		getServer().getPluginManager().registerEvents(new DeathListener(), this);
-		getCommand("mdop").setExecutor(new AdminCommands());
-		getCommand("mobdrop").setExecutor(new PlayerCommands());
 		// 設定主插件
 		DataBase.main = this;
 		// 設定伺服器
@@ -25,6 +20,9 @@ public class Main extends JavaPlugin {
 		DataBase.LoadConfig = new LoadConfig();
 		DataBase.LoadItems.ReLoadItems();
 		DataBase.LoadConfig.ReLoadConfig();
+		// 註冊
+		getServer().getPluginManager().registerEvents(new DeathListener(), this);
+		getCommand("mobdrop").setExecutor(new PlayerCommands());
 		// 訊息
 		DataBase.Print("MobDropItems is enabled!");
 	}

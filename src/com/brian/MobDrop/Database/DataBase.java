@@ -27,6 +27,9 @@ public class DataBase {
 		
 		// 插件目錄
 		public static String pluginMainDir = "./plugins/MobDrop/";
+		
+		//指令目錄
+		public static com.brian.MobDrop.Command.CommandsList.CommandsList CommandsList = new com.brian.MobDrop.Command.CommandsList.CommandsList();
 
 		// 掉落物品清單
 		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
