@@ -1,0 +1,5 @@
+﻿showMessage:
+  IsOpen: true
+  Chance: 20
+list:
+  Chinese: true

@@ -1,9 +1,6 @@
 package com.brian.MobDrop.LoadFile;
 
-import java.io.BufferedWriter;
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.OutputStreamWriter;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
@@ -55,37 +52,16 @@ public class LoadConfig {
 	}
 	
 	public void CreateDefaultfile(){
-		try{
-			File createDir = new File(DataBase.pluginMainDir);
-			if (!createDir.exists()){
-				boolean dirCreated = false;
-	
-				int retries = 15;
-	
-				while ((!dirCreated) && (retries != 0)){
-					retries--;
-					dirCreated = createDir.mkdir();
-				}
-	
-				if (!dirCreated){
-					DataBase.main.getLogger().info(AnsiColor.RED + "[CreateDefaultFile]Items.yml failed to create. No permissions?" + AnsiColor.RESET);
-					return;
-				}
-			}
-			FileOutputStream fos = new FileOutputStream(DataBase.pluginMainDir + loadfilename);
-		    fos.write(new byte[]{(byte)0xEF, (byte)0xBB, (byte)0xBF});
-		    OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
-		    
-			BufferedWriter out = new BufferedWriter(osw);
-			out.write("showMessage:\r\n");
-			out.write("  IsOpen: true\r\n");
-			out.write("  Chance: 20\r\n");
-			out.write("list:\r\n");
-			out.write("  Chinese: true\r\n");
-		    out.close();
+		try
+		{
+			if(CopyFileAPI.createFile(DataBase.pluginMainDir, loadfilename, "/"+loadfilename, DataBase.main))
+				DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " 創建成功" + AnsiColor.RESET);
+			else
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師" + AnsiColor.RESET);
 		}
-		catch (Exception e){
-			System.out.println(DataBase.detailStr + "[CreateDefaultConfig]Error on create default config!");
+		catch (Exception e)
+		{
+			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建失敗，請詢問程式設計師" + AnsiColor.RESET);
 		}
 	}
 }

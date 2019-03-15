@@ -1,0 +1,217 @@
+﻿items:
+#================================#
+#生物實體ID                      #
+#CREEPER         : 苦力怕        #
+#SKELETON        : 骷髏          #
+#SPIDER          : 蜘蛛          #
+#GIANT           : 巨人          #
+#ZOMBIE          : 殭屍          #
+#SLIME           : 史萊姆        #
+#GHAST           : 幽靈水母      #
+#ZOMBIE_PIGMAN   : 殭屍豬人      #
+#ENDERMAN        : 終界使者      #
+#CAVE_SPIDER     : 洞穴蜘蛛      #
+#SILVERFISH      : 石頭蟲        #
+#BLAZE           : 烈焰使者      #
+#MAGMA_CUBE      : 烈焰史萊姆    #
+#ENDERDRAGON     : 終界龍        #
+#WITHERBOSS      : 凋零怪        #
+#WITCH       　  : 巫婆          #
+#BAT             : 蝙蝠          #
+#PIG             : 豬            #
+#SHEEP           : 羊            #
+#COW             : 牛            #
+#CHICKEN         : 雞            #
+#SQUID           : 章魚          #
+#WOLF            : 狼            #
+#MOOSHROOM       : 蘑菇牛        #
+#SNOWMAN         : 雪人          #
+#OZELOT          : 貓            #
+#VILLAGERGOLEM   : 鐵人          #
+#HORSE           : 馬            #
+#VILLAGER        : 村民          #
+#COD             : 鱈魚          #
+#DOLPHIN         : 海豚          #
+#DONKEY          : 驢子          #
+#DROWNED         : 沉屍          #
+#ELDER_GUARDIAN  : 原古深海守衛  #
+#ENDERMITE       : 終界蟲        #
+#EVOKER          : 喚魔者        #
+#GUARDIAN        : 深海守衛      #
+#HUSK            : 屍殼          #
+#LLAMA           : 羊駝          #
+#MULE            : 騾            #
+#PARROT          : 鸚鵡          #
+#PHANTOM         : 夜魅          #
+#POLAR_BEAR      : 北極熊        #
+#PUFFERFISH      : 河豚          #
+#RABBIT          : 兔子          #
+#SALMON          : 鮭魚          #
+#SHULKER         : 界伏蚌        #
+#PUFFERFISH      : 河豚          #
+#SKELETON_HORSE  : 骷髏馬        #
+#STRAY           : 流浪骷髏      #
+#TROPICAL_FISH   : 熱帶魚        #
+#TURTLE          : 海龜          #
+#VEX             : 鬼            #
+#VINDICATOR      : 衛道士        #
+#WITHER_SKELETON : 凋零骷髏      #
+#ZOMBIE_HORSE    : 殭屍馬        #
+#ZOMBIE_VILLAGER : 殭屍村民      #
+#================================#
+  ZOMBIE:
+#==============#
+#掉落的物品名稱#
+#==============#
+    §f李逍遙的木劍§f:
+#==========================#
+#掉落的物品是否套用原始名稱#
+#==========================#
+      UseCustomName: 0
+#==================================================#
+#可參考: https://minecraft-ids.grahamedgecombe.com/#
+#掉落的物品原始名稱(例：木劍=WOODEN_SWORD)         #
+#==================================================#
+      ItemRealname: WOODEN_SWORD
+#==============#
+#掉落的物品說明#
+#==============#
+      ItemLores:
+      - §e李逍遙自己削出來的木劍§f
+#=============================#
+#掉落的物品附魔               #
+#- <附魔>:<等級>              #
+#PROTECTION_ENVIRONMENTAL 保護#
+#PROTECTION_EXPLOSIONS 防爆   #
+#PROTECTION_PROJECTILE 防彈   #
+#PROTECTION_FIRE 抗火         #
+#PROTECTION_FALL 輕盈(腳)     #
+#ARROW_INFINITE 無限弓        #
+#ARROW_DAMAGE 強力弓          #
+#ARROW_FIRE 火燄弓            #
+#ARROW_KNOCKBACK 弓擊退       #
+#DAMAGE_UNDEAD 不死剋星       #
+#DAMAGE_ALL 鋒利              #
+#DAMAGE_ARTHROPODS 節肢剋星   #
+#OXYGEN 氧氣(頭)              #
+#DURABILITY 耐久              #
+#LOOT_BONUS_BLOCKS 幸運       #
+#LOOT_BONUS_MOBS 掠奪         #
+#SILK_TOUCH 絲綢之觸          #
+#WATER_WORKER 親水性          #
+#DIG_SPEED 效率               #
+#KNOCKBACK 擊退劍             #
+#FIRE_ASPECT 火焰附加         #
+#=============================#
+      Enchants:
+      - DAMAGE_ALL:1
+#==================#
+#掉落的物品數量    #
+#註：附魔物品無效  #
+#==================#
+      Quantity: 1
+#========================#
+#掉落的機率(0.01~100)    #
+#若無此設定則表示100%掉落#
+#========================#
+      Chance: 20
+#========#
+#其他範例#
+#========#
+    §f史萊姆鋼劍§f:
+      ItemRealname: IRON_SWORD
+      ItemLores:
+      - §e由史萊姆打造的劍§f
+      - §e使用他可以得到神力§f
+      Enchants:
+      - DAMAGE_ALL:8
+      Quantity: 1
+      Chance: 0.5
+    §b鑽石§f:
+      UseCustomName: 1
+      ItemRealname: Diamond
+      Quantity: 1
+#========================#
+#掉落的物品的最大數量    #
+#========================#
+      Quantity_max: 4
+      Chance: 1
+#========#
+#其他範例#
+#========#
+  SKELETON:
+    §f白頭盔§f:
+      ItemRealname: leather_helmet
+      ItemLores:
+      - §e骷髏生前的裝備§f
+      Enchants:
+      - PROTECTION_ENVIRONMENTAL:1
+      RGB: 255,255,255
+      Quantity: 1
+      Chance: 20
+    §f白上衣§f:
+      ItemRealname: leather_chestplate
+      ItemLores:
+      - §e骷髏生前的裝備§f
+      Enchants:
+      - PROTECTION_ENVIRONMENTAL:1
+      RGB: 255,255,255
+      Quantity: 1
+      Chance: 20
+    §f白褲子§f:
+      ItemRealname: leather_leggings
+      ItemLores:
+      - §e骷髏生前的裝備§f
+      Enchants:
+      - PROTECTION_ENVIRONMENTAL:1
+      RGB: 255,255,255
+      Quantity: 1
+      Chance: 20
+    §f白鞋子§f:
+      ItemRealname: leather_boots
+      ItemLores:
+      - §e骷髏生前的裝備§f
+      Enchants:
+      - PROTECTION_ENVIRONMENTAL:1
+      RGB: 255,255,255
+      Quantity: 1
+      Chance: 20
+    §c箭矢§f:
+      UseCustomName: 1
+      ItemRealname: arrow
+      Quantity: 5
+      Quantity_max: 15
+      Chance: 80
+  PHANTOM:
+    §c箭矢§f:
+      UseCustomName: 1
+      ItemRealname: arrow
+      Quantity: 10
+      Quantity_max: 30
+      Chance: 70
+  ZOMBIE_PIGMAN:
+    §c殭屍豬人元氣彈§f:
+      ItemRealname: firework_rocket
+      ItemLores:
+      - §e殭屍豬人的元氣彈§f
+      Quantity: 5
+      Quantity_max: 30
+      Chance: 80
+    §f史萊姆鋼劍§f:
+      ItemRealname: IRON_SWORD
+      ItemLores:
+      - §e由史萊姆打造的劍§f
+      - §e使用他可以得到神力§f
+      Enchants:
+      - DAMAGE_ALL:8
+      Quantity: 1
+      Chance: 8
+    §f史萊姆鋼斧§f:
+      ItemRealname: IRON_axe
+      ItemLores:
+      - §e由史萊姆打造的斧頭§f
+      - §e使用他可以得到神力§f
+      Enchants:
+      - DAMAGE_ALL:12
+      Quantity: 1
+      Chance: 5

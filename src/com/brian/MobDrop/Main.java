@@ -10,7 +10,7 @@ import com.brian.MobDrop.LoadFile.LoadItems;
 
 public class Main extends JavaPlugin {
 	public void onEnable()
-	{
+	{   
 		// 設定主插件
 		DataBase.main = this;
 		// 設定伺服器
