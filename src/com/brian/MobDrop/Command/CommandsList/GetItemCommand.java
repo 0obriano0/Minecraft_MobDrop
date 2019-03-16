@@ -5,7 +5,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.GetItem.GetItem;
+import com.brian.MobDrop.Item.GetItem;
 
 public class GetItemCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {

@@ -1,4 +1,4 @@
-package com.brian.MobDrop.GetItem;
+package com.brian.MobDrop.Item;
 
 import java.util.ArrayList;
 import java.util.List;

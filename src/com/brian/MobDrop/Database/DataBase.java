@@ -9,6 +9,7 @@ import org.bukkit.Server;
 import com.brian.MobDrop.Main;
 import com.brian.MobDrop.Command.CommandsList.MainList;
 import com.brian.MobDrop.DropItems.MobDropItems;
+import com.brian.MobDrop.Item.items;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
 
@@ -32,8 +33,11 @@ public class DataBase {
 		//指令目錄
 		public static MainList CommandsList = new MainList();
 
-		// 掉落物品清單
+		//掉落物品清單
 		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
+		
+		//物品設定
+		public static Map<String, items> ItemMap = new HashMap<String, items>();
 		
 		//公開顯示訊息
 		public static showMessage showMessage;
