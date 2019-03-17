@@ -12,7 +12,12 @@ import com.brian.MobDrop.DropItems.GetItem;
 
 public class GetItemCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
-		GetItem.getitem((Player) sender, args);
+		if(args.length == 2)
+			GetItem.getitem((Player) sender, args);
+		else {
+			sender.sendMessage("§c/" + label + " " + args[0] + " <Itemkey> <-- 格式請按照這樣輸入");
+			return false;
+		}
 		return true;
 	}
 	

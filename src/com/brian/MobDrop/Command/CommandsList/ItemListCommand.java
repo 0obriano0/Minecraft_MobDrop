@@ -15,7 +15,7 @@ public class ItemListCommand {
 		if(args.length == 1) {
 			for (String key : DataBase.ItemMap.keySet())
 			{
-				sender.sendMessage("ID : §f" + key + "§a  物品名稱 - §f" +  DataBase.ItemMap.get(key).ItemName);
+				sender.sendMessage("§f" + key + "§a  物品名稱 - §f" +  DataBase.ItemMap.get(key).ItemName);
 			}
 		}else {
 			

@@ -21,14 +21,11 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 	}
  
 	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args)
-	{
+	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
 		// 判斷是否為玩家的指令
-		if (sender instanceof Player)
-		{
+		if (sender instanceof Player){
 			// 判斷指令長度
-			if (args.length == 0)
-			{
+			if (args.length == 0){
 				// 顯示說明
 				sender.sendMessage("§9==========§dMobDrop§9==========");
 				sender.sendMessage("§a/mdop moblist <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
@@ -40,8 +37,7 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				sender.sendMessage("§9===========================");
 				return true;
 			}
-			else
-			{
+			else{
 				if (sender.hasPermission("MobDrop.admin")) {
 					if (args[0].equals("reload"))
 						return ReloadCommand.parseCommands(sender, cmd, label, args);
@@ -50,14 +46,32 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				}
 				if (args[0].equals("moblist"))
 					return MobListCommand.parseCommands(sender, cmd, label, args);
-				else if(args[0].equals("itemlist")) {
+				else if(args[0].equals("itemlist")) 
 					return ItemListCommand.parseCommands(sender, cmd, label, args);
-				}
+				else
+					sender.sendMessage("§c/" + label + " " + args[0] + " <-- 查無此指令");
 			}
 	    }
 		else
 		{
-	    	sender.sendMessage("此指令不支援控制台模式!");
+			if (args.length == 0){
+				// 顯示說明
+				sender.sendMessage("§9==========§dMobDrop§9==========");
+				sender.sendMessage("§a/mdop moblist <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
+				sender.sendMessage("§a/mdop itemlist §f- §e列出所有道具的掉落資訊");
+				sender.sendMessage("§9===========================");
+				return true;
+			}else if(args.length == 1) {
+				if (args[0].equals("moblist"))
+					return MobListCommand.parseCommands(sender, cmd, label, args);
+				else if(args[0].equals("itemlist")) 
+					return ItemListCommand.parseCommands(sender, cmd, label, args);
+				else {
+					sender.sendMessage("§c/" + label + " " + args[0] + " <-- 查無此指令");
+					return false;
+				}
+			}
+	    	sender.sendMessage("§c 此指令不支援控制台模式!");
 	    	return false;
 	    }
 		return false;

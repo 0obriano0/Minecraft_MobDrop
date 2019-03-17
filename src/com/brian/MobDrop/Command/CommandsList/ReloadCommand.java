@@ -15,6 +15,8 @@ public class ReloadCommand {
 		DataBase.ItemMap.clear();
 		// 重讀
 		DataBase.LoadItems.ReLoadItems();
+		DataBase.LoadMobs.ReLoadMobs();
+		DataBase.LoadConfig.ReLoadConfig();
 		sender.sendMessage(ChatColor.YELLOW +"設定檔讀取完成");
 		return true;
 	}
