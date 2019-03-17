@@ -59,6 +59,7 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				sender.sendMessage("§9==========§dMobDrop§9==========");
 				sender.sendMessage("§a/mdop moblist <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
 				sender.sendMessage("§a/mdop itemlist §f- §e列出所有道具的掉落資訊");
+				sender.sendMessage("§a/mdop reload §f- §e重新讀取資料");
 				sender.sendMessage("§9===========================");
 				return true;
 			}else if(args.length == 1) {
@@ -66,6 +67,8 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 					return MobListCommand.parseCommands(sender, cmd, label, args);
 				else if(args[0].equals("itemlist")) 
 					return ItemListCommand.parseCommands(sender, cmd, label, args);
+				else if(args[0].equals("reload")) 
+					return ReloadCommand.parseCommands(sender, cmd, label, args);
 				else {
 					sender.sendMessage("§c/" + label + " " + args[0] + " <-- 查無此指令");
 					return false;
