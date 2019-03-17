@@ -9,7 +9,6 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityDeathEvent;
 import org.bukkit.inventory.ItemStack;
 
-import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Database.MobItemList;
 
@@ -59,12 +58,9 @@ public class DeathListener implements Listener{
         					// 判定掉落
         					entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
         					// 顯示掉落訊息
-        					if(DataBase.GobalMessage.IsOpen && DataBase.GobalMessage.Chance >= MobDropItem.Chance) {
+        					if(DataBase.GobalMessage.IsOpen && DataBase.GobalMessage.Chance >= MobDropItem.Chance) 
         						DataBase.server.broadcastMessage("§b" + DataBase.detailStr + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!" );
-    						}else {
-    							DataBase.main.getLogger().info(entityDeth.getName());
-    							DataBase.main.getLogger().info(AnsiColor.GREEN + "[玩家獲取道具] " + killBy.getName() + " 將" + DataBase.GetEntityName(sEntitlyName) + "殺死後掉落 " + MobDropItem.Item + " "+ items_num + "個!" + AnsiColor.RESET);
-    						}
+        						
         					killBy.sendMessage("§b" + DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!");
         				}
     				//}
