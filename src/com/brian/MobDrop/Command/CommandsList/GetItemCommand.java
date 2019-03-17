@@ -1,23 +1,28 @@
 package com.brian.MobDrop.Command.CommandsList;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.Item.GetItem;
+import com.brian.MobDrop.DropItems.GetItem;
 
 public class GetItemCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
-		if(args.length == 1) {
-			sender.sendMessage("§b" + DataBase.detailStr + " §c/mdop getitem <null> <- 請輸入怪物名稱 ");
-		}else {
-			if(args.length == 2) {
-				sender.sendMessage("§b" + DataBase.detailStr + " §c/mdop getitem " + args[1] + " <null> <- 請輸入道具id ");
-			}else {
-				GetItem.getitem((Player) sender, args);
-			}
-		}
+		GetItem.getitem((Player) sender, args);
 		return true;
+	}
+	
+	public static List<String> onTabComplete(String command){
+		List<String> show_commands = new ArrayList<String>();
+		for (String key : DataBase.ItemMap.keySet())
+		{
+			if(key.indexOf(command.toUpperCase()) != -1)
+				show_commands.add(key);	
+		}
+		return show_commands;
 	}
 }

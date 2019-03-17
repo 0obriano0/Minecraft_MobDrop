@@ -1,4 +1,4 @@
-package com.brian.MobDrop.DropItems;
+package com.brian.MobDrop.Database;
 
 import java.util.List;
 
@@ -9,11 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
-public class MobDropItems {
+public class Items {
 	//物品名稱
 	public String ItemName;
 	//物品名稱
-	public int UseOriginalName;
+	boolean UseCustomName;
 	// 物品說明
 	public List<String> ItemLores;
 	//物品名稱(系統名稱)
@@ -24,36 +24,16 @@ public class MobDropItems {
 	public int Blue;
 	// 物品附魔
 	public List<String> Enchants;
-	// 得到的物品數量
-	public int Quantity;
-	public int Quantity_max;
-	// 掉落率
-	public double Chance;
 	
-	public MobDropItems(String newItemName,
-				   int newUseOriginalName,
-				   List<String> newItemLores,
-				   String newItemRealname,
-				   int newRed,
-				   int newGreen,
-				   int newBlue,
-				   List<String> newEnchants,
-				   int newQuantity,
-				   int newQuantity_max,
-				   double newChance)
-	{	    
-	// 設定資料
-	this.ItemName = newItemName;
-	this.UseOriginalName = newUseOriginalName;
-	this.ItemLores = newItemLores;
-	this.ItemRealname = newItemRealname;
-	this.Red = newRed;
-	this.Green = newGreen;
-	this.Blue = newBlue;
-	this.Enchants = newEnchants;
-	this.Quantity = newQuantity;
-	this.Quantity_max = newQuantity_max;
-	this.Chance = newChance;
+	public Items(String ItemName, boolean UseCustomName, String ItemRealname, List<String> ItemLores, int Red, int Green, int Blue,List<String> Enchants){
+		this.ItemName = ItemName;
+		this.UseCustomName = UseCustomName;
+		this.ItemRealname = ItemRealname;
+		this.ItemLores = ItemLores;
+		this.Red = Red;
+		this.Green = Green;
+		this.Blue = Blue;
+		this.Enchants = Enchants;
 	}
 	
 	@SuppressWarnings("deprecation")
@@ -83,7 +63,7 @@ public class MobDropItems {
 			newItemMeta.addEnchant(enchantment, level, true);
 		}
 		// 名稱
-		if (this.UseOriginalName == 0)
+		if (!this.UseCustomName)
 		{
 			newItemMeta.setDisplayName(this.ItemName);
 		}
@@ -94,8 +74,6 @@ public class MobDropItems {
 		}
 		// 寫入資料
 		ResultItem.setItemMeta(newItemMeta);
-    	// 設定數量
-		ResultItem.setAmount(this.Quantity);
 	    // 設定耐久為最高
 		ResultItem.setDurability((short)0);
 		// 回傳

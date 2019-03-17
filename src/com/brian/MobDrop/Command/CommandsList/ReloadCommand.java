@@ -11,7 +11,8 @@ public class ReloadCommand {
 		// 清除合成表
 		DataBase.server.resetRecipes();
 		// 清除對照表
-		DataBase.MobDropItemsMap.clear();
+		DataBase.MobItemMap.clear();
+		DataBase.ItemMap.clear();
 		// 重讀
 		DataBase.LoadItems.ReLoadItems();
 		sender.sendMessage(ChatColor.YELLOW +"設定檔讀取完成");

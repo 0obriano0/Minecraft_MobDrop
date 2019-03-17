@@ -7,6 +7,7 @@ import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Listener.DeathListener;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
+import com.brian.MobDrop.LoadFile.LoadMobs;
 
 public class Main extends JavaPlugin {
 	public void onEnable()
@@ -17,8 +18,10 @@ public class Main extends JavaPlugin {
 		DataBase.server = this.getServer();
 		// 讀取設定檔
 		DataBase.LoadItems = new LoadItems();
+		DataBase.LoadMobs = new LoadMobs();
 		DataBase.LoadConfig = new LoadConfig();
 		DataBase.LoadItems.ReLoadItems();
+		DataBase.LoadMobs.ReLoadMobs();
 		DataBase.LoadConfig.ReLoadConfig();
 		// 註冊
 		getServer().getPluginManager().registerEvents(new DeathListener(), this);
@@ -33,7 +36,8 @@ public class Main extends JavaPlugin {
 		// 清除合成表
 		DataBase.server.resetRecipes();
 		// 清除對照表
-		DataBase.MobDropItemsMap.clear();
+		DataBase.MobItemMap.clear();
+		DataBase.ItemMap.clear();
 		// 訊息
 		DataBase.Print("MobDropItems is disable!");
 	}

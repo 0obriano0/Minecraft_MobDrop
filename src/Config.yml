@@ -1,4 +1,6 @@
-﻿showMessage:
+﻿#是否要公開廣播 打到寶物的人
+#以及調整機率低於多少顯示
+GobalMessage:
   IsOpen: true
   Chance: 20
 list:

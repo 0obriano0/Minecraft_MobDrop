@@ -2,9 +2,15 @@ package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
+import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Main;
+import com.brian.MobDrop.Database.DataBase;
 
 public class CopyFileAPI {
 	public static void copyFile(InputStream in, File out) throws Exception {
@@ -29,6 +35,18 @@ public class CopyFileAPI {
     }
 	
 	public static boolean createFile(String Dir,String Filename,String JarURL,Main main) {
+		Path p = Paths.get(Dir);    //路徑設定
+        /*確認資料夾是否存在*/
+        if (!Files.exists(p)) {
+            /*不存在的話,直接建立資料夾*/
+            try {
+				Files.createDirectory(p);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+            DataBase.main.getLogger().info(AnsiColor.GREEN + "[DirCreate] " + AnsiColor.GREEN +  "資料夾創建成功" + AnsiColor.RESET);
+        }
 		File QuestMaker = new File(Dir + Filename);
         if (!QuestMaker.exists()) {
             InputStream jarURL = main.getClass().getResourceAsStream(JarURL);

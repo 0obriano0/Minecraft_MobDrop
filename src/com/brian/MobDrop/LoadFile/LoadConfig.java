@@ -7,7 +7,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.Database.showMessage;
+import com.brian.MobDrop.Database.GobalMessage;
 
 public class LoadConfig {
 	// 主要讀取設定用
@@ -38,16 +38,16 @@ public class LoadConfig {
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    
-	    if (data.contains("showMessage")){
-	    	if(data.contains("showMessage.IsOpen") && data.contains("showMessage.Chance")) {
-	    		DataBase.showMessage = new showMessage(data.getBoolean("showMessage.IsOpen"),data.getInt("showMessage.Chance"),data.getBoolean("list.Chinese"));
-	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] showMessage 設定成功" + AnsiColor.RESET);
+	    if (data.contains("GobalMessage")){
+	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
+	    		DataBase.GobalMessage = new GobalMessage(data.getBoolean("GobalMessage.IsOpen"),data.getInt("showMessage.Chance"),data.getBoolean("list.Chinese"));
+	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] GobalMessage 設定成功" + AnsiColor.RESET);
 	    	}else{
-	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 showMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
+	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.showMessage = new showMessage(false,0,false);
+	    	DataBase.GobalMessage = new GobalMessage(false,0,false);
 	    }
 	}
 	

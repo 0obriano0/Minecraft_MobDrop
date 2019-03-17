@@ -7,19 +7,19 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.DropItems.MobDropItems;
+import com.brian.MobDrop.Database.MobItemList;
 
-public class ListCommand {
-	private static boolean list_base(CommandSender sender,List<MobDropItems> lstMobDropItems,String keyName){
+public class MobListCommand {
+	private static boolean list_base(CommandSender sender,List<MobItemList> MobDropItemList ,String keyName){
 		try {
 			sender.sendMessage("§a「" + DataBase.GetEntityName(keyName) + "」");
 			int itemnum = 0;
-			for (MobDropItems MobDropItems : lstMobDropItems)
+			for (MobItemList MobDropItems : MobDropItemList)
 			{
 				if(MobDropItems.Quantity == MobDropItems.Quantity_max) {
-					sender.sendMessage("§f  "+ itemnum +". " + MobDropItems.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + " §a個)");
+					sender.sendMessage("§f  "+ itemnum +". " + MobDropItems.Item.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + " §a個)");
 				}else {
-					sender.sendMessage("§f  " + itemnum +". " + MobDropItems.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + "-" + MobDropItems.Quantity_max + " §a個)");
+					sender.sendMessage("§f  " + itemnum +". " + MobDropItems.Item.ItemName + " §a(§f" + MobDropItems.Chance + "%§a掉落§f " + MobDropItems.Quantity + "-" + MobDropItems.Quantity_max + " §a個)");
 				}
 				itemnum++;
 			}
@@ -33,17 +33,17 @@ public class ListCommand {
 	
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
 		// 迴圈顯示
-		List<MobDropItems> lstMobDropItems = new ArrayList<MobDropItems>();
+		List<MobItemList> MobDropItemList = new ArrayList<MobItemList>();
 		sender.sendMessage("§9============§dMobDrop 怪物掉落資訊§9===========");
 		if(args.length == 2) {
 			//把讀取到的怪物名稱轉換成中文
-			lstMobDropItems = DataBase.MobDropItemsMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase()));
-			list_base(sender,lstMobDropItems,args[1].toUpperCase());
+			MobDropItemList = DataBase.MobItemMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase()));
+			list_base(sender,MobDropItemList,args[1].toUpperCase());
 		}else {
-			for (String key : DataBase.MobDropItemsMap.keySet())
+			for (String key : DataBase.MobItemMap.keySet())
 			{
-				lstMobDropItems = DataBase.MobDropItemsMap.get(key);
-				list_base(sender,lstMobDropItems,key);
+				MobDropItemList = DataBase.MobItemMap.get(key);
+				list_base(sender,MobDropItemList,key);
 			}
 		}
 		sender.sendMessage("§9========================================");
@@ -52,9 +52,9 @@ public class ListCommand {
 	
 	public static List<String> onTabComplete(String command){
 		List<String> show_commands = new ArrayList<String>();
-		for (String key : DataBase.MobDropItemsMap.keySet())
+		for (String key : DataBase.MobItemMap.keySet())
 		{
-			if(DataBase.showMessage.list_Chinese) {
+			if(DataBase.GobalMessage.list_Chinese) {
 				if(DataBase.GetEntityName(key.toUpperCase()).indexOf(command) != -1)
 					show_commands.add(DataBase.GetEntityName(key));
 			}else

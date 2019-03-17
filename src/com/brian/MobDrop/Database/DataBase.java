@@ -8,10 +8,9 @@ import org.bukkit.Server;
 
 import com.brian.MobDrop.Main;
 import com.brian.MobDrop.Command.CommandsList.MainList;
-import com.brian.MobDrop.DropItems.MobDropItems;
-import com.brian.MobDrop.Item.items;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
+import com.brian.MobDrop.LoadFile.LoadMobs;
 
 public class DataBase {
 	// 主插件
@@ -20,6 +19,7 @@ public class DataBase {
 		// 設定檔
 		public static LoadConfig LoadConfig;
 		public static LoadItems LoadItems;
+		public static LoadMobs LoadMobs;
 		
 		// 伺服器
 		public static Server server;
@@ -34,13 +34,14 @@ public class DataBase {
 		public static MainList CommandsList = new MainList();
 
 		//掉落物品清單
-		public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
+		//public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
+		public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
 		
 		//物品設定
-		public static Map<String, items> ItemMap = new HashMap<String, items>();
+		public static Map<String, Items> ItemMap = new HashMap<String, Items>();
 		
 		//公開顯示訊息
-		public static showMessage showMessage;
+		public static GobalMessage GobalMessage;
 		
 		// 顯示訊息
 		public static void Print(String msg)

@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 
 import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.DropItems.MobDropItems;
+import com.brian.MobDrop.Database.MobItemList;
 
 public class DeathListener implements Listener{
 	public DeathListener()
@@ -32,11 +32,11 @@ public class DeathListener implements Listener{
     		String sEntitlyName = "";
     		sEntitlyName = entityDeth.getType().getName().toUpperCase();
     		// 判斷是否有掉落物清單
-    		if (DataBase.MobDropItemsMap.containsKey(sEntitlyName))
+    		if (DataBase.MobItemMap.containsKey(sEntitlyName))
     		{
     			// 取得掉落物清單
-    			List<MobDropItems> dropItems = DataBase.MobDropItemsMap.get(sEntitlyName);
-    			MobDropItems MobDropItem;
+    			List<MobItemList> dropItems = DataBase.MobItemMap.get(sEntitlyName);
+    			MobItemList MobDropItem;
     			// 迴圈判斷是否掉落物品
     			for (int i = 0; i < dropItems.size(); i++)
     			{
@@ -59,13 +59,13 @@ public class DeathListener implements Listener{
         					// 判定掉落
         					entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
         					// 顯示掉落訊息
-        					if(DataBase.showMessage.IsOpen && DataBase.showMessage.Chance >= MobDropItem.Chance) {
-        						DataBase.server.broadcastMessage("§b" + DataBase.detailStr + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.ItemName + "§b " + items_num + "§6個!" );
+        					if(DataBase.GobalMessage.IsOpen && DataBase.GobalMessage.Chance >= MobDropItem.Chance) {
+        						DataBase.server.broadcastMessage("§b" + DataBase.detailStr + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!" );
     						}else {
     							DataBase.main.getLogger().info(entityDeth.getName());
-    							DataBase.main.getLogger().info(AnsiColor.GREEN + "[玩家獲取道具] " + killBy.getName() + " 將" + DataBase.GetEntityName(sEntitlyName) + "殺死後掉落 " + MobDropItem.ItemName + " "+ items_num + "個!" + AnsiColor.RESET);
+    							DataBase.main.getLogger().info(AnsiColor.GREEN + "[玩家獲取道具] " + killBy.getName() + " 將" + DataBase.GetEntityName(sEntitlyName) + "殺死後掉落 " + MobDropItem.Item + " "+ items_num + "個!" + AnsiColor.RESET);
     						}
-        					killBy.sendMessage("§b" + DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.ItemName + "§b " + items_num + "§6個!");
+        					killBy.sendMessage("§b" + DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!");
         				}
     				//}
     			}
