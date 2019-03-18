@@ -34,7 +34,6 @@ public class DataBase {
 		public static MainList CommandsList = new MainList();
 
 		//掉落物品清單
-		//public static Map<String, List<MobDropItems>> MobDropItemsMap = new HashMap<String, List<MobDropItems>>();
 		public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
 		
 		//物品設定

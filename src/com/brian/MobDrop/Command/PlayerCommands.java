@@ -13,6 +13,7 @@ import com.brian.MobDrop.Command.CommandsList.ItemListCommand;
 import com.brian.MobDrop.Command.CommandsList.MobListCommand;
 import com.brian.MobDrop.Command.CommandsList.ReloadCommand;
 import com.brian.MobDrop.Database.DataBase;
+import com.brian.MobDrop.InventoryGUI.InventoryItemsList;
 
 public class PlayerCommands implements CommandExecutor ,TabExecutor{
 	public PlayerCommands()
@@ -48,7 +49,11 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 					return MobListCommand.parseCommands(sender, cmd, label, args);
 				else if(args[0].equals("itemlist")) 
 					return ItemListCommand.parseCommands(sender, cmd, label, args);
-				else
+				else if(args[0].equals("list")) {
+					//sender.sendMessage("ItemMap.size() = " + DataBase.ItemMap.size());
+					InventoryItemsList.INVENTORY.open((Player) sender);
+					return true;
+				}else
 					sender.sendMessage("§c/" + label + " " + args[0] + " <-- 查無此指令");
 			}
 	    }
