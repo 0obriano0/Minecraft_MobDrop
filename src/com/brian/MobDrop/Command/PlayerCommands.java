@@ -47,9 +47,10 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				}
 				if (args[0].equals("moblist"))
 					return MobListCommand.parseCommands(sender, cmd, label, args);
-				else if(args[0].equals("itemlist")) 
-					return ItemListCommand.parseCommands(sender, cmd, label, args);
-				else if(args[0].equals("list")) {
+				//«Ê¦s
+				//else if(args[0].equals("itemlist")) 
+					//return ItemListCommand.parseCommands(sender, cmd, label, args);
+				else if(args[0].equals("itemlist")) {
 					//sender.sendMessage("ItemMap.size() = " + DataBase.ItemMap.size());
 					InventoryItemsList.INVENTORY.open((Player) sender);
 					return true;
