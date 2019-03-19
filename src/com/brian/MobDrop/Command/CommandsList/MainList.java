@@ -9,7 +9,7 @@ import org.bukkit.command.CommandSender;
 public class MainList {
 	CommandsTools Tools = new CommandsTools();
 	
-	private List<String> playercommands = Arrays.asList("itemlist moblist".split(" "));
+	private List<String> playercommands = Arrays.asList("itemlist moblist menu".split(" "));
 	private List<String> admincommands = Arrays.asList("reload getitem".split(" "));
 	
 	public List<String> secand_arg(String commands, CommandSender sender) {

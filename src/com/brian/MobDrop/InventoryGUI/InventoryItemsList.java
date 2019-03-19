@@ -58,25 +58,19 @@ public class InventoryItemsList implements InventoryProvider{
         pagination.setItemsPerPage(36);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
-  
-        contents.set(4, 3, ClickableItem.of(createPageButton(Material.ARROW,"§a上一頁"),
+        
+        
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a回目錄"),
+                e -> InventoryMenu.INVENTORY.open(player)));
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a上一頁"),
                 e -> INVENTORY.open(player, pagination.previous().getPage())));
-        contents.set(4, 5, ClickableItem.of(createPageButton(Material.ARROW,"§a下一頁"),
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a下一頁"),
                 e -> INVENTORY.open(player, pagination.next().getPage())));
     }
 
 	@Override
-	public void update(Player arg0, InventoryContents arg1) {
+	public void update(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	private ItemStack createPageButton(Material MaterialType,String itemname) {
-		ItemMeta newItemMeta = null;
-		ItemStack Button = new ItemStack(MaterialType);
-		newItemMeta = Button.getItemMeta();
-		newItemMeta.setDisplayName(itemname);
-		Button.setItemMeta(newItemMeta);
-		return Button;
 	}
 }

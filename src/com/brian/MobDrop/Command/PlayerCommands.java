@@ -13,7 +13,7 @@ import com.brian.MobDrop.Command.CommandsList.ItemListCommand;
 import com.brian.MobDrop.Command.CommandsList.MobListCommand;
 import com.brian.MobDrop.Command.CommandsList.ReloadCommand;
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.InventoryGUI.InventoryItemsList;
+import com.brian.MobDrop.InventoryGUI.InventoryMenu;
 
 public class PlayerCommands implements CommandExecutor ,TabExecutor{
 	public PlayerCommands()
@@ -29,6 +29,7 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 			if (args.length == 0){
 				// 顯示說明
 				sender.sendMessage("§9==========§dMobDrop§9==========");
+				sender.sendMessage("§a/mdop menu §f- §e開啟目錄");
 				sender.sendMessage("§a/mdop moblist <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
 				sender.sendMessage("§a/mdop itemlist §f- §e列出所有道具的掉落資訊");
 				if (sender.hasPermission("MobDrop.admin")) {
@@ -48,11 +49,10 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				if (args[0].equals("moblist"))
 					return MobListCommand.parseCommands(sender, cmd, label, args);
 				//封存
-				//else if(args[0].equals("itemlist")) 
-					//return ItemListCommand.parseCommands(sender, cmd, label, args);
-				else if(args[0].equals("itemlist")) {
-					//sender.sendMessage("ItemMap.size() = " + DataBase.ItemMap.size());
-					InventoryItemsList.INVENTORY.open((Player) sender);
+				else if(args[0].equals("itemlist")) 
+					return ItemListCommand.parseCommands(sender, cmd, label, args);
+				else if(args[0].equals("menu")) {
+					InventoryMenu.INVENTORY.open((Player) sender);
 					return true;
 				}else
 					sender.sendMessage("§c/" + label + " " + args[0] + " <-- 查無此指令");
