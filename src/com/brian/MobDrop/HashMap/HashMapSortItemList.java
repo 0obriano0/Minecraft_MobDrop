@@ -9,11 +9,11 @@ import java.util.Map;
 
 import com.brian.MobDrop.Database.Items;
 
-public class HashMapItemList {
+public class HashMapSortItemList {
 	// 想依照姓名或成績牌列印出所有資料，先將所有HashMap裡的entry放入List
 	public List<Map.Entry<String, Items>> list_Data;
 	
-    public HashMapItemList(HashMap<String, Items> inputdata) {
+    public HashMapSortItemList(HashMap<String, Items> inputdata) {
 
         // 想依照姓名或成績牌列印出所有資料，先將所有HashMap裡的entry放入List
     	list_Data = new ArrayList<Map.Entry<String, Items>>(inputdata.entrySet());

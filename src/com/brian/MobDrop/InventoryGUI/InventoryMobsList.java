@@ -12,8 +12,8 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import com.brian.MobDrop.Database.DataBase;
-import com.brian.MobDrop.Database.Items;
-import com.brian.MobDrop.HashMap.HashMapSortItemList;
+import com.brian.MobDrop.Database.MobItemList;
+import com.brian.MobDrop.HashMap.HashMapSortMobList;
 
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
@@ -22,37 +22,24 @@ import fr.minuskube.inv.content.InventoryProvider;
 import fr.minuskube.inv.content.Pagination;
 import fr.minuskube.inv.content.SlotIterator;
 
-public class InventoryItemsList implements InventoryProvider{
+public class InventoryMobsList implements InventoryProvider{
 	public static final SmartInventory INVENTORY = SmartInventory.builder()
-            .id("Itemlist")
-            .provider(new InventoryItemsList())
+            .id("moblist")
+            .provider(new InventoryMobsList())
             .size(5, 9)
-            .title(ChatColor.BLUE + "物品列表")
+            .title(ChatColor.BLUE + "怪物掉落列表")
             .build();
 
     @Override
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
     	
-        ClickableItem[] items = new ClickableItem[DataBase.ItemMap.size()];
+        ClickableItem[] items = new ClickableItem[DataBase.MobItemMap.size()];
         int index = 0;
-        HashMapSortItemList ItemList = new HashMapSortItemList((HashMap<String, Items>) DataBase.ItemMap);
+        HashMapSortMobList ItemList = new HashMapSortMobList((HashMap<String, List<MobItemList>>) DataBase.MobItemMap);
         
-        for (Map.Entry<String, Items> entry:ItemList.list_Data) {
-            //System.out.print(entry.getKey() + "\t" + entry.getValue());
-            ItemStack item = entry.getValue().getResultItem();
-            ItemMeta newItemMeta = item.getItemMeta();
-            List<String> Lore =  newItemMeta.getLore();
-            if(Lore == null)
-            	Lore = new ArrayList<String>();
-            Lore.add("");
-            Lore.add("§7 - " + entry.getKey());
-            newItemMeta.setLore(Lore);
-        	item.setItemMeta(newItemMeta);
-        	item.setAmount(1);
-            items[index] = ClickableItem.empty(item);
-            //String buffer = "使用者點" + Integer.toString(index);
-            //items[index] = ClickableItem.of(item, e -> player.sendMessage(buffer));
+        for (Map.Entry<String, List<MobItemList>> entry:ItemList.list_Data) {
+            items[index] = ClickableItem.of(createitem(entry), e -> InventoryMobs_ItemList.getInventory(entry.getKey(),entry.getValue()).open(player));
         	index++;
         }
         
@@ -74,5 +61,26 @@ public class InventoryItemsList implements InventoryProvider{
 	public void update(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private ItemStack createitem(Map.Entry<String, List<MobItemList>> entry) {
+		ItemStack item = new ItemStack(Material.getMaterial(entry.getKey() + "_SPAWN_EGG"));
+		ItemMeta newItemMeta;
+	    newItemMeta = item.getItemMeta();
+	    newItemMeta.setDisplayName("§f" + DataBase.GetEntityName(entry.getKey()));
+	    
+        List<String> Lore =  newItemMeta.getLore();
+        if(Lore == null)
+        	Lore = new ArrayList<String>();
+        Lore.add("");
+        
+        Lore.add("§a道具: §f" + entry.getValue().size());
+        Lore.add("§7 - " + entry.getKey());
+        
+        newItemMeta.setLore(Lore);
+    	item.setItemMeta(newItemMeta);
+    	item.setAmount(1);
+    	
+    	return item;
 	}
 }

@@ -26,14 +26,13 @@ public class ItemListCommand {
 	
 	public static List<String> onTabComplete(String[] args){
 		List<String> show_commands = new ArrayList<String>();
-		/*f(args.length == 2) {
+		if(args.length == 2) {
 			for (String key : DataBase.ItemMap.keySet())
 			{
 				if(key.indexOf(args[1].toUpperCase()) != -1)
 					show_commands.add(key);	
 			}
 		}
-		*/
 		return show_commands;
 	}
 }
