@@ -5,6 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import com.brian.MobDrop.Database.DataBase;
+
 import fr.minuskube.inv.ClickableItem;
 import fr.minuskube.inv.SmartInventory;
 import fr.minuskube.inv.content.InventoryContents;
@@ -22,9 +24,9 @@ public class InventoryMenu implements InventoryProvider{
 	public void init(Player player, InventoryContents contents) {
 		contents.fillBorders(ClickableItem.empty(new ItemStack(Material.BLACK_STAINED_GLASS_PANE)));
 		
-		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a裝備列表"),
+		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a物品列表","§a - 道具: §f" + DataBase.ItemMap.size()),
                 e -> InventoryItemsList.INVENTORY.open(player)));
-		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"§a怪物掉落列表"),
+		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"§a怪物掉落列表","§a - 怪物: §f" + DataBase.MobItemMap.size()),
                 e -> InventoryMobsList.INVENTORY.open(player)));
 		contents.set(2, 8, ClickableItem.of(InventoryTools.createPageButton(Material.BARRIER,"§a關閉列表"),
                 e -> InventoryMobsList.INVENTORY.close(player)));

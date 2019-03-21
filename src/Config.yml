@@ -3,6 +3,10 @@
 GobalMessage:
   IsOpen: true
   Chance: 20
+
+#針對指令進行介面設定
 command:
+  #在後台是否要逐一顯示所有成功的設定
   cmdShow: false
-  oldList: false
+  #是否在遊戲裡面使用文字列表的指令
+  oldList: true

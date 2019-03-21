@@ -39,7 +39,6 @@ public class InventoryItemsList implements InventoryProvider{
         HashMapSortItemList ItemList = new HashMapSortItemList((HashMap<String, Items>) DataBase.ItemMap);
         
         for (Map.Entry<String, Items> entry:ItemList.list_Data) {
-            //System.out.print(entry.getKey() + "\t" + entry.getValue());
             ItemStack item = entry.getValue().getResultItem();
             ItemMeta newItemMeta = item.getItemMeta();
             List<String> Lore =  newItemMeta.getLore();
@@ -51,8 +50,6 @@ public class InventoryItemsList implements InventoryProvider{
         	item.setItemMeta(newItemMeta);
         	item.setAmount(1);
             items[index] = ClickableItem.empty(item);
-            //String buffer = "使用者點" + Integer.toString(index);
-            //items[index] = ClickableItem.of(item, e -> player.sendMessage(buffer));
         	index++;
         }
         
