@@ -29,7 +29,7 @@ public class InventoryItemsList implements InventoryProvider{
             .size(5, 9)
             .title(ChatColor.BLUE + "物品列表")
             .build();
-
+	
     @Override
     public void init(Player player, InventoryContents contents) {
     	Pagination pagination = contents.pagination();
@@ -39,17 +39,7 @@ public class InventoryItemsList implements InventoryProvider{
         HashMapSortItemList ItemList = new HashMapSortItemList((HashMap<String, Items>) DataBase.ItemMap);
         
         for (Map.Entry<String, Items> entry:ItemList.list_Data) {
-            ItemStack item = entry.getValue().getResultItem();
-            ItemMeta newItemMeta = item.getItemMeta();
-            List<String> Lore =  newItemMeta.getLore();
-            if(Lore == null)
-            	Lore = new ArrayList<String>();
-            Lore.add("");
-            Lore.add("§7 - " + entry.getKey());
-            newItemMeta.setLore(Lore);
-        	item.setItemMeta(newItemMeta);
-        	item.setAmount(1);
-            items[index] = ClickableItem.empty(item);
+            items[index] = ClickableItem.of(createitem(entry,player), e -> GetItem(entry,player));
         	index++;
         }
         
@@ -57,7 +47,6 @@ public class InventoryItemsList implements InventoryProvider{
         pagination.setItemsPerPage(36);
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
-        
         
         contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a回目錄"),
                 e -> InventoryMenu.INVENTORY.open(player)));
@@ -71,5 +60,34 @@ public class InventoryItemsList implements InventoryProvider{
 	public void update(Player player, InventoryContents contents) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	private ItemStack createitem(Map.Entry<String, Items> entry, Player player) {
+		ItemStack item = entry.getValue().getResultItem();
+        ItemMeta newItemMeta = item.getItemMeta();
+        List<String> Lore =  newItemMeta.getLore();
+        if(Lore == null)
+        	Lore = new ArrayList<String>();
+        Lore.add("");
+        Lore.add("§7 - " + entry.getKey());
+        if (player.hasPermission("MobDrop.admin")) {
+        	Lore.add("");
+        	Lore.add("§a請點擊左鍵");
+        	Lore.add("§a拿取道具");
+        }
+        newItemMeta.setDisplayName(entry.getValue().ItemName);
+        newItemMeta.setLore(Lore);
+    	item.setItemMeta(newItemMeta);
+    	item.setAmount(1);
+		return item;
+	}
+	
+	private void GetItem(Map.Entry<String, Items> entry, Player player) {
+		if (player.hasPermission("MobDrop.admin")) {
+			ItemStack Itemcreate = entry.getValue().getResultItem();
+			Itemcreate.setAmount(1);
+			player.getInventory().addItem(Itemcreate);
+			player.sendMessage("§b" + DataBase.detailStr + " §f獲取道具: " + entry.getValue().ItemName);
+		}
 	}
 }
