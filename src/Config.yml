@@ -3,5 +3,6 @@
 GobalMessage:
   IsOpen: true
   Chance: 20
-list:
-  Chinese: true
+command:
+  cmdShow: false
+  oldList: false

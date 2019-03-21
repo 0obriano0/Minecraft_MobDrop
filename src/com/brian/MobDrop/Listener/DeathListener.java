@@ -29,7 +29,11 @@ public class DeathListener implements Listener{
     	{
     		Player killBy = entityDeth.getKiller();
     		String sEntitlyName = "";
-    		sEntitlyName = entityDeth.getType().getName().toUpperCase();
+    		if (DataBase.MobItemMap.containsKey(entityDeth.getCustomName().toUpperCase()))
+    			sEntitlyName = entityDeth.getCustomName().toUpperCase();
+    		else
+    			sEntitlyName = entityDeth.getType().getName().toUpperCase();
+    		
     		// 判斷是否有掉落物清單
     		if (DataBase.MobItemMap.containsKey(sEntitlyName))
     		{

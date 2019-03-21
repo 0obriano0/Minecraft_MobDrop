@@ -22,6 +22,10 @@ public class LoadConfig {
 		
 	}
 	
+	boolean command_cmd_show = false;
+	boolean command_old_list = false;
+	boolean list_Chinese = false;
+	
 	public void ReLoadConfig(){
 		// 確認檔案是否存在
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
@@ -38,16 +42,27 @@ public class LoadConfig {
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    
+	    if(data.contains("command")) {
+	    	if(data.contains("command.cmdShow")) 
+	    		command_cmd_show = data.getBoolean("command.cmdShow");
+	    	if(data.contains("command.oldList")) 
+	    		command_old_list = data.getBoolean("command.oldList");
+	    }
+	    
+	    if(data.contains("list.chinese")) 
+	    	list_Chinese = data.getBoolean("list.chinese");
+	    
 	    if (data.contains("GobalMessage")){
 	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
-	    		DataBase.GobalMessage = new GobalMessage(data.getBoolean("GobalMessage.IsOpen"),data.getInt("showMessage.Chance"),data.getBoolean("list.Chinese"));
+	    		DataBase.GobalMessage = new GobalMessage(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese);
 	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] GobalMessage 設定成功" + AnsiColor.RESET);
 	    	}else{
 	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.GobalMessage = new GobalMessage(false,0,false);
+	    	DataBase.GobalMessage = new GobalMessage(true,50,false,false,false);
+	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
 	    }
 	}
 	

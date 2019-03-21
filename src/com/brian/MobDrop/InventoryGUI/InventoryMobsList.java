@@ -64,7 +64,10 @@ public class InventoryMobsList implements InventoryProvider{
 	}
 	
 	private ItemStack createitem(Map.Entry<String, List<MobItemList>> entry) {
-		ItemStack item = new ItemStack(Material.getMaterial(entry.getKey() + "_SPAWN_EGG"));
+		Material Material_data = Material.getMaterial(entry.getKey() + "_SPAWN_EGG");
+		if(Material_data == null)
+			Material_data = Material.getMaterial("ZOMBIE" + "_SPAWN_EGG");
+		ItemStack item = new ItemStack(Material_data);
 		ItemMeta newItemMeta;
 	    newItemMeta = item.getItemMeta();
 	    newItemMeta.setDisplayName("¡±f" + DataBase.GetEntityName(entry.getKey()));

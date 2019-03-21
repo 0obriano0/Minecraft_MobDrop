@@ -5,12 +5,18 @@ public class GobalMessage {
 	public boolean IsOpen;
 	//公開顯示掉落物 要幾趴以下
 	public int Chance;
-	//指令 list 要不要顯示中文
+	
 	public boolean list_Chinese;
 	
-	public GobalMessage(boolean newIsOpen,int newChance,boolean newlist_Chinese) {
+	public boolean command_cmd_show;
+	
+	public boolean command_old_list;
+	
+	public GobalMessage(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_old_list,boolean list_Chinese) {
 		this.IsOpen = newIsOpen;
 		this.Chance = newChance;
-		this.list_Chinese = newlist_Chinese;
+		this.command_cmd_show = command_cmd_show;
+		this.command_old_list = command_old_list;
+		this.list_Chinese = list_Chinese;
 	}
 }

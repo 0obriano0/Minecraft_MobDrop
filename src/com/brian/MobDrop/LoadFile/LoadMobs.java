@@ -42,6 +42,8 @@ public class LoadMobs {
 		    
 		    // 待儲存的掉落物清單
 		 	List<MobItemList> ItemsList = new ArrayList<MobItemList>();
+		 	int failData = 0;
+		 	int success = 0;
 		 	
 		    for (String entity_name : data.getConfigurationSection("").getKeys(false)) {
 		    	ItemsList = new ArrayList<MobItemList>();
@@ -68,16 +70,20 @@ public class LoadMobs {
 		    		Itemkey = Itemkey.toUpperCase();
 		    		if(DataBase.ItemMap.containsKey(Itemkey) && Quantity >= 1 && !(Chance < 0)) {
 		    			ItemsList.add(new MobItemList(Quantity, Quantity_max, Chance, DataBase.ItemMap.get(Itemkey)));
-		    			DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
+		    			success++;
+		    			if(DataBase.GobalMessage.command_cmd_show)
+		    				DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 		    		}else {
+		    			failData++;
 		    			if(DataBase.ItemMap.containsKey(Itemkey))
 		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " 的掉落物 " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 		    			else
 		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " 的掉落物 " + AnsiColor.WHITE + Itemkey + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 		    		}
 		    	}
-		    	DataBase.MobItemMap.put(entity_name.toUpperCase(),ItemsList);
+		    	DataBase.MobItemMap.put(entity_name.toUpperCase().replace("&","§"),ItemsList);
 		    }
+		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.GREEN + "怪物讀取 總共:  " + AnsiColor.WHITE + (success + failData) + AnsiColor.YELLOW + " 成功:  " + AnsiColor.WHITE + success + AnsiColor.RED + " 失敗:  " + AnsiColor.WHITE + failData + AnsiColor.RESET);
 		}
 		
 		public void CreateDefaultfile(){

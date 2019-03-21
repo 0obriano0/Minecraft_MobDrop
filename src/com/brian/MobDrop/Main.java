@@ -20,9 +20,9 @@ public class Main extends JavaPlugin {
 		DataBase.LoadItems = new LoadItems();
 		DataBase.LoadMobs = new LoadMobs();
 		DataBase.LoadConfig = new LoadConfig();
+		DataBase.LoadConfig.ReLoadConfig();
 		DataBase.LoadItems.ReLoadItems();
 		DataBase.LoadMobs.ReLoadMobs();
-		DataBase.LoadConfig.ReLoadConfig();
 		// µù¥U
 		getServer().getPluginManager().registerEvents(new DeathListener(), this);
 		getCommand("mobdrop").setExecutor(new PlayerCommands());

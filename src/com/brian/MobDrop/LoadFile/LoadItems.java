@@ -61,6 +61,8 @@ public class LoadItems {
 		// 拆解物品附屬ID用
 		//String strItemID = "";
 		
+		int failData = 0;
+		
 		// 取得生物名稱
 		for (String ItemKey : data.getConfigurationSection("").getKeys(false))
 	    {
@@ -130,15 +132,17 @@ public class LoadItems {
 			if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0))
 			{
 				// 加入
-				DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
+				if(DataBase.GobalMessage.command_cmd_show)
+					DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 				DataBase.ItemMap.put(ItemKey.toUpperCase(),new Items(ItemName, UseCustomName, ItemRealname, ItemLores, Red, Green, Blue, Enchants));
 			}else
 			{
 				// 警告
+				failData++;
 				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 			}
-			
 	    }
+		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品讀取 總共:  " + AnsiColor.WHITE + DataBase.ItemMap.size() + AnsiColor.YELLOW + " 成功:  " + AnsiColor.WHITE + (DataBase.ItemMap.size()-failData) + AnsiColor.RED + " 失敗:  " + AnsiColor.WHITE + failData + AnsiColor.RESET);
 	}
 	
 	// 建立預設檔
