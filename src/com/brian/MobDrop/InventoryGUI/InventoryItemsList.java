@@ -87,7 +87,7 @@ public class InventoryItemsList implements InventoryProvider{
 			ItemStack Itemcreate = entry.getValue().getResultItem();
 			Itemcreate.setAmount(1);
 			player.getInventory().addItem(Itemcreate);
-			player.sendMessage("§b" + DataBase.detailStr + " §f獲取道具: " + entry.getValue().ItemName);
+			player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + entry.getValue().ItemName);
 		}
 	}
 }

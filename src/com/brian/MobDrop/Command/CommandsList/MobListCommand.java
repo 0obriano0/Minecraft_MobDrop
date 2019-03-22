@@ -26,7 +26,7 @@ public class MobListCommand {
 		}
 		catch (NullPointerException e)
 		{
-			sender.sendMessage("§b" + DataBase.detailStr + "§c查無「§n " + DataBase.GetEntityName(keyName) + " §r§c」生物，請重新查詢");
+			sender.sendMessage("§b" + DataBase.language.Plugin_name + "§c查無「§n " + DataBase.GetEntityName(keyName) + " §r§c」生物，請重新查詢");
 		}
 		return true;
 	}

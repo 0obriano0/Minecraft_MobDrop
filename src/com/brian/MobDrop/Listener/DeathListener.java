@@ -64,9 +64,9 @@ public class DeathListener implements Listener{
         					entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
         					// 顯示掉落訊息
         					if(DataBase.GobalMessage.IsOpen && DataBase.GobalMessage.Chance >= MobDropItem.Chance) 
-        						DataBase.server.broadcastMessage("§b" + DataBase.detailStr + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!" );
+        						DataBase.server.broadcastMessage("§b" + DataBase.language.Plugin_name + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!" );
         						
-        					killBy.sendMessage("§b" + DataBase.detailStr + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!");
+        					killBy.sendMessage("§b" + DataBase.language.Plugin_name + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!");
         				}
     				//}
     			}

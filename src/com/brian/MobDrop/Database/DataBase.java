@@ -11,6 +11,7 @@ import com.brian.MobDrop.Command.CommandsList.MainList;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
 import com.brian.MobDrop.LoadFile.LoadMobs;
+import com.brian.MobDrop.LoadFile.LoadLanguage;
 
 public class DataBase {
 	// 主插件
@@ -20,12 +21,13 @@ public class DataBase {
 		public static LoadConfig LoadConfig;
 		public static LoadItems LoadItems;
 		public static LoadMobs LoadMobs;
+		public static LoadLanguage LoadLanguage;
 		
 		// 伺服器
 		public static Server server;
 		
-		// 插件標題
-		public static String detailStr = "[MobDrop]";
+		//語言包
+		public static language language = new language();
 		
 		// 插件目錄
 		public static String pluginMainDir = "./plugins/MobDrop/";
@@ -45,7 +47,7 @@ public class DataBase {
 		// 顯示訊息
 		public static void Print(String msg)
 		{
-			System.out.print(detailStr + msg);
+			System.out.print(DataBase.language.Plugin_name + msg);
 		}
 		
 		// 取得生物名稱(中文)

@@ -11,9 +11,9 @@ public class GetItem {
 			ItemStack Itemcreate = DataBase.ItemMap.get(args[1].toUpperCase()).getResultItem();
 			Itemcreate.setAmount(1);
 			player.getInventory().addItem(Itemcreate);
-			player.sendMessage("§b" + DataBase.detailStr + " §f獲取道具: " + DataBase.ItemMap.get(args[1].toUpperCase()).ItemName);
+			player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + DataBase.ItemMap.get(args[1].toUpperCase()).ItemName);
 		}else {
-			player.sendMessage("§b" + DataBase.detailStr + " §c查無裝備 ID 請重新查詢");
+			player.sendMessage("§b" + DataBase.language.Plugin_name + " §c查無裝備 ID 請重新查詢");
 			return false;
 		}
 		return true;

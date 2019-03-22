@@ -7,6 +7,7 @@ import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Listener.DeathListener;
 import com.brian.MobDrop.LoadFile.LoadConfig;
 import com.brian.MobDrop.LoadFile.LoadItems;
+import com.brian.MobDrop.LoadFile.LoadLanguage;
 import com.brian.MobDrop.LoadFile.LoadMobs;
 
 public class Main extends JavaPlugin {
@@ -20,7 +21,9 @@ public class Main extends JavaPlugin {
 		DataBase.LoadItems = new LoadItems();
 		DataBase.LoadMobs = new LoadMobs();
 		DataBase.LoadConfig = new LoadConfig();
+		DataBase.LoadLanguage = new LoadLanguage();
 		DataBase.LoadConfig.ReLoadConfig();
+		DataBase.LoadLanguage.ReLoadLanguage();
 		DataBase.LoadItems.ReLoadItems();
 		DataBase.LoadMobs.ReLoadMobs();
 		// µù¥U
