@@ -42,7 +42,7 @@ public class DataBase {
 		public static Map<String, Items> ItemMap = new HashMap<String, Items>();
 		
 		//公開顯示訊息
-		public static GobalMessage GobalMessage;
+		public static Config Config;
 		
 		// 顯示訊息
 		public static void Print(String msg)

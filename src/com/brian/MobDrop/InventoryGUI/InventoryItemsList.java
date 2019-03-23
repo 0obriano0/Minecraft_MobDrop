@@ -27,7 +27,7 @@ public class InventoryItemsList implements InventoryProvider{
             .id("Itemlist")
             .provider(new InventoryItemsList())
             .size(5, 9)
-            .title(ChatColor.BLUE + "物品列表")
+            .title(ChatColor.BLUE + DataBase.language.Inventory.ItemList)
             .build();
 	
     @Override
@@ -48,11 +48,11 @@ public class InventoryItemsList implements InventoryProvider{
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
-        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a回目錄"),
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a" + DataBase.language.Inventory.back_menu),
                 e -> InventoryMenu.INVENTORY.open(player)));
-        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a上一頁"),
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.previous),
                 e -> INVENTORY.open(player, pagination.previous().getPage())));
-        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a下一頁"),
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.next),
                 e -> INVENTORY.open(player, pagination.next().getPage())));
     }
 
@@ -72,8 +72,9 @@ public class InventoryItemsList implements InventoryProvider{
         Lore.add("§7 - " + entry.getKey());
         if (player.hasPermission("MobDrop.admin")) {
         	Lore.add("");
-        	Lore.add("§a請點擊左鍵");
-        	Lore.add("§a拿取道具");
+        	for(int index = 0;index < DataBase.language.Inventory.admin_lore.size();index++) {
+        		Lore.add("§a"+DataBase.language.Inventory.admin_lore.get(index));
+        	}
         }
         newItemMeta.setDisplayName(entry.getValue().ItemName);
         newItemMeta.setLore(Lore);

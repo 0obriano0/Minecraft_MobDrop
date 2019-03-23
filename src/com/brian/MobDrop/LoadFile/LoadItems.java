@@ -137,7 +137,7 @@ public class LoadItems {
 					item.getResultItem();
 					DataBase.ItemMap.put(ItemKey.toUpperCase(),item);
 					// 加入
-					if(DataBase.GobalMessage.command_cmd_show)
+					if(DataBase.Config.command_cmd_show)
 						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 				}catch(Exception e) {
 					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);

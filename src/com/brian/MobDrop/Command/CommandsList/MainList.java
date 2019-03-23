@@ -18,11 +18,11 @@ public class MainList {
 	
 	public List<String> secand_arg(String commands, CommandSender sender) {
 		List<String> show_commands = new ArrayList<String>();
-		if(DataBase.GobalMessage.command_old_list)
+		if(DataBase.Config.command_old_list)
 			Tools.search(playercommands_old_list, commands, show_commands);
 		Tools.search(playercommands, commands, show_commands);
 		if (sender.hasPermission("MobDrop.admin")) {
-			if(DataBase.GobalMessage.command_old_list)
+			if(DataBase.Config.command_old_list)
 				Tools.search(admincommands_old_list, commands, show_commands);
 			Tools.search(admincommands, commands, show_commands);
 		}

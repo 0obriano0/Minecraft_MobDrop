@@ -1,0 +1,17 @@
+Plugin:
+    title: "[MobDrop]"
+InventoryGUI:
+    MobsList: "§aMobs Drop Item List"
+    ItemList: "Item List"
+    close: "Close"
+    next: "Next"
+    previous: "Previous"
+    menu: "Menu"
+    back: "Back"
+    back_menu: "Back Menu"
+    admin_lore: 
+    - "Click"
+    - "Get Item"
+    dropList: "Drop List"
+    items: "Items:"
+    mobs: "Mobs:"

@@ -33,7 +33,7 @@ public class InventoryMobs_ItemList implements InventoryProvider{
         return SmartInventory.builder()
                 .provider(new InventoryMobs_ItemList(MobName, MobItemListTable))
                 .size(5, 9)
-                .title(ChatColor.GREEN + DataBase.GetEntityName(MobName) + ChatColor.BLUE + " 掉落列表")
+                .title(ChatColor.GREEN + DataBase.GetEntityName(MobName) + ChatColor.BLUE + " " + DataBase.language.Inventory.dropList)
                 .build();
 	}
 
@@ -52,11 +52,11 @@ public class InventoryMobs_ItemList implements InventoryProvider{
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
-        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a返回"),
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a" + DataBase.language.Inventory.back),
                 e -> InventoryMobsList.INVENTORY.open(player)));
-        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a上一頁"),
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.previous),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.previous().getPage())));
-        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a下一頁"),
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.next),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.next().getPage())));
     }
 

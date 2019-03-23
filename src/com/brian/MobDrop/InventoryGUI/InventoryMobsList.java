@@ -49,11 +49,11 @@ public class InventoryMobsList implements InventoryProvider{
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
         
-        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a回目錄"),
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"§a" + DataBase.language.Inventory.back_menu),
                 e -> InventoryMenu.INVENTORY.open(player)));
-        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a上一頁"),
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.previous),
                 e -> INVENTORY.open(player, pagination.previous().getPage())));
-        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a下一頁"),
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"§a" + DataBase.language.Inventory.next),
                 e -> INVENTORY.open(player, pagination.next().getPage())));
     }
 
@@ -77,7 +77,7 @@ public class InventoryMobsList implements InventoryProvider{
         	Lore = new ArrayList<String>();
         Lore.add("");
         
-        Lore.add("§a道具: §f" + entry.getValue().size());
+        Lore.add("§a - " + DataBase.language.Inventory.items + " §f" + entry.getValue().size());
         Lore.add("§7 - " + entry.getKey());
         
         newItemMeta.setLore(Lore);

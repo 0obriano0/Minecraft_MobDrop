@@ -30,12 +30,12 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				// 顯示說明
 				sender.sendMessage("§9==========§dMobDrop§9==========");
 				sender.sendMessage("§a/mdop menu §f- §e開啟目錄");
-				if(DataBase.GobalMessage.command_old_list) {
+				if(DataBase.Config.command_old_list) {
 					sender.sendMessage("§a/mdop moblist <生物名(可打可不打)> §f- §e列出所有生物的掉落資訊");
 					sender.sendMessage("§a/mdop itemlist §f- §e列出所有道具的掉落資訊");
 				}
 				if (sender.hasPermission("MobDrop.admin")) {
-					if(DataBase.GobalMessage.command_old_list)
+					if(DataBase.Config.command_old_list)
 						sender.sendMessage("§a/mdop getitem <物品名稱> §f- §e獲取道具");
 					sender.sendMessage("§a/mdop reload §f- §e重新讀取資料");
 				}
@@ -46,13 +46,13 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				if (sender.hasPermission("MobDrop.admin")) {
 					if (args[0].equals("reload"))
 						return ReloadCommand.parseCommands(sender, cmd, label, args);
-					else if (args[0].equals("getitem") && DataBase.GobalMessage.command_old_list)
+					else if (args[0].equals("getitem") && DataBase.Config.command_old_list)
 						return GetItemCommand.parseCommands(sender, cmd, label, args);
 				}
-				if (args[0].equals("moblist") && DataBase.GobalMessage.command_old_list)
+				if (args[0].equals("moblist") && DataBase.Config.command_old_list)
 					return MobListCommand.parseCommands(sender, cmd, label, args);
 				//封存
-				else if(args[0].equals("itemlist") && DataBase.GobalMessage.command_old_list) 
+				else if(args[0].equals("itemlist") && DataBase.Config.command_old_list) 
 					return ItemListCommand.parseCommands(sender, cmd, label, args);
 				else if(args[0].equals("menu")) {
 					InventoryMenu.INVENTORY.open((Player) sender);

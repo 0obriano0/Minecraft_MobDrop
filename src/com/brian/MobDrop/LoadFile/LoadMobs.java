@@ -71,7 +71,7 @@ public class LoadMobs {
 		    		if(DataBase.ItemMap.containsKey(Itemkey) && Quantity >= 1 && !(Chance < 0)) {
 		    			ItemsList.add(new MobItemList(Quantity, Quantity_max, Chance, DataBase.ItemMap.get(Itemkey)));
 		    			success++;
-		    			if(DataBase.GobalMessage.command_cmd_show)
+		    			if(DataBase.Config.command_cmd_show)
 		    				DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " 的掉落物 " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 		    		}else {
 		    			failData++;

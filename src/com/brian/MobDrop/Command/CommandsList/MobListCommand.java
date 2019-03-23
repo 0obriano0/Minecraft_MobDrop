@@ -54,7 +54,7 @@ public class MobListCommand {
 		List<String> show_commands = new ArrayList<String>();
 		for (String key : DataBase.MobItemMap.keySet())
 		{
-			if(DataBase.GobalMessage.list_Chinese) {
+			if(DataBase.Config.list_Chinese) {
 				if(DataBase.GetEntityName(key.toUpperCase()).indexOf(command) != -1)
 					show_commands.add(DataBase.GetEntityName(key));
 			}else
