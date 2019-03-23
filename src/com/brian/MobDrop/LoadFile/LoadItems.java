@@ -132,9 +132,16 @@ public class LoadItems {
 			if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0))
 			{
 				// 加入
-				if(DataBase.GobalMessage.command_cmd_show)
-					DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
-				DataBase.ItemMap.put(ItemKey.toUpperCase(),new Items(ItemName, UseCustomName, ItemRealname, ItemLores, Red, Green, Blue, Enchants));
+				try {
+					Items item = new Items(ItemName, UseCustomName, ItemRealname, ItemLores, Red, Green, Blue, Enchants);
+					item.getResultItem();
+					DataBase.ItemMap.put(ItemKey.toUpperCase(),item);
+					// 加入
+					if(DataBase.GobalMessage.command_cmd_show)
+						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
+				}catch(Exception e) {
+					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
+				}
 			}else
 			{
 				// 警告

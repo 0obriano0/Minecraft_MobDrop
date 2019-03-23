@@ -1,0 +1,6 @@
+Plugin:
+    title: "[MobDrop]"
+InventoryGUI:
+    MobsList: "怪物掉落列表"
+    next: "下一頁"
+    previous: "上一頁"

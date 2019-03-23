@@ -54,6 +54,7 @@ public class CopyFileAPI {
             	copyFile(jarURL, new File(Dir + Filename));
             	return true;
             } catch (Exception ex) {
+            	ex.printStackTrace();
             	return false;
             }
         }

@@ -16,7 +16,8 @@ public class LoadLanguage {
 		// 開檔用
 		private File filePreload = null;
 		
-		private String loadfilename = "lang/zh_TW.yml";
+		private String loadfiledir = "lang";
+		private String loadfilename = "zh_TW.yml";
 		
 		public LoadLanguage(){
 			
@@ -26,7 +27,7 @@ public class LoadLanguage {
 		
 		public void ReLoadLanguage(){
 			// 確認檔案是否存在
-		    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
+		    this.filePreload = new File(DataBase.pluginMainDir + loadfiledir + "/" + loadfilename);
 		    if (this.filePreload.exists()){
 		    	// 讀取設定檔內容
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
@@ -49,27 +50,16 @@ public class LoadLanguage {
 		    
 		    DataBase.language.setInventoryGUI(InventoryGUI_MobsList);
 		    
-		    /*if (data.contains("GobalMessage")){
-		    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
-		    		DataBase.GobalMessage = new GobalMessage(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese);
-		    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] GobalMessage 設定成功" + AnsiColor.RESET);
-		    	}else{
-		    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
-		    		return;
-		    	}
-		    }else {
-		    	DataBase.GobalMessage = new GobalMessage(true,50,false,false,false);
-		    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
-		    }*/
+		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[Loadlanguage] " + loadfilename + " 設定成功" + AnsiColor.RESET);
 		}
 		
 		public void CreateDefaultfile(){
 			try
 			{
-				if(CopyFileAPI.createFile(DataBase.pluginMainDir, loadfilename, "/"+loadfilename, DataBase.main))
+				if(CopyFileAPI.createFile(DataBase.pluginMainDir + "/" + loadfiledir, "/" + loadfilename, "/" + loadfiledir + "/" + loadfilename, DataBase.main))
 					DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " 創建成功" + AnsiColor.RESET);
 				else
-					DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師" + AnsiColor.RESET);
+					DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師1" + AnsiColor.RESET);
 			}
 			catch (Exception e)
 			{
