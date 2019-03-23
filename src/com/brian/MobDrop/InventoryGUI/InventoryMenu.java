@@ -26,7 +26,7 @@ public class InventoryMenu implements InventoryProvider{
 		
 		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"§a物品列表","§a - 道具: §f" + DataBase.ItemMap.size()),
                 e -> InventoryItemsList.INVENTORY.open(player)));
-		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"§a怪物掉落列表","§a - 怪物: §f" + DataBase.MobItemMap.size()),
+		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"§a" + DataBase.language.Inventory.MobsList,"§a - 怪物: §f" + DataBase.MobItemMap.size()),
                 e -> InventoryMobsList.INVENTORY.open(player)));
 		contents.set(2, 8, ClickableItem.of(InventoryTools.createPageButton(Material.BARRIER,"§a關閉列表"),
                 e -> InventoryMobsList.INVENTORY.close(player)));

@@ -23,8 +23,6 @@ public class LoadLanguage {
 			
 		}
 		
-		String InventoryGUI_MobsList;
-		
 		public void ReLoadLanguage(){
 			// 確認檔案是否存在
 		    this.filePreload = new File(DataBase.pluginMainDir + loadfiledir + "/" + loadfilename);
@@ -44,11 +42,11 @@ public class LoadLanguage {
 		    
 		    
 		    if(data.contains("InventoryGUI")) {
-		    	if(data.contains("InventoryGUI.MobsList")) 
-		    		InventoryGUI_MobsList = data.getString("InventoryGUI.MobsList");
+		    	if(data.contains("InventoryGUI.MobsList")) DataBase.language.Inventory.MobsList = data.getString("InventoryGUI.MobsList");
+		    	if(data.contains("InventoryGUI.ItemList")) DataBase.language.Inventory.ItemList = data.getString("InventoryGUI.ItemList");
+		    	if(data.contains("InventoryGUI.close"))    DataBase.language.Inventory.close    = data.getString("InventoryGUI.close");
+		    	if(data.contains("InventoryGUI.next"))     DataBase.language.Inventory.next     = data.getString("InventoryGUI.next");
 		    }
-		    
-		    DataBase.language.setInventoryGUI(InventoryGUI_MobsList);
 		    
 		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[Loadlanguage] " + loadfilename + " 設定成功" + AnsiColor.RESET);
 		}

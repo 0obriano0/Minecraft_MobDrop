@@ -1,6 +1,13 @@
 Plugin:
     title: "[MobDrop]"
 InventoryGUI:
-    MobsList: "怪物掉落列表"
+    MobsList: "§a怪物掉落列表"
+    ItemList: "物品列表"
+    close: "關閉"
     next: "下一頁"
     previous: "上一頁"
+    menu: "回首頁"
+    back: "返回"
+    admin_lore: 
+    - "點擊左鍵"
+    - "拿取道具"

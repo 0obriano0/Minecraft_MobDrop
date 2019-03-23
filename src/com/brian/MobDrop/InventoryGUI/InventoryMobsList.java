@@ -27,7 +27,7 @@ public class InventoryMobsList implements InventoryProvider{
             .id("moblist")
             .provider(new InventoryMobsList())
             .size(5, 9)
-            .title(ChatColor.BLUE + DataBase.language.InventoryGUI_MobsList)
+            .title(ChatColor.BLUE + DataBase.language.Inventory.MobsList)
             .build();
 
     @Override
