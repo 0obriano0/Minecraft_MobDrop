@@ -164,7 +164,7 @@ public class LoadItems {
 		}
 		catch (Exception e)
 		{
-			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建失敗，請詢問程式設計師" + AnsiColor.RESET);
+			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現嚴重的錯誤，請詢問程式設計師" + AnsiColor.RESET);
 		}
 	}
 }

@@ -67,16 +67,20 @@ public class LoadLanguage {
 		}
 		
 		public void CreateDefaultfile(){
+			
+		    String[] fileName = {"zh_TW","en"};
 			try
 			{
-				if(CopyFileAPI.createFile(DataBase.pluginMainDir + "/" + loadfiledir, "/" + loadfilename, "/" + loadfiledir + "/" + loadfilename, DataBase.main))
-					DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " 創建成功" + AnsiColor.RESET);
-				else
-					DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師1" + AnsiColor.RESET);
+				for(int index = 0;index < fileName.length;index++) {
+					if(CopyFileAPI.createFile(DataBase.pluginMainDir + "/" + loadfiledir, "/" + fileName[index] + ".yml", "/" + loadfiledir + "/" + fileName[index] + ".yml", DataBase.main))
+						DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + fileName[index] + ".yml" + AnsiColor.GREEN +  " 創建成功" + AnsiColor.RESET);
+					else
+						DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師1" + AnsiColor.RESET);
+				}
 			}
 			catch (Exception e)
 			{
-				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建失敗，請詢問程式設計師" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現嚴重的錯誤，請詢問程式設計師" + AnsiColor.RESET);
 			}
 		}
 		
