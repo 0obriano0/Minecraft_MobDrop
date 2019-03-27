@@ -20,31 +20,42 @@ WOODEN_SWORD_TEST:
 #==============#
   ItemLores:
   - §e充滿怨靈的木劍§f
-#=============================#
-#掉落的物品附魔               #
-#- <附魔>:<等級>              #
-#PROTECTION_ENVIRONMENTAL 保護#
-#PROTECTION_EXPLOSIONS 防爆   #
-#PROTECTION_PROJECTILE 防彈   #
-#PROTECTION_FIRE 抗火         #
-#PROTECTION_FALL 輕盈(腳)     #
-#ARROW_INFINITE 無限弓        #
-#ARROW_DAMAGE 強力弓          #
-#ARROW_FIRE 火燄弓            #
-#ARROW_KNOCKBACK 弓擊退       #
-#DAMAGE_UNDEAD 不死剋星       #
-#DAMAGE_ALL 鋒利              #
-#DAMAGE_ARTHROPODS 節肢剋星   #
-#OXYGEN 氧氣(頭)              #
-#DURABILITY 耐久              #
-#LOOT_BONUS_BLOCKS 幸運       #
-#LOOT_BONUS_MOBS 掠奪         #
-#SILK_TOUCH 絲綢之觸          #
-#WATER_WORKER 親水性          #
-#DIG_SPEED 效率               #
-#KNOCKBACK 擊退劍             #
-#FIRE_ASPECT 火焰附加         #
-#=============================#
+#=======================================#
+#掉落的物品附魔                         #
+#- <附魔>:<等級>                        #
+#ARROW_INFINITE 無限弓                  #
+#ARROW_DAMAGE 強力弓                    #
+#ARROW_FIRE 火燄弓                      #
+#ARROW_KNOCKBACK 弓擊退                 #
+#BINDING_CURSE 綁定詛咒	                #
+#CHANNELING 喚雷                        #
+#DAMAGE_UNDEAD 不死剋星                 #
+#DAMAGE_ALL 鋒利                        #
+#DAMAGE_ARTHROPODS 節肢剋星             #
+#DEPTH_STRIDER 深海漫遊                 #
+#DURABILITY 耐久                        #
+#FIRE_ASPECT 火焰附加                   #
+#FROST_WALKER 冰霜行者                  #
+#IMPALING 魚叉(對海中怪物造成更大的傷害)#
+#KNOCKBACK 擊退劍                       #
+#LOOT_BONUS_BLOCKS 幸運                 #
+#LOOT_BONUS_MOBS 掠奪                   #
+#LOYALTY (拋出的三叉戟返回投擲它的玩家) #
+#LURE (增加魚咬鉤的速度)                #
+#MENDING 經驗修補                       #
+#OXYGEN 氧氣(頭)                        #
+#PROTECTION_ENVIRONMENTAL 保護          #
+#PROTECTION_EXPLOSIONS 防爆             #
+#PROTECTION_PROJECTILE 防彈             #
+#PROTECTION_FIRE 抗火                   #
+#PROTECTION_FALL 輕盈(腳)               #
+#SILK_TOUCH 絲綢之觸                    #
+#SWEEPING_EDGE 鐮刀之刃                 #
+#WATER_WORKER 親水性                    #
+#THORNS 尖刺                            #
+#VANISHING_CURSE (物品消失而不是掉落)   #
+#DIG_SPEED 效率                         #
+#=======================================#
   Enchants:
   - DAMAGE_ALL:1
 

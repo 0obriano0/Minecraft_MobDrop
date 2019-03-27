@@ -1,5 +1,5 @@
 Plugin:
-    title: "[MobDrop]"
+    title: "[怪物掉落]"
 InventoryGUI:
     MobsList: "怪物掉落列表"
     ItemList: "物品列表"
