@@ -26,6 +26,7 @@ public class LoadConfig {
 	boolean command_old_list = false;
 	boolean list_Chinese = false;
 	String lang = "zh_TW";
+	boolean dropItem = true;
 	public void ReLoadConfig(){
 		// 確認檔案是否存在
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
@@ -54,17 +55,20 @@ public class LoadConfig {
 	    
 	    if(data.contains("lang"))
 	    	lang = data.getString("lang");
+	    
+	    if(data.contains("dropItem"))
+	    	dropItem = data.getBoolean("dropItem");
 	    	
 	    if (data.contains("GobalMessage")){
 	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
-	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese,lang);
+	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
 	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] GobalMessage 設定成功" + AnsiColor.RESET);
 	    	}else{
 	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.Config = new Config(true,50,false,false,false,"zh_TW");
+	    	DataBase.Config = new Config(true,50,false,false,false,"zh_TW",true);
 	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
 	    }
 	}

@@ -9,13 +9,15 @@ public class Config {
 	public boolean command_cmd_show;
 	public boolean command_old_list;
 	public String lang = "zh_TW";
+	public boolean dropItem = true;
 	
-	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_old_list,boolean list_Chinese,String lang) {
+	public Config(boolean newIsOpen,int newChance,boolean command_cmd_show,boolean command_old_list,boolean list_Chinese,String lang,boolean dropItem) {
 		this.IsOpen = newIsOpen;
 		this.Chance = newChance;
 		this.command_cmd_show = command_cmd_show;
 		this.command_old_list = command_old_list;
 		this.list_Chinese = list_Chinese;
 		this.lang = lang;
+		this.dropItem = dropItem;
 	}
 }

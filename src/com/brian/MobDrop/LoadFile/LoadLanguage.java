@@ -46,7 +46,9 @@ public class LoadLanguage {
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 		    }
 		    
-		    
+		    if(data.contains("Plugin")) {
+		    	if(data.contains("Plugin.title")) DataBase.language.Plugin_name = data.getString("Plugin.title").replace("&","¡±"); else errorMessage("Plugin","title");
+		    }
 		    
 		    if(data.contains("InventoryGUI")) {
 		    	if(data.contains("InventoryGUI.MobsList"))  DataBase.language.Inventory.MobsList    = data.getString("InventoryGUI.MobsList").replace("&","¡±");     else errorMessage("InventoryGUI","MobsList");

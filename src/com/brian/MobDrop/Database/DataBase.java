@@ -47,7 +47,7 @@ public class DataBase {
 		// 顯示訊息
 		public static void Print(String msg)
 		{
-			System.out.print(DataBase.language.Plugin_name + msg);
+			System.out.print("[MobDrop] " + msg);
 		}
 		
 		// 取得生物名稱(中文)

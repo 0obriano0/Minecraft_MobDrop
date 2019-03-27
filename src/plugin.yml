@@ -11,3 +11,10 @@ commands:
       aliases: mdop
       permission: MobDrop.player
       permission-message: you can not use it
+permissions:
+   MobDrop.player:
+      description: the base command can use.
+      default: true
+   MobDrop.admin:
+      description: can reload the plugin and get items.
+      default: op

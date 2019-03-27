@@ -87,8 +87,12 @@ public class InventoryItemsList implements InventoryProvider{
 		if (player.hasPermission("MobDrop.admin")) {
 			ItemStack Itemcreate = entry.getValue().getResultItem();
 			Itemcreate.setAmount(1);
-			player.getInventory().addItem(Itemcreate);
-			player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + entry.getValue().ItemName);
+			if(player.getInventory().firstEmpty() == -1)
+				player.sendMessage("§b" + DataBase.language.Plugin_name + " §c背包已滿，無法獲取道具");
+			else {
+				player.getInventory().addItem(Itemcreate);
+				player.sendMessage("§b" + DataBase.language.Plugin_name + " §f獲取道具: " + entry.getValue().ItemName);
+			}
 		}
 	}
 }
