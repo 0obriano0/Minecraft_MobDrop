@@ -16,4 +16,5 @@ InventoryGUI:
     items: "道具:"
     mobs: "怪物:"
 message:
-    mobDropItem: "§6恭喜§a %killer% §6 將§f %mob% §6殺死後掉落§a %item% §b%item_num% §6個!"
+    Gobal_mobDropItem: "§6恭喜§a %player% §6 將§f %mob% §6殺死後掉落§a %item% §b%item_num% §6個!"
+    mobDropItem: "§f%mob% §6掉落了§f %item% §b%item_num% §6個!"

@@ -51,18 +51,23 @@ public class LoadLanguage {
 		    }
 		    
 		    if(data.contains("InventoryGUI")) {
-		    	if(data.contains("InventoryGUI.MobsList"))  DataBase.language.Inventory.MobsList    = data.getString("InventoryGUI.MobsList").replace("&","¡±");     else errorMessage("InventoryGUI","MobsList");
-		    	if(data.contains("InventoryGUI.ItemList"))  DataBase.language.Inventory.ItemList    = data.getString("InventoryGUI.ItemList").replace("&","¡±");     else errorMessage("InventoryGUI","MobsList");
-		    	if(data.contains("InventoryGUI.close"))     DataBase.language.Inventory.close       = data.getString("InventoryGUI.close").replace("&","¡±");        else errorMessage("InventoryGUI","close");
-		    	if(data.contains("InventoryGUI.next"))      DataBase.language.Inventory.next        = data.getString("InventoryGUI.next").replace("&","¡±");         else errorMessage("InventoryGUI","next");
-		    	if(data.contains("InventoryGUI.previous"))  DataBase.language.Inventory.previous    = data.getString("InventoryGUI.previous").replace("&","¡±");     else errorMessage("InventoryGUI","previous");
-		    	if(data.contains("InventoryGUI.menu"))      DataBase.language.Inventory.menu        = data.getString("InventoryGUI.menu").replace("&","¡±");         else errorMessage("InventoryGUI","menu");
-		    	if(data.contains("InventoryGUI.back"))      DataBase.language.Inventory.back        = data.getString("InventoryGUI.back").replace("&","¡±");         else errorMessage("InventoryGUI","back");
-		    	if(data.contains("InventoryGUI.back_menu")) DataBase.language.Inventory.back_menu   = data.getString("InventoryGUI.back_menu").replace("&","¡±");    else errorMessage("InventoryGUI","back_menu");
-		    	if(data.contains("InventoryGUI.dropList"))  DataBase.language.Inventory.dropList    = data.getString("InventoryGUI.dropList").replace("&","¡±");     else errorMessage("InventoryGUI","dropList");
-		    	if(data.contains("InventoryGUI.items"))     DataBase.language.Inventory.items       = data.getString("InventoryGUI.items").replace("&","¡±");        else errorMessage("InventoryGUI","items");
-		    	if(data.contains("InventoryGUI.mobs"))      DataBase.language.Inventory.mobs        = data.getString("InventoryGUI.mobs").replace("&","¡±");         else errorMessage("InventoryGUI","mobs");
-		    	if(data.contains("InventoryGUI.admin_lore")) DataBase.language.Inventory.admin_lore = getListString(data.getStringList("InventoryGUI.admin_lore")); else errorMessage("InventoryGUI","admin_lore");
+		    	if(data.contains("InventoryGUI.MobsList"))   DataBase.language.Inventory.MobsList    = data.getString("InventoryGUI.MobsList").replace("&","¡±");     else errorMessage("InventoryGUI","MobsList");
+		    	if(data.contains("InventoryGUI.ItemList"))   DataBase.language.Inventory.ItemList    = data.getString("InventoryGUI.ItemList").replace("&","¡±");     else errorMessage("InventoryGUI","MobsList");
+		    	if(data.contains("InventoryGUI.close"))      DataBase.language.Inventory.close       = data.getString("InventoryGUI.close").replace("&","¡±");        else errorMessage("InventoryGUI","close");
+		    	if(data.contains("InventoryGUI.next"))       DataBase.language.Inventory.next        = data.getString("InventoryGUI.next").replace("&","¡±");         else errorMessage("InventoryGUI","next");
+		    	if(data.contains("InventoryGUI.previous"))   DataBase.language.Inventory.previous    = data.getString("InventoryGUI.previous").replace("&","¡±");     else errorMessage("InventoryGUI","previous");
+		    	if(data.contains("InventoryGUI.menu"))       DataBase.language.Inventory.menu        = data.getString("InventoryGUI.menu").replace("&","¡±");         else errorMessage("InventoryGUI","menu");
+		    	if(data.contains("InventoryGUI.back"))       DataBase.language.Inventory.back        = data.getString("InventoryGUI.back").replace("&","¡±");         else errorMessage("InventoryGUI","back");
+		    	if(data.contains("InventoryGUI.back_menu"))  DataBase.language.Inventory.back_menu   = data.getString("InventoryGUI.back_menu").replace("&","¡±");    else errorMessage("InventoryGUI","back_menu");
+		    	if(data.contains("InventoryGUI.dropList"))   DataBase.language.Inventory.dropList    = data.getString("InventoryGUI.dropList").replace("&","¡±");     else errorMessage("InventoryGUI","dropList");
+		    	if(data.contains("InventoryGUI.items"))      DataBase.language.Inventory.items       = data.getString("InventoryGUI.items").replace("&","¡±");        else errorMessage("InventoryGUI","items");
+		    	if(data.contains("InventoryGUI.mobs"))       DataBase.language.Inventory.mobs        = data.getString("InventoryGUI.mobs").replace("&","¡±");         else errorMessage("InventoryGUI","mobs");
+		    	if(data.contains("InventoryGUI.admin_lore")) DataBase.language.Inventory.admin_lore  = getListString(data.getStringList("InventoryGUI.admin_lore")); else errorMessage("InventoryGUI","admin_lore");
+		    }
+		    
+		    if(data.contains("message")) {
+		    	if(data.contains("message.Gobal_mobDropItem")) DataBase.language.message.Gobal_mobDropItem   = data.getString("message.Gobal_mobDropItem").replace("&","¡±");    else errorMessage("message","Gobal_mobDropItem");
+		    	if(data.contains("message.mobDropItem"))       DataBase.language.message.mobDropItem         = data.getString("message.mobDropItem").replace("&","¡±");          else errorMessage("message","mobDropItem");
 		    }
 		    
 		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[Loadlanguage] " + loadfilename + " Åª¨úµ²§ô" + AnsiColor.RESET);

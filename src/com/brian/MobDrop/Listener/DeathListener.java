@@ -66,14 +66,19 @@ public class DeathListener implements Listener{
         					else
         						killBy.getInventory().addItem(MobDropItem_);
         					// 顯示掉落訊息
+        					
         					if(DataBase.Config.IsOpen && DataBase.Config.Chance >= MobDropItem.Chance) 
-        						DataBase.server.broadcastMessage("§b" + DataBase.language.Plugin_name + " §6" + "恭喜§a " + killBy.getName() + "§6 將§f" + DataBase.GetEntityName(sEntitlyName) + "§6殺死後掉落§a" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!" );
+        						DataBase.server.broadcastMessage("§b" + DataBase.language.Plugin_name + " " + formatmessage(DataBase.language.message.Gobal_mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
     						
-        					killBy.sendMessage("§b" + DataBase.language.Plugin_name + "§f " + DataBase.GetEntityName(sEntitlyName) + " §6掉落了§f" + MobDropItem.Item.ItemName + "§b " + items_num + "§6個!");
+        					killBy.sendMessage("§b" + DataBase.language.Plugin_name + "§f " + " " + formatmessage(DataBase.language.message.mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
         				}
     				//}
     			}
     		}
     	}
     }
+	
+	private String formatmessage(String message, Player player,String MobName,MobItemList MobDropItem,ItemStack Item) {
+		return message.replaceAll("%player%", player.getName()).replaceAll("%mob%",DataBase.GetEntityName(MobName)).replaceAll("%item%",MobDropItem.Item.ItemName).replaceAll("%item_num%","" + Item.getAmount());
+	}
 }
