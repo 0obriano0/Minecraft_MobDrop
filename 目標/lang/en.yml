@@ -10,8 +10,8 @@ InventoryGUI:
     back: "Back"
     back_menu: "Back Menu"
     admin_lore: 
-    - "Click"
-    - "Get Item"
+    - "&cyou are admin"
+    - "Click to get item"
     dropList: "Drop List"
     items: "Items:"
     mobs: "Mobs:"
