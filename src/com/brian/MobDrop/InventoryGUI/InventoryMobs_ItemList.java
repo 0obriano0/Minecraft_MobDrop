@@ -76,11 +76,10 @@ public class InventoryMobs_ItemList implements InventoryProvider{
         if(Lore == null)
         	Lore = new ArrayList<String>();
         Lore.add("");
-        Lore.add("§a掉落機率§f " + MobItem.Chance + "%");
-        String buffer = "§a掉落數量§f " + MobItem.Quantity;
+        Lore.add("§a" + DataBase.language.Inventory.Item_Chance + "§f " + MobItem.Chance + "%");
+        String buffer = "§a" + DataBase.language.Inventory.Item_Quantity + "§f " + MobItem.Quantity;
         if(MobItem.Quantity_max - MobItem.Quantity > 0)
         	buffer = buffer + " ~ " + MobItem.Quantity_max;
-        buffer = buffer + "§a個";
         Lore.add(buffer);
         
         newItemMeta.setLore(Lore);

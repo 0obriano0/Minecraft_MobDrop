@@ -53,22 +53,19 @@ public class LoadConfig {
 	    if(data.contains("list.chinese")) 
 	    	list_Chinese = data.getBoolean("list.chinese");
 	    
-	    if(data.contains("lang"))
-	    	lang = data.getString("lang");
-	    
-	    if(data.contains("dropItem"))
-	    	dropItem = data.getBoolean("dropItem");
+	    if(data.contains("lang")) lang = data.getString("lang"); else errorMessage("","lang",lang);
+	    if(data.contains("dropItem")) dropItem = data.getBoolean("dropItem"); else errorMessage("","dropItem",""+dropItem);
 	    	
 	    if (data.contains("GobalMessage")){
 	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
 	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
-	    		DataBase.main.getLogger().info(AnsiColor.CYAN + "[LoadConfig]" + AnsiColor.GREEN +  " GobalMessage 設定成功" + AnsiColor.RESET);
+	    		DataBase.main.getLogger().info(AnsiColor.CYAN + "[LoadConfig]" + AnsiColor.GREEN +  " Config.yml Load Success" + AnsiColor.RESET);
 	    	}else{
-	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
+	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 config.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
-	    	DataBase.Config = new Config(true,50,false,false,false,"zh_TW",true);
+	    	DataBase.Config = new Config(true,50,command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
 	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
 	    }
 	}
@@ -86,5 +83,9 @@ public class LoadConfig {
 			e.printStackTrace();
 			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現嚴重的錯誤，請詢問程式設計師" + AnsiColor.RESET);
 		}
+	}
+	
+	public void errorMessage(String title,String name,String def) {
+		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " 資料讀取失敗，使用預設值: " + def + AnsiColor.RESET);
 	}
 }

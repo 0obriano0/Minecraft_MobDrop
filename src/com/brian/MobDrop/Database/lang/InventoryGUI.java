@@ -16,6 +16,8 @@ public class InventoryGUI {
 	public String dropList = "掉落列表";
 	public String items = "道具:";
 	public String mobs = "怪物:";
+	public String Item_Chance = "Chance:";
+	public String Item_Quantity = "Quantity:";
 	
 	public InventoryGUI() {
 		admin_lore = new ArrayList<String>();

@@ -95,10 +95,8 @@ public class LoadItems {
 				ItemName = data.getString(ItemKey + ".ItemName");
 			}
 			
-			if (data.contains(ItemKey + ".UseCustomName"))
-			{
+			if (data.contains(ItemKey + ".UseCustomName")) 
 				UseCustomName = data.getBoolean(ItemKey + ".UseCustomName");
-			}
 			// 物品說明
 			if (data.contains(ItemKey + ".ItemLores"))
 			{
@@ -129,7 +127,7 @@ public class LoadItems {
 				Enchants = this.data.getStringList(ItemKey + ".Enchants");
 			}
 			// 判斷是否有必要資訊
-			if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0))
+			if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0) && ItemName != "" && ItemRealname != "")
 			{
 				// 加入
 				try {
@@ -140,13 +138,13 @@ public class LoadItems {
 					if(DataBase.Config.command_cmd_show)
 						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " 設定成功" + AnsiColor.RESET);
 				}catch(Exception e) {
-					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
+					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " 物品: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 				}
 			}else
 			{
 				// 警告
 				failData++;
-				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " 物品: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 			}
 	    }
 		tools.Setprint("LoadItems","Items",DataBase.ItemMap.size(),DataBase.ItemMap.size()-failData,failData);
@@ -166,5 +164,9 @@ public class LoadItems {
 		{
 			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現嚴重的錯誤，請詢問程式設計師" + AnsiColor.RESET);
 		}
+	}
+	
+	public void errorMessage(String title,String name,String def) {
+		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " 資料讀取失敗，使用預設值: " + def + AnsiColor.RESET);
 	}
 }

@@ -16,6 +16,8 @@ InventoryGUI:
     dropList: "掉落列表"
     items: "道具:"
     mobs: "怪物:"
+    Item_Chance: "掉落機率:"
+    Item_Quantity: "數量:"
     
 message:
     Gobal_mobDropItem: "§6恭喜§a %player% §6 將§f %mob% §6殺死後掉落§a %item% §b%item_num% §6個!"

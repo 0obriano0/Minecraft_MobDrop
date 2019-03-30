@@ -13,4 +13,4 @@ command:
   
 lang: zh_TW
 #如果dropItem 是 false 就會嘗試將怪物掉落的道具塞入包包，假如包包滿了還是會掉地上
-dropItem: false
+dropItem: true
