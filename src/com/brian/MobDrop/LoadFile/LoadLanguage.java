@@ -69,8 +69,22 @@ public class LoadLanguage {
 		    	if(data.contains("message.Gobal_mobDropItem")) DataBase.language.message.Gobal_mobDropItem   = data.getString("message.Gobal_mobDropItem").replace("&","¡±");    else errorMessage("message","Gobal_mobDropItem");
 		    	if(data.contains("message.mobDropItem"))       DataBase.language.message.mobDropItem         = data.getString("message.mobDropItem").replace("&","¡±");          else errorMessage("message","mobDropItem");
 		    }
-		    
-		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[Loadlanguage] " + loadfilename + " Åª¨úµ²§ô" + AnsiColor.RESET);
+		    int MobsSuccess = 0;
+		    int MobsFail = 0;
+		    for (String MobsId : data.getConfigurationSection("Mobs").getKeys(false)) {
+		    	String value = null;
+		    	if(data.contains("Mobs." + MobsId)) {
+		    		value = data.getString("Mobs." + MobsId).replace("&","¡±"); 
+		    		DataBase.language.IDMobtoMessage.put(MobsId, value);
+		    		DataBase.language.MessagetoIDMob.put(value, MobsId);
+		    		MobsSuccess++;
+		    	}else{
+		    		errorMessage("Mobs",MobsId);
+		    		MobsFail--;
+		    	}
+		    }
+		    tools.Setprint("Loadlanguage","Mobs",MobsSuccess+MobsFail,MobsSuccess,MobsFail);
+		    DataBase.main.getLogger().info(AnsiColor.CYAN + "[Loadlanguage] " + AnsiColor.GREEN + loadfilename + " Load Success" + AnsiColor.RESET);
 		}
 		
 		public void CreateDefaultfile(){

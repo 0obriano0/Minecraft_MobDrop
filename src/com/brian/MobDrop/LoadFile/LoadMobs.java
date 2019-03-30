@@ -83,7 +83,7 @@ public class LoadMobs {
 		    	}
 		    	DataBase.MobItemMap.put(entity_name.toUpperCase().replace("&","§"),ItemsList);
 		    }
-		    DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.GREEN + "怪物讀取 總共:  " + AnsiColor.WHITE + (success + failData) + AnsiColor.YELLOW + " 成功:  " + AnsiColor.WHITE + success + AnsiColor.RED + " 失敗:  " + AnsiColor.WHITE + failData + AnsiColor.RESET);
+		    tools.Setprint("LoadMobs","MobsLoad",success + failData,success,failData);
 		}
 		
 		public void CreateDefaultfile(){

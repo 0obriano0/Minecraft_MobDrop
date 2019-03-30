@@ -62,7 +62,7 @@ public class LoadConfig {
 	    if (data.contains("GobalMessage")){
 	    	if(data.contains("GobalMessage.IsOpen") && data.contains("GobalMessage.Chance")) {
 	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
-	    		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadConfig] GobalMessage 設定成功" + AnsiColor.RESET);
+	    		DataBase.main.getLogger().info(AnsiColor.CYAN + "[LoadConfig]" + AnsiColor.GREEN +  " GobalMessage 設定成功" + AnsiColor.RESET);
 	    	}else{
 	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 GobalMessage.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;

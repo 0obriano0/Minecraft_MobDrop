@@ -149,7 +149,7 @@ public class LoadItems {
 				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "物品 " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " 未設定成功" + AnsiColor.RESET);
 			}
 	    }
-		DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "物品讀取 總共:  " + AnsiColor.WHITE + DataBase.ItemMap.size() + AnsiColor.YELLOW + " 成功:  " + AnsiColor.WHITE + (DataBase.ItemMap.size()-failData) + AnsiColor.RED + " 失敗:  " + AnsiColor.WHITE + failData + AnsiColor.RESET);
+		tools.Setprint("LoadItems","Items",DataBase.ItemMap.size(),DataBase.ItemMap.size()-failData,failData);
 	}
 	
 	// 建立預設檔
