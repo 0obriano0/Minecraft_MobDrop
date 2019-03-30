@@ -71,18 +71,21 @@ public class LoadLanguage {
 		    }
 		    int MobsSuccess = 0;
 		    int MobsFail = 0;
-		    for (String MobsId : data.getConfigurationSection("Mobs").getKeys(false)) {
-		    	String value = null;
-		    	if(data.contains("Mobs." + MobsId)) {
-		    		value = data.getString("Mobs." + MobsId).replace("&","¡±"); 
-		    		DataBase.language.IDMobtoMessage.put(MobsId, value);
-		    		DataBase.language.MessagetoIDMob.put(value, MobsId);
-		    		MobsSuccess++;
-		    	}else{
-		    		errorMessage("Mobs",MobsId);
-		    		MobsFail--;
-		    	}
-		    }
+		    if(data.contains("Mobs")) {
+			    for (String MobsId : data.getConfigurationSection("Mobs").getKeys(false)) {
+			    	String value = null;
+			    	if(data.contains("Mobs." + MobsId)) {
+			    		value = data.getString("Mobs." + MobsId).replace("&","¡±"); 
+			    		DataBase.language.IDMobtoMessage.put(MobsId, value);
+			    		DataBase.language.MessagetoIDMob.put(value, MobsId);
+			    		MobsSuccess++;
+			    	}else{
+			    		errorMessage("Mobs",MobsId);
+			    		MobsFail--;
+			    	}
+			    }
+		    }else
+		    	errorMessage("Mobs","datanotfond");
 		    tools.Setprint("Loadlanguage","Mobs",MobsSuccess+MobsFail,MobsSuccess,MobsFail);
 		    DataBase.main.getLogger().info(AnsiColor.CYAN + "[Loadlanguage] " + AnsiColor.GREEN + loadfilename + " Load Success" + AnsiColor.RESET);
 		}
