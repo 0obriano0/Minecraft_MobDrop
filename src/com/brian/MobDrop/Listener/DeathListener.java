@@ -24,16 +24,18 @@ public class DeathListener implements Listener{
     {
 		LivingEntity entityDeth = event.getEntity();
     	// 判斷是否為玩家殺死的
-    	if (entityDeth.getKiller() != null &&
-    		entityDeth.getKiller() instanceof Player)
-    	{
+    	if (entityDeth.getKiller() != null && entityDeth.getKiller() instanceof Player){
     		Player killBy = entityDeth.getKiller();
     		String sEntitlyName = "";
-    		if (entityDeth.getCustomName() != null) {
-    			if(DataBase.MobItemMap.containsKey(entityDeth.getCustomName().toUpperCase()))
-    				sEntitlyName = entityDeth.getCustomName().toUpperCase();
-    		}else
-    			sEntitlyName = entityDeth.getType().getName().toUpperCase();
+    		try {
+	    		if (entityDeth.getCustomName() != null) {
+	    			if(DataBase.MobItemMap.containsKey(entityDeth.getCustomName().toUpperCase()))
+	    				sEntitlyName = entityDeth.getCustomName().toUpperCase();
+	    		}else
+	    			sEntitlyName = entityDeth.getType().getName().toUpperCase();
+    		} catch (NullPointerException e) {
+    			return;
+    		}
     		
     		// 判斷是否有掉落物清單
     		if (DataBase.MobItemMap.containsKey(sEntitlyName))
