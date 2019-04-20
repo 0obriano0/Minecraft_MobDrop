@@ -52,6 +52,7 @@ public class InventoryItemsList implements InventoryProvider{
                 e -> InventoryMenu.INVENTORY.open(player)));
         contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.previous),
                 e -> INVENTORY.open(player, pagination.previous().getPage())));
+        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"¡±a - " + (pagination.getPage() + 1) + " - ")));
         contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.next),
                 e -> INVENTORY.open(player, pagination.next().getPage())));
     }

@@ -56,6 +56,7 @@ public class InventoryMobs_ItemList implements InventoryProvider{
                 e -> InventoryMobsList.INVENTORY.open(player)));
         contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.previous),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.previous().getPage())));
+        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"¡±a - " + (pagination.getPage() + 1) + " - ")));
         contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.next),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.next().getPage())));
     }
