@@ -1,4 +1,4 @@
-package com.brian.MobDrop.InventoryGUI;
+ï»¿package com.brian.MobDrop.InventoryGUI;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -24,11 +24,11 @@ public class InventoryMenu implements InventoryProvider{
 	public void init(Player player, InventoryContents contents) {
 		contents.fillBorders(ClickableItem.empty(new ItemStack(Material.BLACK_STAINED_GLASS_PANE)));
 		
-		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"¡±a" + DataBase.language.Inventory.ItemList,"¡±a - " + DataBase.language.Inventory.items + " ¡±f" + DataBase.ItemMap.size()),
+		contents.set(1, 2, ClickableItem.of(InventoryTools.createPageButton(Material.ITEM_FRAME,"Â§a" + DataBase.language.Inventory.ItemList,"Â§a - " + DataBase.language.Inventory.items + " Â§f" + DataBase.ItemMap.size()),
                 e -> InventoryItemsList.INVENTORY.open(player)));
-		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"¡±a" + DataBase.language.Inventory.MobsList,"¡±a - " + DataBase.language.Inventory.mobs + " ¡±f" + DataBase.MobItemMap.size()),
+		contents.set(1, 6, ClickableItem.of(InventoryTools.createPageButton(Material.ZOMBIE_HEAD,"Â§a" + DataBase.language.Inventory.MobsList,"Â§a - " + DataBase.language.Inventory.mobs + " Â§f" + DataBase.MobItemMap.size()),
                 e -> InventoryMobsList.INVENTORY.open(player)));
-		contents.set(2, 8, ClickableItem.of(InventoryTools.createPageButton(Material.BARRIER,"¡±a" + DataBase.language.Inventory.close),
+		contents.set(2, 8, ClickableItem.of(InventoryTools.createPageButton(Material.BARRIER,"Â§a" + DataBase.language.Inventory.close),
                 e -> InventoryMobsList.INVENTORY.close(player)));
 	}
 

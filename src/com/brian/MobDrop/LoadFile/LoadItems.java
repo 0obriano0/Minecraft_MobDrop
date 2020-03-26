@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+ï»¿package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Database.Items;
 
 public class LoadItems {
-	// ¥D­nÅª¨ú³]©w¥Î
+	// ä¸»è¦è®€å–è¨­å®šç”¨
 	private FileConfiguration data = null;
 
-	// ¶}ÀÉ¥Î
+	// é–‹æª”ç”¨
 	private File filePreload = null;
 	
 	private String loadfilename = "Items.yml";
@@ -27,69 +27,69 @@ public class LoadItems {
 	
 	public void ReLoadItems()
 	{
-		// ½T»{ÀÉ®×¬O§_¦s¦b
+		// ç¢ºèªæª”æ¡ˆæ˜¯å¦å­˜åœ¨
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
 	    if (this.filePreload.exists())
 	    {
-	    	// Åª¨ú³]©wÀÉ¤º®e
+	    	// è®€å–è¨­å®šæª”å…§å®¹
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    else
 	    {
-	    	// ÀÉ®×¤£¦s¦b¡A«Ø¥ß¹w³]ÀÉ
+	    	// æª”æ¡ˆä¸å­˜åœ¨ï¼Œå»ºç«‹é è¨­æª”
 	    	CreateDefaultfile();
-	    	// ­«¸üÀÉ®×
+	    	// é‡è¼‰æª”æ¡ˆ
 	    	this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
-	    	// Åª¨ú³]©wÀÉ¤º®e
+	    	// è®€å–è¨­å®šæª”å…§å®¹
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    
-		// ±¼¸¨ªºª««~¦WºÙ
+		// æ‰è½çš„ç‰©å“åç¨±
 		String ItemName = "";
-		// ±¼¸¨ªºª««~¬O§_®M¥Î­ì©l¦WºÙ
+		// æ‰è½çš„ç‰©å“æ˜¯å¦å¥—ç”¨åŸå§‹åç¨±
 		boolean UseCustomName = false;
-		// ±¼¸¨ªºª««~»¡©ú
+		// æ‰è½çš„ç‰©å“èªªæ˜
 		List<String> ItemLores = new ArrayList<String>();
-		// ±¼¸¨ªºª««~¦WºÙ(­ì©l¦WºÙ)
+		// æ‰è½çš„ç‰©å“åç¨±(åŸå§‹åç¨±)
 		String ItemRealname = "";
-		// ¦â±m
+		// è‰²å½©
 		int Red = 0;
 		int Green = 0;
 		int Blue = 0;
-		// ±¼¸¨ªºª««~ªşÅ]
+		// æ‰è½çš„ç‰©å“é™„é­”
 		List<String> Enchants = new ArrayList<String>();
-		// ©î¸Ñª««~ªşÄİID¥Î
+		// æ‹†è§£ç‰©å“é™„å±¬IDç”¨
 		//String strItemID = "";
 		
 		int failData = 0;
 		
-		// ¨ú±o¥Íª«¦WºÙ
+		// å–å¾—ç”Ÿç‰©åç¨±
 		for (String ItemKey : data.getConfigurationSection("").getKeys(false))
 	    {
-			// °j°éÅª¥X±¼¸¨ª«
+			// è¿´åœˆè®€å‡ºæ‰è½ç‰©
 			// ###########################################
-			// ²MªÅ¼È¦s°Ï
+			// æ¸…ç©ºæš«å­˜å€
 			// ###########################################
-			// ±¼¸¨ªºª««~¦WºÙ
+			// æ‰è½çš„ç‰©å“åç¨±
 			ItemName = "";
-			// ±¼¸¨ªºª««~¬O§_®M¥Î­ì©l¦WºÙ
+			// æ‰è½çš„ç‰©å“æ˜¯å¦å¥—ç”¨åŸå§‹åç¨±
 			UseCustomName = false;
-			// ±¼¸¨ªºª««~»¡©ú
+			// æ‰è½çš„ç‰©å“èªªæ˜
 			ItemLores = new ArrayList<String>();
-			// ±¼¸¨ªºª««~¦WºÙ(­ì©l¦WºÙ)
+			// æ‰è½çš„ç‰©å“åç¨±(åŸå§‹åç¨±)
 			ItemRealname = "";
-			// ¦â±m
+			// è‰²å½©
 			Red = 0;
 			Green = 0;
 			Blue = 0;
-			// ±¼¸¨ªºª««~ªşÅ]
+			// æ‰è½çš„ç‰©å“é™„é­”
 			Enchants = new ArrayList<String>();
-			// ©î¸Ñª««~ªşÄİID¥Î
+			// æ‹†è§£ç‰©å“é™„å±¬IDç”¨
 			//strItemID = "";
 			// ###########################################
-			// ¶}©lÅª¨ú¤º®e
+			// é–‹å§‹è®€å–å…§å®¹
 			// ###########################################
-			// Åª¨úª««~¦WºÙ
+			// è®€å–ç‰©å“åç¨±
 			if (data.contains(ItemKey + ".ItemName"))
 			{
 				ItemName = data.getString(ItemKey + ".ItemName");
@@ -97,7 +97,7 @@ public class LoadItems {
 			
 			if (data.contains(ItemKey + ".UseCustomName")) 
 				UseCustomName = data.getBoolean(ItemKey + ".UseCustomName");
-			// ª««~»¡©ú
+			// ç‰©å“èªªæ˜
 			if (data.contains(ItemKey + ".ItemLores"))
 			{
 				ItemLores = data.getStringList(ItemKey +  ".ItemLores");
@@ -111,7 +111,7 @@ public class LoadItems {
 				ItemRealname = data.getString(ItemKey + ".ItemRealname").toUpperCase();
 			}
 			
-			// §PÂ_¬O§_¬°¥Ö¥Ò(Åª¨ú¬V¦â½X)
+			// åˆ¤æ–·æ˜¯å¦ç‚ºçš®ç”²(è®€å–æŸ“è‰²ç¢¼)
 			if(ItemRealname.split("_")[0].equals("LEATHER")) {
 				if (data.contains(ItemKey + ".RGB")) {
 					String RGBbuffer = this.data.getString(ItemKey + ".RGB");
@@ -121,52 +121,52 @@ public class LoadItems {
 				}
 			}
 			
-			// ¨ú±oªşÅ]
+			// å–å¾—é™„é­”
 			if (data.contains(ItemKey + ".Enchants"))
 			{
 				Enchants = this.data.getStringList(ItemKey + ".Enchants");
 			}
-			// §PÂ_¬O§_¦³¥²­n¸ê°T
+			// åˆ¤æ–·æ˜¯å¦æœ‰å¿…è¦è³‡è¨Š
 			if (ItemRealname.length() > 0 && (Red <=255 && Red >= 0) && (Blue <=255 && Blue >= 0) && (Green <=255 && Green >= 0) && ItemName != "" && ItemRealname != "")
 			{
-				// ¥[¤J
+				// åŠ å…¥
 				try {
 					Items item = new Items(ItemName, UseCustomName, ItemRealname, ItemLores, Red, Green, Blue, Enchants);
 					item.getResultItem();
 					DataBase.ItemMap.put(ItemKey.toUpperCase(),item);
-					// ¥[¤J
+					// åŠ å…¥
 					if(DataBase.Config.command_cmd_show)
-						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "ª««~ " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " ³]©w¦¨¥\" + AnsiColor.RESET);
+						DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadItems] " + AnsiColor.GREEN + "ç‰©å“ " + AnsiColor.WHITE + ItemName + AnsiColor.GREEN + " è¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 				}catch(Exception e) {
-					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " ª««~: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " ¥¼³]©w¦¨¥\" + AnsiColor.RESET);
+					DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " ç‰©å“: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " æœªè¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 				}
 			}else
 			{
-				// Äµ§i
+				// è­¦å‘Š
 				failData++;
-				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " ª««~: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " ¥¼³]©w¦¨¥\" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadItems] " + AnsiColor.GREEN + "ID: " + AnsiColor.WHITE + ItemKey + AnsiColor.GREEN + " ç‰©å“: " + AnsiColor.WHITE + ItemName + AnsiColor.RED + " æœªè¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 			}
 	    }
 		tools.Setprint("LoadItems","Items",DataBase.ItemMap.size(),DataBase.ItemMap.size()-failData,failData);
 	}
 	
-	// «Ø¥ß¹w³]ÀÉ
+	// å»ºç«‹é è¨­æª”
 	public void CreateDefaultfile()
 	{
 		try
 		{
 			if(CopyFileAPI.createFile(DataBase.pluginMainDir, loadfilename, "/"+loadfilename, DataBase.main))
-				DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " ³Ğ«Ø¦¨¥\" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " å‰µå»ºæˆåŠŸ" + AnsiColor.RESET);
 			else
-				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{²§±`¡A½Ğ¸ß°İµ{¦¡³]­p®v" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾ç•°å¸¸ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«" + AnsiColor.RESET);
 		}
 		catch (Exception e)
 		{
-			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{ÄY­«ªº¿ù»~¡A½Ğ¸ß°İµ{¦¡³]­p®v" + AnsiColor.RESET);
+			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾åš´é‡çš„éŒ¯èª¤ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«" + AnsiColor.RESET);
 		}
 	}
 	
 	public void errorMessage(String title,String name,String def) {
-		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " ¸ê®ÆÅª¨ú¥¢±Ñ¡A¨Ï¥Î¹w³]­È: " + def + AnsiColor.RESET);
+		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " è³‡æ–™è®€å–å¤±æ•—ï¼Œä½¿ç”¨é è¨­å€¼: " + def + AnsiColor.RESET);
 	}
 }

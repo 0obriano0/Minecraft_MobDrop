@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+ï»¿package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -12,10 +12,10 @@ import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Database.MobItemList;
 
 public class LoadMobs {
-	// ¥D­nÅª¨ú³]©w¥Î
+	// ä¸»è¦è®€å–è¨­å®šç”¨
 		private FileConfiguration data = null;
 
-		// ¶}ÀÉ¥Î
+		// é–‹æª”ç”¨
 		private File filePreload = null;
 		
 		private String loadfilename = "Mobs.yml";
@@ -25,22 +25,22 @@ public class LoadMobs {
 		}
 		
 		public void ReLoadMobs(){
-			// ½T»{ÀÉ®×¬O§_¦s¦b
+			// ç¢ºèªæª”æ¡ˆæ˜¯å¦å­˜åœ¨
 		    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
 		    if (this.filePreload.exists()){
-		    	// Åª¨ú³]©wÀÉ¤º®e
+		    	// è®€å–è¨­å®šæª”å…§å®¹
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 		    }
 		    else{
-		    	// ÀÉ®×¤£¦s¦b¡A«Ø¥ß¹w³]ÀÉ
+		    	// æª”æ¡ˆä¸å­˜åœ¨ï¼Œå»ºç«‹é è¨­æª”
 		    	CreateDefaultfile();
-		    	// ­«¸üÀÉ®×
+		    	// é‡è¼‰æª”æ¡ˆ
 		    	this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
-		    	// Åª¨ú³]©wÀÉ¤º®e
+		    	// è®€å–è¨­å®šæª”å…§å®¹
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 		    }
 		    
-		    // «İÀx¦sªº±¼¸¨ª«²M³æ
+		    // å¾…å„²å­˜çš„æ‰è½ç‰©æ¸…å–®
 		 	List<MobItemList> ItemsList = new ArrayList<MobItemList>();
 		 	int failData = 0;
 		 	int success = 0;
@@ -48,10 +48,10 @@ public class LoadMobs {
 		    for (String entity_name : data.getConfigurationSection("").getKeys(false)) {
 		    	ItemsList = new ArrayList<MobItemList>();
 		    	for (String Itemkey : data.getConfigurationSection(entity_name).getKeys(false)) {
-		    		// ±o¨ìªºª««~¼Æ¶q
+		    		// å¾—åˆ°çš„ç‰©å“æ•¸é‡
 		    		int Quantity = -1;
 		    		int Quantity_max = 0;
-		    		// ±¼¸¨²v
+		    		// æ‰è½ç‡
 		    		double Chance = -1;
 		    		
 		    		if (data.contains(entity_name + "." + Itemkey + "." + "Quantity")){
@@ -72,16 +72,16 @@ public class LoadMobs {
 		    			ItemsList.add(new MobItemList(Quantity, Quantity_max, Chance, DataBase.ItemMap.get(Itemkey)));
 		    			success++;
 		    			if(DataBase.Config.command_cmd_show)
-		    				DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " ªº±¼¸¨ª« " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.GREEN + " ³]©w¦¨¥\" + AnsiColor.RESET);
+		    				DataBase.main.getLogger().info(AnsiColor.GREEN + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.GREEN + " çš„æ‰è½ç‰© " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.GREEN + " è¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 		    		}else {
 		    			failData++;
 		    			if(DataBase.ItemMap.containsKey(Itemkey))
-		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " ªº±¼¸¨ª« " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.RED + " ¥¼³]©w¦¨¥\" + AnsiColor.RESET);
+		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " çš„æ‰è½ç‰© " + AnsiColor.WHITE + DataBase.ItemMap.get(Itemkey).ItemName + AnsiColor.RED + " æœªè¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 		    			else
-		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " ªº±¼¸¨ª« " + AnsiColor.WHITE + Itemkey + AnsiColor.RED + " ¥¼³]©w¦¨¥\" + AnsiColor.RESET);
+		    				DataBase.main.getLogger().info(AnsiColor.RED + "[LoadMobs] " + AnsiColor.WHITE + DataBase.GetEntityName(entity_name) + AnsiColor.RED + " çš„æ‰è½ç‰© " + AnsiColor.WHITE + Itemkey + AnsiColor.RED + " æœªè¨­å®šæˆåŠŸ" + AnsiColor.RESET);
 		    		}
 		    	}
-		    	DataBase.MobItemMap.put(entity_name.toUpperCase().replace("&","¡±"),ItemsList);
+		    	DataBase.MobItemMap.put(entity_name.toUpperCase().replace("&","Â§"),ItemsList);
 		    }
 		    tools.Setprint("LoadMobs","MobsLoad",success + failData,success,failData);
 		}
@@ -90,13 +90,13 @@ public class LoadMobs {
 			try
 			{
 				if(CopyFileAPI.createFile(DataBase.pluginMainDir, loadfilename, "/"+loadfilename, DataBase.main))
-					DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " ³Ğ«Ø¦¨¥\" + AnsiColor.RESET);
+					DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " å‰µå»ºæˆåŠŸ" + AnsiColor.RESET);
 				else
-					DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{²§±`¡A½Ğ¸ß°İµ{¦¡³]­p®v" + AnsiColor.RESET);
+					DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾ç•°å¸¸ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«" + AnsiColor.RESET);
 			}
 			catch (Exception e)
 			{
-				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{ÄY­«ªº¿ù»~¡A½Ğ¸ß°İµ{¦¡³]­p®v" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾åš´é‡çš„éŒ¯èª¤ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«" + AnsiColor.RESET);
 			}
 		}
 }

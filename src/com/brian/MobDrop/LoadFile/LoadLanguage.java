@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+ï»¿package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 import java.util.List;
@@ -10,10 +10,10 @@ import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Database.DataBase;
 
 public class LoadLanguage {
-	// ¥D­nÅª¨ú³]©w¥Î
+	// ä¸»è¦è®€å–è¨­å®šç”¨
 		private FileConfiguration data = null;
 
-		// ¶}ÀÉ¥Î
+		// é–‹æª”ç”¨
 		private File filePreload = null;
 		
 		private String loadfiledir = "lang";
@@ -24,53 +24,53 @@ public class LoadLanguage {
 		
 		public void ReLoadLanguage(){
 			loadfilename = DataBase.Config.lang + ".yml";
-			// ½T»{ÀÉ®×¬O§_¦s¦b
+			// ç¢ºèªæª”æ¡ˆæ˜¯å¦å­˜åœ¨
 		    this.filePreload = new File(DataBase.pluginMainDir + loadfiledir + "/" + loadfilename);
 		    if (!this.filePreload.exists()){
-		    	DataBase.main.getLogger().info(AnsiColor.RED + "[FileLoad] " + DataBase.Config.lang + ".yml Åª¨ú¥¢±Ñ¡A¨Ï¥Î¹w³]­È zh_TW.yml" + AnsiColor.RESET);
+		    	DataBase.main.getLogger().info(AnsiColor.RED + "[FileLoad] " + DataBase.Config.lang + ".yml è®€å–å¤±æ•—ï¼Œä½¿ç”¨é è¨­å€¼ zh_TW.yml" + AnsiColor.RESET);
 		    	DataBase.Config.lang = "zh_TW";
 		    	loadfilename = DataBase.Config.lang + ".yml";
 		    	this.filePreload = new File(DataBase.pluginMainDir + loadfiledir + "/" + loadfilename);
 		    }
 		    if (this.filePreload.exists()){
-		    	// Åª¨ú³]©wÀÉ¤º®e
+		    	// è®€å–è¨­å®šæª”å…§å®¹
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 		    }
 		    else{
-		    	// ÀÉ®×¤£¦s¦b¡A«Ø¥ß¹w³]ÀÉ
+		    	// æª”æ¡ˆä¸å­˜åœ¨ï¼Œå»ºç«‹é è¨­æª”
 		    	CreateDefaultfile();
-		    	// ­«¸üÀÉ®×
+		    	// é‡è¼‰æª”æ¡ˆ
 		    	this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
-		    	// Åª¨ú³]©wÀÉ¤º®e
+		    	// è®€å–è¨­å®šæª”å…§å®¹
 		    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 		    	ReLoadLanguage();
 		    	return;
 		    }
 		    
 		    if(data.contains("Plugin")) {
-		    	if(data.contains("Plugin.title")) DataBase.language.Plugin_name = data.getString("Plugin.title").replace("&","¡±"); else errorMessage("Plugin","title");
+		    	if(data.contains("Plugin.title")) DataBase.language.Plugin_name = data.getString("Plugin.title").replace("&","Â§"); else errorMessage("Plugin","title");
 		    }
 		    
 		    if(data.contains("InventoryGUI")) {
-		    	if(data.contains("InventoryGUI.MobsList"))      DataBase.language.Inventory.MobsList      = data.getString("InventoryGUI.MobsList").replace("&","¡±");      else errorMessage("InventoryGUI","MobsList");
-		    	if(data.contains("InventoryGUI.ItemList"))      DataBase.language.Inventory.ItemList      = data.getString("InventoryGUI.ItemList").replace("&","¡±");      else errorMessage("InventoryGUI","ItemList");
-		    	if(data.contains("InventoryGUI.close"))         DataBase.language.Inventory.close         = data.getString("InventoryGUI.close").replace("&","¡±");         else errorMessage("InventoryGUI","close");
-		    	if(data.contains("InventoryGUI.next"))          DataBase.language.Inventory.next          = data.getString("InventoryGUI.next").replace("&","¡±");          else errorMessage("InventoryGUI","next");
-		    	if(data.contains("InventoryGUI.previous"))      DataBase.language.Inventory.previous      = data.getString("InventoryGUI.previous").replace("&","¡±");      else errorMessage("InventoryGUI","previous");
-		    	if(data.contains("InventoryGUI.menu"))          DataBase.language.Inventory.menu          = data.getString("InventoryGUI.menu").replace("&","¡±");          else errorMessage("InventoryGUI","menu");
-		    	if(data.contains("InventoryGUI.back"))          DataBase.language.Inventory.back          = data.getString("InventoryGUI.back").replace("&","¡±");          else errorMessage("InventoryGUI","back");
-		    	if(data.contains("InventoryGUI.back_menu"))     DataBase.language.Inventory.back_menu     = data.getString("InventoryGUI.back_menu").replace("&","¡±");     else errorMessage("InventoryGUI","back_menu");
-		    	if(data.contains("InventoryGUI.dropList"))      DataBase.language.Inventory.dropList      = data.getString("InventoryGUI.dropList").replace("&","¡±");      else errorMessage("InventoryGUI","dropList");
-		    	if(data.contains("InventoryGUI.items"))         DataBase.language.Inventory.items         = data.getString("InventoryGUI.items").replace("&","¡±");         else errorMessage("InventoryGUI","items");
-		    	if(data.contains("InventoryGUI.mobs"))          DataBase.language.Inventory.mobs          = data.getString("InventoryGUI.mobs").replace("&","¡±");          else errorMessage("InventoryGUI","mobs");
-		    	if(data.contains("InventoryGUI.Item_Chance"))   DataBase.language.Inventory.Item_Chance   = data.getString("InventoryGUI.Item_Chance").replace("&","¡±");   else errorMessage("InventoryGUI","Item_Chance");
-		    	if(data.contains("InventoryGUI.Item_Quantity")) DataBase.language.Inventory.Item_Quantity = data.getString("InventoryGUI.Item_Quantity").replace("&","¡±"); else errorMessage("InventoryGUI","Item_Quantity");
+		    	if(data.contains("InventoryGUI.MobsList"))      DataBase.language.Inventory.MobsList      = data.getString("InventoryGUI.MobsList").replace("&","Â§");      else errorMessage("InventoryGUI","MobsList");
+		    	if(data.contains("InventoryGUI.ItemList"))      DataBase.language.Inventory.ItemList      = data.getString("InventoryGUI.ItemList").replace("&","Â§");      else errorMessage("InventoryGUI","ItemList");
+		    	if(data.contains("InventoryGUI.close"))         DataBase.language.Inventory.close         = data.getString("InventoryGUI.close").replace("&","Â§");         else errorMessage("InventoryGUI","close");
+		    	if(data.contains("InventoryGUI.next"))          DataBase.language.Inventory.next          = data.getString("InventoryGUI.next").replace("&","Â§");          else errorMessage("InventoryGUI","next");
+		    	if(data.contains("InventoryGUI.previous"))      DataBase.language.Inventory.previous      = data.getString("InventoryGUI.previous").replace("&","Â§");      else errorMessage("InventoryGUI","previous");
+		    	if(data.contains("InventoryGUI.menu"))          DataBase.language.Inventory.menu          = data.getString("InventoryGUI.menu").replace("&","Â§");          else errorMessage("InventoryGUI","menu");
+		    	if(data.contains("InventoryGUI.back"))          DataBase.language.Inventory.back          = data.getString("InventoryGUI.back").replace("&","Â§");          else errorMessage("InventoryGUI","back");
+		    	if(data.contains("InventoryGUI.back_menu"))     DataBase.language.Inventory.back_menu     = data.getString("InventoryGUI.back_menu").replace("&","Â§");     else errorMessage("InventoryGUI","back_menu");
+		    	if(data.contains("InventoryGUI.dropList"))      DataBase.language.Inventory.dropList      = data.getString("InventoryGUI.dropList").replace("&","Â§");      else errorMessage("InventoryGUI","dropList");
+		    	if(data.contains("InventoryGUI.items"))         DataBase.language.Inventory.items         = data.getString("InventoryGUI.items").replace("&","Â§");         else errorMessage("InventoryGUI","items");
+		    	if(data.contains("InventoryGUI.mobs"))          DataBase.language.Inventory.mobs          = data.getString("InventoryGUI.mobs").replace("&","Â§");          else errorMessage("InventoryGUI","mobs");
+		    	if(data.contains("InventoryGUI.Item_Chance"))   DataBase.language.Inventory.Item_Chance   = data.getString("InventoryGUI.Item_Chance").replace("&","Â§");   else errorMessage("InventoryGUI","Item_Chance");
+		    	if(data.contains("InventoryGUI.Item_Quantity")) DataBase.language.Inventory.Item_Quantity = data.getString("InventoryGUI.Item_Quantity").replace("&","Â§"); else errorMessage("InventoryGUI","Item_Quantity");
 		    	if(data.contains("InventoryGUI.admin_lore"))    DataBase.language.Inventory.admin_lore    = getListString(data.getStringList("InventoryGUI.admin_lore"));  else errorMessage("InventoryGUI","admin_lore");
 		    }
 		    
 		    if(data.contains("message")) {
-		    	if(data.contains("message.Gobal_mobDropItem")) DataBase.language.message.Gobal_mobDropItem   = data.getString("message.Gobal_mobDropItem").replace("&","¡±");    else errorMessage("message","Gobal_mobDropItem");
-		    	if(data.contains("message.mobDropItem"))       DataBase.language.message.mobDropItem         = data.getString("message.mobDropItem").replace("&","¡±");          else errorMessage("message","mobDropItem");
+		    	if(data.contains("message.Gobal_mobDropItem")) DataBase.language.message.Gobal_mobDropItem   = data.getString("message.Gobal_mobDropItem").replace("&","Â§");    else errorMessage("message","Gobal_mobDropItem");
+		    	if(data.contains("message.mobDropItem"))       DataBase.language.message.mobDropItem         = data.getString("message.mobDropItem").replace("&","Â§");          else errorMessage("message","mobDropItem");
 		    }
 		    int MobsSuccess = 0;
 		    int MobsFail = 0;
@@ -78,7 +78,7 @@ public class LoadLanguage {
 			    for (String MobsId : data.getConfigurationSection("Mobs").getKeys(false)) {
 			    	String value = null;
 			    	if(data.contains("Mobs." + MobsId)) {
-			    		value = data.getString("Mobs." + MobsId).replace("&","¡±"); 
+			    		value = data.getString("Mobs." + MobsId).replace("&","Â§"); 
 			    		DataBase.language.IDMobtoMessage.put(MobsId, value);
 			    		DataBase.language.MessagetoIDMob.put(value, MobsId);
 			    		MobsSuccess++;
@@ -100,25 +100,25 @@ public class LoadLanguage {
 			{
 				for(int index = 0;index < fileName.length;index++) {
 					if(CopyFileAPI.createFile(DataBase.pluginMainDir + "/" + loadfiledir, "/" + fileName[index] + ".yml", "/" + loadfiledir + "/" + fileName[index] + ".yml", DataBase.main))
-						DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + fileName[index] + ".yml" + AnsiColor.GREEN +  " ³Ğ«Ø¦¨¥\" + AnsiColor.RESET);
+						DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + fileName[index] + ".yml" + AnsiColor.GREEN +  " å‰µå»ºæˆåŠŸ" + AnsiColor.RESET);
 					else
-						DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{²§±`¡A½Ğ¸ß°İµ{¦¡³]­p®v1" + AnsiColor.RESET);
+						DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾ç•°å¸¸ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«1" + AnsiColor.RESET);
 				}
 			}
 			catch (Exception e)
 			{
-				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ¸ê®Æ³Ğ«Ø¥X²{ÄY­«ªº¿ù»~¡A½Ğ¸ß°İµ{¦¡³]­p®v" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] è³‡æ–™å‰µå»ºå‡ºç¾åš´é‡çš„éŒ¯èª¤ï¼Œè«‹è©¢å•ç¨‹å¼è¨­è¨ˆå¸«" + AnsiColor.RESET);
 			}
 		}
 		
 		public void errorMessage(String title,String name) {
-			DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " ¸ê®ÆÅª¨ú¥¢±Ñ¡A¨Ï¥Î¹w³]­È..." + AnsiColor.RESET);
+			DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " è³‡æ–™è®€å–å¤±æ•—ï¼Œä½¿ç”¨é è¨­å€¼..." + AnsiColor.RESET);
 		}
 		
 		public List<String> getListString(List<String> data) {
 			for (int i = 0; i < data.size(); i++)
 			{
-				data.set(i, data.get(i).replace("_", " ").replace("&","¡±"));
+				data.set(i, data.get(i).replace("_", " ").replace("&","Â§"));
 			}
 			return data;
 		}

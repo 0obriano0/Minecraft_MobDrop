@@ -1,7 +1,7 @@
-package com.brian.MobDrop;
+Ôªøpackage com.brian.MobDrop;
 
 public class AnsiColor {
-	//public static final String  = "\u001B[m";≥]©w√C¶‚
+	//public static final String  = "\u001B[m";Ë®≠ÂÆöÈ°èËâ≤
 	public static final String RESET = "\u001B[0m";
 	public static final String BLACK = "\u001B[30m";
 	public static final String RED = "\u001B[31m";

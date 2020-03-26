@@ -1,4 +1,4 @@
-package com.brian.MobDrop.InventoryGUI;
+ï»¿package com.brian.MobDrop.InventoryGUI;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -52,12 +52,12 @@ public class InventoryMobs_ItemList implements InventoryProvider{
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
-        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"¡±a" + DataBase.language.Inventory.back),
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"Â§a" + DataBase.language.Inventory.back),
                 e -> InventoryMobsList.INVENTORY.open(player)));
-        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.previous),
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"Â§a" + DataBase.language.Inventory.previous),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"¡±a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.next),
+        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"Â§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"Â§a" + DataBase.language.Inventory.next),
                 e -> InventoryMobs_ItemList.getInventory(MobName,mobItemList).open(player, pagination.next().getPage())));
     }
 
@@ -77,8 +77,8 @@ public class InventoryMobs_ItemList implements InventoryProvider{
         if(Lore == null)
         	Lore = new ArrayList<String>();
         Lore.add("");
-        Lore.add("¡±a" + DataBase.language.Inventory.Item_Chance + "¡±f " + MobItem.Chance + "%");
-        String buffer = "¡±a" + DataBase.language.Inventory.Item_Quantity + "¡±f " + MobItem.Quantity;
+        Lore.add("Â§a" + DataBase.language.Inventory.Item_Chance + "Â§f " + MobItem.Chance + "%");
+        String buffer = "Â§a" + DataBase.language.Inventory.Item_Quantity + "Â§f " + MobItem.Quantity;
         if(MobItem.Quantity_max - MobItem.Quantity > 0)
         	buffer = buffer + " ~ " + MobItem.Quantity_max;
         Lore.add(buffer);

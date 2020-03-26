@@ -1,4 +1,4 @@
-package com.brian.MobDrop.HashMap;
+ï»¿package com.brian.MobDrop.HashMap;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -10,15 +10,15 @@ import java.util.Map;
 import com.brian.MobDrop.Database.Items;
 
 public class HashMapSortItemList {
-	// ·Q¨Ì·Ó©m¦W©Î¦¨ÁZµP¦C¦L¥X©Ò¦³¸ê®Æ¡A¥ı±N©Ò¦³HashMap¸Ìªºentry©ñ¤JList
+	// æƒ³ä¾ç…§å§“åæˆ–æˆç¸¾ç‰Œåˆ—å°å‡ºæ‰€æœ‰è³‡æ–™ï¼Œå…ˆå°‡æ‰€æœ‰HashMapè£¡çš„entryæ”¾å…¥List
 	public List<Map.Entry<String, Items>> list_Data;
 	
     public HashMapSortItemList(HashMap<String, Items> inputdata) {
 
-        // ·Q¨Ì·Ó©m¦W©Î¦¨ÁZµP¦C¦L¥X©Ò¦³¸ê®Æ¡A¥ı±N©Ò¦³HashMap¸Ìªºentry©ñ¤JList
+        // æƒ³ä¾ç…§å§“åæˆ–æˆç¸¾ç‰Œåˆ—å°å‡ºæ‰€æœ‰è³‡æ–™ï¼Œå…ˆå°‡æ‰€æœ‰HashMapè£¡çš„entryæ”¾å…¥List
     	list_Data = new ArrayList<Map.Entry<String, Items>>(inputdata.entrySet());
 
-        // ¨Ì©m¦W±Æ§Ç¨Ã¦C¦L
+        // ä¾å§“åæ’åºä¸¦åˆ—å°
         Collections.sort(list_Data, new Comparator<Map.Entry<String, Items>>(){
             public int compare(Map.Entry<String, Items> entry1, Map.Entry<String, Items> entry2){
                 return (entry1.getKey().compareTo(entry2.getKey()));

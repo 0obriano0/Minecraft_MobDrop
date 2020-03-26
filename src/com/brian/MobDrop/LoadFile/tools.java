@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+﻿package com.brian.MobDrop.LoadFile;
 
 import com.brian.MobDrop.AnsiColor;
 import com.brian.MobDrop.Database.DataBase;

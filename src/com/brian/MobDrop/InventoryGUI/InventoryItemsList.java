@@ -1,4 +1,4 @@
-package com.brian.MobDrop.InventoryGUI;
+ï»¿package com.brian.MobDrop.InventoryGUI;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -48,12 +48,12 @@ public class InventoryItemsList implements InventoryProvider{
 
         pagination.addToIterator(contents.newIterator(SlotIterator.Type.HORIZONTAL, 0, 0));
         
-        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"¡±a" + DataBase.language.Inventory.back_menu),
+        contents.set(4, 0, ClickableItem.of(InventoryTools.createPageButton(Material.ACACIA_DOOR,"Â§a" + DataBase.language.Inventory.back_menu),
                 e -> InventoryMenu.INVENTORY.open(player)));
-        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.previous),
+        contents.set(4, 3, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"Â§a" + DataBase.language.Inventory.previous),
                 e -> INVENTORY.open(player, pagination.previous().getPage())));
-        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"¡±a - " + (pagination.getPage() + 1) + " - ")));
-        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"¡±a" + DataBase.language.Inventory.next),
+        contents.set(4, 4, ClickableItem.empty(InventoryTools.createPageButton(Material.PAPER,"Â§a - " + (pagination.getPage() + 1) + " - ")));
+        contents.set(4, 5, ClickableItem.of(InventoryTools.createPageButton(Material.ARROW,"Â§a" + DataBase.language.Inventory.next),
                 e -> INVENTORY.open(player, pagination.next().getPage())));
     }
 
@@ -70,11 +70,11 @@ public class InventoryItemsList implements InventoryProvider{
         if(Lore == null)
         	Lore = new ArrayList<String>();
         Lore.add("");
-        Lore.add("¡±7 - " + entry.getKey());
+        Lore.add("Â§7 - " + entry.getKey());
         if (player.hasPermission("MobDrop.admin")) {
         	Lore.add("");
         	for(int index = 0;index < DataBase.language.Inventory.admin_lore.size();index++) {
-        		Lore.add("¡±a"+DataBase.language.Inventory.admin_lore.get(index));
+        		Lore.add("Â§a"+DataBase.language.Inventory.admin_lore.get(index));
         	}
         }
         newItemMeta.setDisplayName(entry.getValue().ItemName);
@@ -89,10 +89,10 @@ public class InventoryItemsList implements InventoryProvider{
 			ItemStack Itemcreate = entry.getValue().getResultItem();
 			Itemcreate.setAmount(1);
 			if(player.getInventory().firstEmpty() == -1)
-				player.sendMessage("¡±b" + DataBase.language.Plugin_name + " ¡±c­I¥]¤wº¡¡AµLªkÀò¨ú¹D¨ã");
+				player.sendMessage("Â§b" + DataBase.language.Plugin_name + " Â§cèƒŒåŒ…å·²æ»¿ï¼Œç„¡æ³•ç²å–é“å…·");
 			else {
 				player.getInventory().addItem(Itemcreate);
-				player.sendMessage("¡±b" + DataBase.language.Plugin_name + " ¡±fÀò¨ú¹D¨ã: " + entry.getValue().ItemName);
+				player.sendMessage("Â§b" + DataBase.language.Plugin_name + " Â§fç²å–é“å…·: " + entry.getValue().ItemName);
 			}
 		}
 	}

@@ -1,27 +1,27 @@
-package com.brian.MobDrop.Database.lang;
+ï»¿package com.brian.MobDrop.Database.lang;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InventoryGUI {
-	public String MobsList = "©Çª«±¼¸¨¦Cªí";
-	public String ItemList = "ª««~¦Cªí";
-	public String close = "Ãö³¬";
-	public String next = "¤U¤@­¶";
-	public String previous = "¤W¤@­¶";
-	public String menu = "¥D¿ï³æ";
-	public String back = "ªğ¦^";
-	public String back_menu = "¦^­º­¶";
+	public String MobsList = "æ€ªç‰©æ‰è½åˆ—è¡¨";
+	public String ItemList = "ç‰©å“åˆ—è¡¨";
+	public String close = "é—œé–‰";
+	public String next = "ä¸‹ä¸€é ";
+	public String previous = "ä¸Šä¸€é ";
+	public String menu = "ä¸»é¸å–®";
+	public String back = "è¿”å›";
+	public String back_menu = "å›é¦–é ";
 	public List<String> admin_lore;
-	public String dropList = "±¼¸¨¦Cªí";
-	public String items = "¹D¨ã:";
-	public String mobs = "©Çª«:";
+	public String dropList = "æ‰è½åˆ—è¡¨";
+	public String items = "é“å…·:";
+	public String mobs = "æ€ªç‰©:";
 	public String Item_Chance = "Chance:";
 	public String Item_Quantity = "Quantity:";
 	
 	public InventoryGUI() {
 		admin_lore = new ArrayList<String>();
-		admin_lore.add("ÂIÀ»¥ªÁä");
-		admin_lore.add("®³¨ú¹D¨ã");
+		admin_lore.add("é»æ“Šå·¦éµ");
+		admin_lore.add("æ‹¿å–é“å…·");
 	}
 }

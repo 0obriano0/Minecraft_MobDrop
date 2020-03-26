@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Database;
+ï»¿package com.brian.MobDrop.Database;
 
 import java.util.HashMap;
 import java.util.List;
@@ -14,43 +14,43 @@ import com.brian.MobDrop.LoadFile.LoadMobs;
 import com.brian.MobDrop.LoadFile.LoadLanguage;
 
 public class DataBase {
-	// ¥D´¡¥ó
+	// ä¸»æ’ä»¶
 	public static Main main;
 	
-	// ³]©wÀÉ
+	// è¨­å®šæª”
 	public static LoadConfig LoadConfig;
 	public static LoadItems LoadItems;
 	public static LoadMobs LoadMobs;
 	public static LoadLanguage LoadLanguage;
 	
-	// ¦øªA¾¹
+	// ä¼ºæœå™¨
 	public static Server server;
 	
-	//»y¨¥¥]
+	//èªè¨€åŒ…
 	public static language language = new language();
 	
-	// ´¡¥ó¥Ø¿ı
+	// æ’ä»¶ç›®éŒ„
 	public static String pluginMainDir = "./plugins/MobDrop/";
 	
-	//«ü¥O¥Ø¿ı
+	//æŒ‡ä»¤ç›®éŒ„
 	public static MainList CommandsList = new MainList();
 
-	//±¼¸¨ª««~²M³æ
+	//æ‰è½ç‰©å“æ¸…å–®
 	public static Map<String, List<MobItemList>> MobItemMap = new HashMap<String, List<MobItemList>>();
 	
-	//ª««~³]©w
+	//ç‰©å“è¨­å®š
 	public static Map<String, Items> ItemMap = new HashMap<String, Items>();
 	
-	//¤½¶}Åã¥Ü°T®§
+	//å…¬é–‹é¡¯ç¤ºè¨Šæ¯
 	public static Config Config;
 	
-	// Åã¥Ü°T®§
+	// é¡¯ç¤ºè¨Šæ¯
 	public static void Print(String msg)
 	{
 		System.out.print("[MobDrop] " + msg);
 	}
 	
-	// ¨ú±o¥Íª«¦WºÙ(¤¤¤å)
+	// å–å¾—ç”Ÿç‰©åç¨±(ä¸­æ–‡)
 	public static String GetEntityName(String entityId){
 		if(DataBase.language.IDMobtoMessage.containsKey(entityId))
 			return DataBase.language.IDMobtoMessage.get(entityId);
@@ -58,7 +58,7 @@ public class DataBase {
 			return entityId;
 	}
 	
-	// ¨ú±o¥Íª«¦WºÙ(¤¤¤å)
+	// å–å¾—ç”Ÿç‰©åç¨±(ä¸­æ–‡)
 	public static String getEntityNameGameCode(String entityId){
 		if(DataBase.language.MessagetoIDMob.containsKey(entityId))
 			return DataBase.language.MessagetoIDMob.get(entityId);

@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command.CommandsList;
+ï»¿package com.brian.MobDrop.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,7 +15,7 @@ public class GetItemCommand {
 		if(args.length == 2)
 			GetItem.getitem((Player) sender, args);
 		else {
-			sender.sendMessage("¡±c/" + label + " " + args[0] + " <Itemkey> <-- ®æ¦¡½Ð«ö·Ó³o¼Ë¿é¤J");
+			sender.sendMessage("Â§c/" + label + " " + args[0] + " <Itemkey> <-- æ ¼å¼è«‹æŒ‰ç…§é€™æ¨£è¼¸å…¥");
 			return false;
 		}
 		return true;

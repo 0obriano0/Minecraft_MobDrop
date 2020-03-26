@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Listener;
+ï»¿package com.brian.MobDrop.Listener;
 
 import java.util.List;
 
@@ -23,7 +23,7 @@ public class DeathListener implements Listener{
     public void onEntityDeathEvents(EntityDeathEvent event)
     {
 		LivingEntity entityDeth = event.getEntity();
-    	// §PÂ_¬O§_¬°ª±®a±ş¦ºªº
+    	// åˆ¤æ–·æ˜¯å¦ç‚ºç©å®¶æ®ºæ­»çš„
     	if (entityDeth.getKiller() != null && entityDeth.getKiller() instanceof Player){
     		Player killBy = entityDeth.getKiller();
     		String sEntitlyName = "";
@@ -37,42 +37,42 @@ public class DeathListener implements Listener{
     			return;
     		}
     		
-    		// §PÂ_¬O§_¦³±¼¸¨ª«²M³æ
+    		// åˆ¤æ–·æ˜¯å¦æœ‰æ‰è½ç‰©æ¸…å–®
     		if (DataBase.MobItemMap.containsKey(sEntitlyName))
     		{
-    			// ¨ú±o±¼¸¨ª«²M³æ
+    			// å–å¾—æ‰è½ç‰©æ¸…å–®
     			List<MobItemList> dropItems = DataBase.MobItemMap.get(sEntitlyName);
     			MobItemList MobDropItem;
-    			// °j°é§PÂ_¬O§_±¼¸¨ª««~
+    			// è¿´åœˆåˆ¤æ–·æ˜¯å¦æ‰è½ç‰©å“
     			for (int i = 0; i < dropItems.size(); i++)
     			{
     				MobDropItem = dropItems.get(i);
-    				// §PÂ_¥@¬É¬O§_¥¿½T
+    				// åˆ¤æ–·ä¸–ç•Œæ˜¯å¦æ­£ç¢º
     				//if (customItem.OnlyWorld.equals("") || customItem.OnlyWorld.toUpperCase().equals(entityDeth.getWorld().getName().toUpperCase()))
     				//{
-    					// ¨ú±o°ò¼Æ(±q1~10000¤¤©â¤@­Ó¸¹½X)
+    					// å–å¾—åŸºæ•¸(å¾1~10000ä¸­æŠ½ä¸€å€‹è™Ÿç¢¼)
         				int iChance = (int)(Math.random() * 10000 + 1);
-        				// §PÂ_ª««~±¼¸¨¾÷²v(­¼¥H100«á)¬O§_¤p©ó°ò¼Æ
+        				// åˆ¤æ–·ç‰©å“æ‰è½æ©Ÿç‡(ä¹˜ä»¥100å¾Œ)æ˜¯å¦å°æ–¼åŸºæ•¸
         				if (iChance <= (MobDropItem.Chance * 100))
         				{	
-        					// §P©w±¼¸¨¼Æ¶q
+        					// åˆ¤å®šæ‰è½æ•¸é‡
         					ItemStack MobDropItem_ = MobDropItem.getResultItem();
             				int items_num = 1;
         					if(MobDropItem.Quantity < MobDropItem.Quantity_max) {
         						items_num = (int)(Math.random() * (MobDropItem.Quantity_max-MobDropItem.Quantity+1) + MobDropItem.Quantity);
             					MobDropItem_.setAmount(items_num);
         					}
-        					// §P©w±¼¸¨
+        					// åˆ¤å®šæ‰è½
         					if(killBy.getInventory().firstEmpty() == -1)
         						entityDeth.getWorld().dropItemNaturally(entityDeth.getLocation(), MobDropItem_);
         					else
         						killBy.getInventory().addItem(MobDropItem_);
-        					// Åã¥Ü±¼¸¨°T®§
+        					// é¡¯ç¤ºæ‰è½è¨Šæ¯
         					
         					if(DataBase.Config.IsOpen && DataBase.Config.Chance >= MobDropItem.Chance) 
-        						DataBase.server.broadcastMessage("¡±b" + DataBase.language.Plugin_name + " " + formatmessage(DataBase.language.message.Gobal_mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
+        						DataBase.server.broadcastMessage("Â§b" + DataBase.language.Plugin_name + " " + formatmessage(DataBase.language.message.Gobal_mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
     						
-        					killBy.sendMessage("¡±b" + DataBase.language.Plugin_name + "¡±f " + " " + formatmessage(DataBase.language.message.mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
+        					killBy.sendMessage("Â§b" + DataBase.language.Plugin_name + "Â§f " + " " + formatmessage(DataBase.language.message.mobDropItem, killBy, sEntitlyName, MobDropItem, MobDropItem_));
         				}
     				//}
     			}

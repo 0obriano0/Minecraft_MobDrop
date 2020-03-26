@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command;
+ï»¿package com.brian.MobDrop.Command;
 
 import java.util.List;
 
@@ -23,23 +23,23 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
  
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args){
-		// §PÂ_¬O§_¬°ª±®aªº«ü¥O
+		// åˆ¤æ–·æ˜¯å¦ç‚ºç©å®¶çš„æŒ‡ä»¤
 		if (sender instanceof Player){
-			// §PÂ_«ü¥Oªø«×
+			// åˆ¤æ–·æŒ‡ä»¤é•·åº¦
 			if (args.length == 0){
-				// Åã¥Ü»¡©ú
-				sender.sendMessage("¡±9==========¡±dMobDrop¡±9==========");
-				sender.sendMessage("¡±a/mdop menu ¡±f- ¡±e¶}±Ò¥Ø¿ı");
+				// é¡¯ç¤ºèªªæ˜
+				sender.sendMessage("Â§9==========Â§dMobDropÂ§9==========");
+				sender.sendMessage("Â§a/mdop menu Â§f- Â§eé–‹å•Ÿç›®éŒ„");
 				if(DataBase.Config.command_old_list) {
-					sender.sendMessage("¡±a/mdop moblist <¥Íª«¦W(¥i¥´¥i¤£¥´)> ¡±f- ¡±e¦C¥X©Ò¦³¥Íª«ªº±¼¸¨¸ê°T");
-					sender.sendMessage("¡±a/mdop itemlist ¡±f- ¡±e¦C¥X©Ò¦³¹D¨ãªº±¼¸¨¸ê°T");
+					sender.sendMessage("Â§a/mdop moblist <ç”Ÿç‰©å(å¯æ‰“å¯ä¸æ‰“)> Â§f- Â§eåˆ—å‡ºæ‰€æœ‰ç”Ÿç‰©çš„æ‰è½è³‡è¨Š");
+					sender.sendMessage("Â§a/mdop itemlist Â§f- Â§eåˆ—å‡ºæ‰€æœ‰é“å…·çš„æ‰è½è³‡è¨Š");
 				}
 				if (sender.hasPermission("MobDrop.admin")) {
 					if(DataBase.Config.command_old_list)
-						sender.sendMessage("¡±a/mdop getitem <ª««~¦WºÙ> ¡±f- ¡±eÀò¨ú¹D¨ã");
-					sender.sendMessage("¡±a/mdop reload ¡±f- ¡±e­«·sÅª¨ú¸ê®Æ");
+						sender.sendMessage("Â§a/mdop getitem <ç‰©å“åç¨±> Â§f- Â§eç²å–é“å…·");
+					sender.sendMessage("Â§a/mdop reload Â§f- Â§eé‡æ–°è®€å–è³‡æ–™");
 				}
-				sender.sendMessage("¡±9===========================");
+				sender.sendMessage("Â§9===========================");
 				return true;
 			}
 			else{
@@ -51,25 +51,25 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				}
 				if (args[0].equals("moblist") && DataBase.Config.command_old_list)
 					return MobListCommand.parseCommands(sender, cmd, label, args);
-				//«Ê¦s
+				//å°å­˜
 				else if(args[0].equals("itemlist") && DataBase.Config.command_old_list) 
 					return ItemListCommand.parseCommands(sender, cmd, label, args);
 				else if(args[0].equals("menu")) {
 					InventoryMenu.INVENTORY.open((Player) sender);
 					return true;
 				}else
-					sender.sendMessage("¡±c/" + label + " " + args[0] + " <-- ¬dµL¦¹«ü¥O");
+					sender.sendMessage("Â§c/" + label + " " + args[0] + " <-- æŸ¥ç„¡æ­¤æŒ‡ä»¤");
 			}
 	    }
 		else
 		{
 			if (args.length == 0){
-				// Åã¥Ü»¡©ú
-				sender.sendMessage("¡±9==========¡±dMobDrop¡±9==========");
-				sender.sendMessage("¡±a/mdop moblist <¥Íª«¦W(¥i¥´¥i¤£¥´)> ¡±f- ¡±e¦C¥X©Ò¦³¥Íª«ªº±¼¸¨¸ê°T");
-				sender.sendMessage("¡±a/mdop itemlist ¡±f- ¡±e¦C¥X©Ò¦³¹D¨ãªº±¼¸¨¸ê°T");
-				sender.sendMessage("¡±a/mdop reload ¡±f- ¡±e­«·sÅª¨ú¸ê®Æ");
-				sender.sendMessage("¡±9===========================");
+				// é¡¯ç¤ºèªªæ˜
+				sender.sendMessage("Â§9==========Â§dMobDropÂ§9==========");
+				sender.sendMessage("Â§a/mdop moblist <ç”Ÿç‰©å(å¯æ‰“å¯ä¸æ‰“)> Â§f- Â§eåˆ—å‡ºæ‰€æœ‰ç”Ÿç‰©çš„æ‰è½è³‡è¨Š");
+				sender.sendMessage("Â§a/mdop itemlist Â§f- Â§eåˆ—å‡ºæ‰€æœ‰é“å…·çš„æ‰è½è³‡è¨Š");
+				sender.sendMessage("Â§a/mdop reload Â§f- Â§eé‡æ–°è®€å–è³‡æ–™");
+				sender.sendMessage("Â§9===========================");
 				return true;
 			}else if(args.length == 1) {
 				if (args[0].equals("moblist"))
@@ -79,11 +79,11 @@ public class PlayerCommands implements CommandExecutor ,TabExecutor{
 				else if(args[0].equals("reload")) 
 					return ReloadCommand.parseCommands(sender, cmd, label, args);
 				else {
-					sender.sendMessage("¡±c/" + label + " " + args[0] + " <-- ¬dµL¦¹«ü¥O");
+					sender.sendMessage("Â§c/" + label + " " + args[0] + " <-- æŸ¥ç„¡æ­¤æŒ‡ä»¤");
 					return false;
 				}
 			}
-	    	sender.sendMessage("¡±c ¦¹«ü¥O¤£¤ä´©±±¨î¥x¼Ò¦¡!");
+	    	sender.sendMessage("Â§c æ­¤æŒ‡ä»¤ä¸æ”¯æ´æ§åˆ¶å°æ¨¡å¼!");
 	    	return false;
 	    }
 		return false;

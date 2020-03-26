@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command.CommandsList;
+ï»¿package com.brian.MobDrop.Command.CommandsList;
 
 import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
@@ -8,17 +8,17 @@ import com.brian.MobDrop.Database.DataBase;
 
 public class ReloadCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
-		// ²M°£¦X¦¨ªí
+		// æ¸…é™¤åˆæˆè¡¨
 		DataBase.server.resetRecipes();
-		// ²M°£¹ï·Óªí
+		// æ¸…é™¤å°ç…§è¡¨
 		DataBase.MobItemMap.clear();
 		DataBase.ItemMap.clear();
-		// ­«Åª
+		// é‡è®€
 		DataBase.LoadConfig.ReLoadConfig();
 		DataBase.LoadLanguage.ReLoadLanguage();
 		DataBase.LoadItems.ReLoadItems();
 		DataBase.LoadMobs.ReLoadMobs();
-		sender.sendMessage(ChatColor.YELLOW +"³]©wÀÉÅª¨ú§¹¦¨");
+		sender.sendMessage(ChatColor.YELLOW +"è¨­å®šæª”è®€å–å®Œæˆ");
 		return true;
 	}
 }

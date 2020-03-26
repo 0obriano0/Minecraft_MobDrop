@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Database;
+ï»¿package com.brian.MobDrop.Database;
 
 import java.util.List;
 
@@ -10,19 +10,19 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.bukkit.inventory.meta.LeatherArmorMeta;
 
 public class Items{
-	//ª««~¦WºÙ
+	//ç‰©å“åç¨±
 	public String ItemName;
-	//ª««~¦WºÙ
+	//ç‰©å“åç¨±
 	boolean UseCustomName;
-	// ª««~»¡©ú
+	// ç‰©å“èªªæ˜
 	public List<String> ItemLores;
-	//ª««~¦WºÙ(¨t²Î¦WºÙ)
+	//ç‰©å“åç¨±(ç³»çµ±åç¨±)
 	public String ItemRealname;
-	// ÃC¦â
+	// é¡è‰²
 	public int Red;
 	public int Green;
 	public int Blue;
-	// ª««~ªşÅ]
+	// ç‰©å“é™„é­”
 	public List<String> Enchants;
 	
 	public Items(String ItemName, boolean UseCustomName, String ItemRealname, List<String> ItemLores, int Red, int Green, int Blue,List<String> Enchants){
@@ -38,15 +38,15 @@ public class Items{
 	
 	@SuppressWarnings("deprecation")
 	public ItemStack getResultItem() {
-		// ²£¥Íª««~¥Î
+		// ç”¢ç”Ÿç‰©å“ç”¨
 		ItemStack ResultItem;
 	    ItemMeta newItemMeta;
 	    LeatherArmorMeta LeatherArmorMeta;
 		
-		// ¦X¦¨«á±o¨ìªºª««~³]©w
+		// åˆæˆå¾Œå¾—åˆ°çš„ç‰©å“è¨­å®š
 	    ResultItem = new ItemStack(Material.getMaterial(ItemRealname));
 		
-		// §PÂ_¬O§_­n³]©wÃC¦â
+		// åˆ¤æ–·æ˜¯å¦è¦è¨­å®šé¡è‰²
 		if(ItemRealname.split("_")[0].equals("LEATHER")) {
 			LeatherArmorMeta = (LeatherArmorMeta)ResultItem.getItemMeta();
 			LeatherArmorMeta.setColor(Color.fromRGB(this.Red, this.Green, this.Blue));
@@ -54,7 +54,7 @@ public class Items{
 		}
 		
 		newItemMeta = ResultItem.getItemMeta();
-		// ªşÅ]
+		// é™„é­”
 		for (int i = 0; i < this.Enchants.size(); i++)
 		{
 			String[] EnchantsParts = this.Enchants.get(i).split(":");
@@ -62,21 +62,21 @@ public class Items{
 			Enchantment enchantment = Enchantment.getByName(EnchantsParts[0]);
 			newItemMeta.addEnchant(enchantment, level, true);
 		}
-		// ¦WºÙ
+		// åç¨±
 		if (!this.UseCustomName)
 		{
 			newItemMeta.setDisplayName(this.ItemName);
 		}
-		// »¡©ú
+		// èªªæ˜
 		if (this.ItemLores.size() > 0)
 		{
 			newItemMeta.setLore(this.ItemLores);
 		}
-		// ¼g¤J¸ê®Æ
+		// å¯«å…¥è³‡æ–™
 		ResultItem.setItemMeta(newItemMeta);
-	    // ³]©w­@¤[¬°³Ì°ª
+	    // è¨­å®šè€ä¹…ç‚ºæœ€é«˜
 		ResultItem.setDurability((short)0);
-		// ¦^¶Ç
+		// å›å‚³
 		return ResultItem;
 	}
 }

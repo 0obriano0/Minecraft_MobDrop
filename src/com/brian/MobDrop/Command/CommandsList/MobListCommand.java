@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command.CommandsList;
+ï»¿package com.brian.MobDrop.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,31 +12,31 @@ import com.brian.MobDrop.Database.MobItemList;
 public class MobListCommand {
 	private static boolean list_base(CommandSender sender,List<MobItemList> MobDropItemList ,String keyName){
 		try {
-			sender.sendMessage("¡±a¡u" + DataBase.GetEntityName(keyName) + "¡v");
+			sender.sendMessage("Â§aã€Œ" + DataBase.GetEntityName(keyName) + "ã€");
 			int itemnum = 0;
 			for (MobItemList MobDropItems : MobDropItemList)
 			{
 				if(MobDropItems.Quantity == MobDropItems.Quantity_max) {
-					sender.sendMessage("¡±f  "+ itemnum +". " + MobDropItems.Item.ItemName + " ¡±a(¡±f" + MobDropItems.Chance + "%¡±a±¼¸¨¡±f " + MobDropItems.Quantity + " ¡±a­Ó)");
+					sender.sendMessage("Â§f  "+ itemnum +". " + MobDropItems.Item.ItemName + " Â§a(Â§f" + MobDropItems.Chance + "%Â§aæ‰è½Â§f " + MobDropItems.Quantity + " Â§aå€‹)");
 				}else {
-					sender.sendMessage("¡±f  " + itemnum +". " + MobDropItems.Item.ItemName + " ¡±a(¡±f" + MobDropItems.Chance + "%¡±a±¼¸¨¡±f " + MobDropItems.Quantity + "-" + MobDropItems.Quantity_max + " ¡±a­Ó)");
+					sender.sendMessage("Â§f  " + itemnum +". " + MobDropItems.Item.ItemName + " Â§a(Â§f" + MobDropItems.Chance + "%Â§aæ‰è½Â§f " + MobDropItems.Quantity + "-" + MobDropItems.Quantity_max + " Â§aå€‹)");
 				}
 				itemnum++;
 			}
 		}
 		catch (NullPointerException e)
 		{
-			sender.sendMessage("¡±b" + DataBase.language.Plugin_name + "¡±c¬dµL¡u¡±n " + DataBase.GetEntityName(keyName) + " ¡±r¡±c¡v¥Íª«¡A½Ğ­«·s¬d¸ß");
+			sender.sendMessage("Â§b" + DataBase.language.Plugin_name + "Â§cæŸ¥ç„¡ã€ŒÂ§n " + DataBase.GetEntityName(keyName) + " Â§rÂ§cã€ç”Ÿç‰©ï¼Œè«‹é‡æ–°æŸ¥è©¢");
 		}
 		return true;
 	}
 	
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
-		// °j°éÅã¥Ü
+		// è¿´åœˆé¡¯ç¤º
 		List<MobItemList> MobDropItemList = new ArrayList<MobItemList>();
-		sender.sendMessage("¡±9============¡±dMobDrop ©Çª«±¼¸¨¸ê°T¡±9===========");
+		sender.sendMessage("Â§9============Â§dMobDrop æ€ªç‰©æ‰è½è³‡è¨ŠÂ§9===========");
 		if(args.length == 2) {
-			//§âÅª¨ú¨ìªº©Çª«¦WºÙÂà´«¦¨¤¤¤å
+			//æŠŠè®€å–åˆ°çš„æ€ªç‰©åç¨±è½‰æ›æˆä¸­æ–‡
 			MobDropItemList = DataBase.MobItemMap.get(DataBase.getEntityNameGameCode(args[1].toUpperCase()));
 			list_base(sender,MobDropItemList,args[1].toUpperCase());
 		}else {
@@ -46,7 +46,7 @@ public class MobListCommand {
 				list_base(sender,MobDropItemList,key);
 			}
 		}
-		sender.sendMessage("¡±9========================================");
+		sender.sendMessage("Â§9========================================");
 		return true;
 	}
 	

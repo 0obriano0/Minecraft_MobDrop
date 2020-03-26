@@ -1,9 +1,9 @@
-package com.brian.MobDrop.Database;
+ï»¿package com.brian.MobDrop.Database;
 
 public class Config {
-	//¤½¶}Åã¥Ü±¼¸¨ª«
+	//å…¬é–‹é¡¯ç¤ºæ‰è½ç‰©
 	public boolean IsOpen;
-	//¤½¶}Åã¥Ü±¼¸¨ª« ­n´X­w¥H¤U
+	//å…¬é–‹é¡¯ç¤ºæ‰è½ç‰© è¦å¹¾è¶´ä»¥ä¸‹
 	public int Chance;
 	public boolean list_Chinese;
 	public boolean command_cmd_show;

@@ -1,6 +1,6 @@
-package com.brian.MobDrop.Database.lang;
+ï»¿package com.brian.MobDrop.Database.lang;
 
 public class message {
-	public String Gobal_mobDropItem = "¡±6®¥³ß¡±a %player% ¡±6 ±N¡±f %mob% ¡±6±ş¦º«á±¼¸¨¡±a %item% ¡±b%item_num% ¡±6­Ó!";
-	public String mobDropItem = "¡±f%mob% ¡±6±¼¸¨¤F¡±f %itme% ¡±b%item_num% ¡±6­Ó!";
+	public String Gobal_mobDropItem = "Â§6æ­å–œÂ§a %player% Â§6 å°‡Â§f %mob% Â§6æ®ºæ­»å¾Œæ‰è½Â§a %item% Â§b%item_num% Â§6å€‹!";
+	public String mobDropItem = "Â§f%mob% Â§6æ‰è½äº†Â§f %itme% Â§b%item_num% Â§6å€‹!";
 }

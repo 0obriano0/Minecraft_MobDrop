@@ -1,4 +1,4 @@
-package com.brian.MobDrop.Command.CommandsList;
+ï»¿package com.brian.MobDrop.Command.CommandsList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,17 +10,17 @@ import com.brian.MobDrop.Database.DataBase;
 
 public class ItemListCommand {
 	public static boolean parseCommands(CommandSender sender, Command cmd, String label, String[] args) {
-		// °j°éÅã¥Ü
-		sender.sendMessage("¡±9=============¡±dMobDrop ¸Ë³Æ¸ê°T¡±9============");
+		// è¿´åœˆé¡¯ç¤º
+		sender.sendMessage("Â§9=============Â§dMobDrop è£å‚™è³‡è¨ŠÂ§9============");
 		if(args.length == 1) {
 			for (String key : DataBase.ItemMap.keySet())
 			{
-				sender.sendMessage("¡±f" + key + "¡±a  ª««~¦WºÙ - ¡±f" +  DataBase.ItemMap.get(key).ItemName);
+				sender.sendMessage("Â§f" + key + "Â§a  ç‰©å“åç¨± - Â§f" +  DataBase.ItemMap.get(key).ItemName);
 			}
 		}else {
 			
 		}
-		sender.sendMessage("¡±9========================================");
+		sender.sendMessage("Â§9========================================");
 		return true;
 	}
 	

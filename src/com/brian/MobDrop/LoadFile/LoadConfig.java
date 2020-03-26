@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+﻿package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 
@@ -10,10 +10,10 @@ import com.brian.MobDrop.Database.DataBase;
 import com.brian.MobDrop.Database.Config;
 
 public class LoadConfig {
-	// �D�nŪ���]�w��
+	// 主要讀取設定用
 	private FileConfiguration data = null;
 
-	// �}�ɥ�
+	// 開檔用
 	private File filePreload = null;
 	
 	private String loadfilename = "Config.yml";
@@ -28,18 +28,18 @@ public class LoadConfig {
 	String lang = "zh_TW";
 	boolean dropItem = true;
 	public void ReLoadConfig(){
-		// �T�{�ɮ׬O�_�s�b
+		// 確認檔案是否存在
 	    this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
 	    if (this.filePreload.exists()){
-	    	// Ū���]�w�ɤ��e
+	    	// 讀取設定檔內容
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    else{
-	    	// �ɮפ��s�b�A�إ߹w�]��
+	    	// 檔案不存在，建立預設檔
 	    	CreateDefaultfile();
-	    	// �����ɮ�
+	    	// 重載檔案
 	    	this.filePreload = new File(DataBase.pluginMainDir + loadfilename);
-	    	// Ū���]�w�ɤ��e
+	    	// 讀取設定檔內容
 	    	this.data = YamlConfiguration.loadConfiguration(this.filePreload);
 	    }
 	    
@@ -61,12 +61,12 @@ public class LoadConfig {
 	    		DataBase.Config = new Config(data.getBoolean("GobalMessage.IsOpen"),data.getInt("GobalMessage.Chance"),command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
 	    		DataBase.main.getLogger().info(AnsiColor.CYAN + "[LoadConfig]" + AnsiColor.GREEN +  " Config.yml Load Success" + AnsiColor.RESET);
 	    	}else{
-	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] ���Ū�����~�A�p�G���|�]�w�A�бN config.yml �R���í��s reload" + AnsiColor.RESET);
+	    		DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] 資料讀取錯誤，如果不會設定，請將 config.yml 刪掉並重新 reload" + AnsiColor.RESET);
 	    		return;
 	    	}
 	    }else {
 	    	DataBase.Config = new Config(true,50,command_cmd_show,command_old_list,list_Chinese,lang,dropItem);
-	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage ���Ū�����~�A�ϥιw�]��" + AnsiColor.RESET);
+	    	DataBase.main.getLogger().info(AnsiColor.RED + "[LoadConfig] GobalMessage 資料讀取錯誤，使用預設值" + AnsiColor.RESET);
 	    }
 	}
 	
@@ -74,18 +74,18 @@ public class LoadConfig {
 		try
 		{
 			if(CopyFileAPI.createFile(DataBase.pluginMainDir, loadfilename, "/"+loadfilename, DataBase.main))
-				DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " �Ыئ��\" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.GREEN + "[FileCreate] " + AnsiColor.YELLOW + loadfilename + AnsiColor.GREEN +  " 創建成功" + AnsiColor.RESET);
 			else
-				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ��ƳЫإX�{���`�A�и߰ݵ{���]�p�v" + AnsiColor.RESET);
+				DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現異常，請詢問程式設計師" + AnsiColor.RESET);
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
-			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] ��ƳЫإX�{�Y�������~�A�и߰ݵ{���]�p�v" + AnsiColor.RESET);
+			DataBase.main.getLogger().info(AnsiColor.RED + "[FileCreate] 資料創建出現嚴重的錯誤，請詢問程式設計師" + AnsiColor.RESET);
 		}
 	}
 	
 	public void errorMessage(String title,String name,String def) {
-		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " ���Ū�����ѡA�ϥιw�]��: " + def + AnsiColor.RESET);
+		DataBase.main.getLogger().info(AnsiColor.RED + "[Loadlanguage] " + title + " -> " + name + " 資料讀取失敗，使用預設值: " + def + AnsiColor.RESET);
 	}
 }

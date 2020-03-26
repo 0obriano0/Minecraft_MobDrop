@@ -1,13 +1,13 @@
-package com.brian.MobDrop.Database;
+ï»¿package com.brian.MobDrop.Database;
 
 import org.bukkit.inventory.ItemStack;
 
 public class MobItemList {
 	public Items Item;
-	// ±o¨ìªºª««~¼Æ¶q
+	// å¾—åˆ°çš„ç‰©å“æ•¸é‡
 	public int Quantity;
 	public int Quantity_max;
-	// ±¼¸¨²v
+	// æ‰è½ç‡
 	public double Chance;
 	
 	public MobItemList(int Quantity, int Quantity_max, double Chance, Items Item) {

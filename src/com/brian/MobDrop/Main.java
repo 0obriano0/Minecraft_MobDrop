@@ -1,4 +1,4 @@
-package com.brian.MobDrop;
+ï»¿package com.brian.MobDrop;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -13,11 +13,11 @@ import com.brian.MobDrop.LoadFile.LoadMobs;
 public class Main extends JavaPlugin {
 	public void onEnable()
 	{   
-		// ³]©w¥D´¡¥ó
+		// è¨­å®šä¸»æ’ä»¶
 		DataBase.main = this;
-		// ³]©w¦øªA¾¹
+		// è¨­å®šä¼ºæœå™¨
 		DataBase.server = this.getServer();
-		// Åª¨ú³]©wÀÉ
+		// è®€å–è¨­å®šæª”
 		DataBase.LoadItems = new LoadItems();
 		DataBase.LoadMobs = new LoadMobs();
 		DataBase.LoadConfig = new LoadConfig();
@@ -26,22 +26,22 @@ public class Main extends JavaPlugin {
 		DataBase.LoadLanguage.ReLoadLanguage();
 		DataBase.LoadItems.ReLoadItems();
 		DataBase.LoadMobs.ReLoadMobs();
-		// µù¥U
+		// è¨»å†Š
 		getServer().getPluginManager().registerEvents(new DeathListener(), this);
 		getCommand("mobdrop").setExecutor(new PlayerCommands());
-		// °T®§
+		// è¨Šæ¯
 		DataBase.Print("MobDropItems is enabled!");
 	}
 	
-	// ¸ü¥X
+	// è¼‰å‡º
 	public void onDisable()
 	{
-		// ²M°£¦X¦¨ªí
+		// æ¸…é™¤åˆæˆè¡¨
 		DataBase.server.resetRecipes();
-		// ²M°£¹ï·Óªí
+		// æ¸…é™¤å°ç…§è¡¨
 		DataBase.MobItemMap.clear();
 		DataBase.ItemMap.clear();
-		// °T®§
+		// è¨Šæ¯
 		DataBase.Print("MobDropItems is disable!");
 	}
 }

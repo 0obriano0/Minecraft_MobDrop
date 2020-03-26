@@ -1,4 +1,4 @@
-package com.brian.MobDrop.LoadFile;
+ï»¿package com.brian.MobDrop.LoadFile;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,17 +35,17 @@ public class CopyFileAPI {
     }
 	
 	public static boolean createFile(String Dir,String Filename,String JarURL,Main main) {
-		Path p = Paths.get(Dir);    //¸ô®|³]©w
-        /*½T»{¸ê®Æ§¨¬O§_¦s¦b*/
+		Path p = Paths.get(Dir);    //è·¯å¾‘è¨­å®š
+        /*ç¢ºèªè³‡æ–™å¤¾æ˜¯å¦å­˜åœ¨*/
         if (!Files.exists(p)) {
-            /*¤£¦s¦bªº¸Ü,ª½±µ«Ø¥ß¸ê®Æ§¨*/
+            /*ä¸å­˜åœ¨çš„è©±,ç›´æ¥å»ºç«‹è³‡æ–™å¤¾*/
             try {
 				Files.createDirectory(p);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-            DataBase.main.getLogger().info(AnsiColor.GREEN + "[DirCreate] " + AnsiColor.GREEN +  "¸ê®Æ§¨³Ğ«Ø¦¨¥\" + AnsiColor.RESET);
+            DataBase.main.getLogger().info(AnsiColor.GREEN + "[DirCreate] " + AnsiColor.GREEN +  "è³‡æ–™å¤¾å‰µå»ºæˆåŠŸ" + AnsiColor.RESET);
         }
 		File QuestMaker = new File(Dir + Filename);
         if (!QuestMaker.exists()) {

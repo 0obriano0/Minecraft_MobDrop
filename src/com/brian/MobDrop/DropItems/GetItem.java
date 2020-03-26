@@ -1,4 +1,4 @@
-package com.brian.MobDrop.DropItems;
+ï»¿package com.brian.MobDrop.DropItems;
 
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -11,13 +11,13 @@ public class GetItem {
 			ItemStack Itemcreate = DataBase.ItemMap.get(args[1].toUpperCase()).getResultItem();
 			Itemcreate.setAmount(1);
 			if(player.getInventory().firstEmpty() == -1)
-				player.sendMessage("¡±b" + DataBase.language.Plugin_name + " ¡±c­I¥]¤wº¡¡AµLªkÀò¨ú¹D¨ã");
+				player.sendMessage("Â§b" + DataBase.language.Plugin_name + " Â§cèƒŒåŒ…å·²æ»¿ï¼Œç„¡æ³•ç²å–é“å…·");
 			else {
 				player.getInventory().addItem(Itemcreate);
-				player.sendMessage("¡±b" + DataBase.language.Plugin_name + " ¡±fÀò¨ú¹D¨ã: " + DataBase.ItemMap.get(args[1].toUpperCase()).ItemName);
+				player.sendMessage("Â§b" + DataBase.language.Plugin_name + " Â§fç²å–é“å…·: " + DataBase.ItemMap.get(args[1].toUpperCase()).ItemName);
 			}
 		}else {
-			player.sendMessage("¡±b" + DataBase.language.Plugin_name + " ¡±c¬dµL¸Ë³Æ ID ½Ğ­«·s¬d¸ß");
+			player.sendMessage("Â§b" + DataBase.language.Plugin_name + " Â§cæŸ¥ç„¡è£å‚™ ID è«‹é‡æ–°æŸ¥è©¢");
 			return false;
 		}
 		return true;
